@@ -91,10 +91,10 @@ export function Registration() {
           <button
             onClick={() => navigate("/")}
             className="inline-flex items-center gap-2 mb-8 text-[#94A3B8] hover:text-[#1E2A4A] transition-colors"
+            aria-label="Go to home"
           >
-            <div className="flex h-8 w-14 items-center justify-center rounded-full bg-[#4F6DF5]">
-              <div className="h-4 w-4 rounded-full bg-white ml-2"></div>
-            </div>
+            <img src="/images/logo.svg" alt="BadgeFlow logo" className="h-10 w-auto" />
+            <span className="font-headline text-lg text-[#1E2A4A]">BadgeFlow</span>
           </button>
           <h1 className="text-4xl font-bold text-[#1E2A4A] mb-3">
             Create your account

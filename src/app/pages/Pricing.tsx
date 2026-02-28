@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { Check, Sparkles, Zap, Building2, ArrowRight, ChevronLeft } from "lucide-react";
 
 const plans = [
@@ -112,6 +112,11 @@ export function Pricing() {
         <ChevronLeft className="h-4 w-4" />
         Back
       </button>
+
+      <Link to="/" className="absolute top-8 right-8 z-10 inline-flex items-center gap-2" aria-label="BadgeFlow home">
+        <img src="/images/logo.svg" alt="BadgeFlow logo" className="h-10 w-auto" />
+        <span className="font-headline text-lg text-[#1E2A4A]">BadgeFlow</span>
+      </Link>
 
       {/* Hero */}
       <section className="pt-16 pb-12 px-4 text-center bg-[#F5F7FA]">
