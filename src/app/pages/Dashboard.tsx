@@ -2546,10 +2546,36 @@ function IssueBadgePage({
   onNavigate: (page: ActivePage) => void;
   isNewUser: boolean;
 }) {
-  const [recipientEmail, setRecipientEmail] = useState("");
   const [selectedBadge, setSelectedBadge] = useState("");
-  const [message, setMessage] = useState("");
+  const [recipientMethod, setRecipientMethod] = useState<"csv" | "paste" | "manual">("csv");
+  const [csvUploaded, setCsvUploaded] = useState(false);
+  const [pasteEmails, setPasteEmails] = useState("");
+  const [manualEmail, setManualEmail] = useState("");
+  const [manualName, setManualName] = useState("");
+  const [manualList, setManualList] = useState<{ email: string; name: string; valid: boolean }[]>([]);
+  const [channelEmail, setChannelEmail] = useState(true);
+  const [channelPublic, setChannelPublic] = useState(true);
+  const [subject, setSubject] = useState("You've earned a badge!");
+  const [message, setMessage] = useState("Congratulations! You have been awarded a digital badge for your achievement. Click below to view and share your credential.");
+  const [shareLinkedIn, setShareLinkedIn] = useState(true);
+  const [sharePublicPage, setSharePublicPage] = useState(true);
   const [showSuccess, setShowSuccess] = useState(false);
+
+  const validCsvCount = csvMockRows.filter((r) => r.status === "valid").length;
+  const invalidCsvCount = csvMockRows.length - validCsvCount;
+
+  const parsedPasteLines = pasteEmails.split("\n").map((l) => l.trim()).filter(Boolean);
+  const parsedPasteValid = parsedPasteLines.filter(isValidEmail);
+  const parsedPasteInvalid = parsedPasteLines.filter((l) => !isValidEmail(l));
+
+  const addManualRecipient = () => {
+    if (manualEmail.trim()) {
+      const valid = isValidEmail(manualEmail.trim());
+      setManualList((prev) => [...prev, { email: manualEmail.trim(), name: manualName.trim() || "", valid }]);
+      setManualEmail("");
+      setManualName("");
+    }
+  };
 
   const handleIssue = () => {
     setShowSuccess(true);
@@ -2611,7 +2637,7 @@ function IssueBadgePage({
   }
 
   return (
-    <div className="max-w-3xl">
+    <div className="max-w-2xl mx-auto">
       <div className="mb-8">
         <h1 className="text-2xl text-[#1E2A4A]" style={{ fontWeight: 700 }}>Issue Badge</h1>
         <p className="text-[#94A3B8] text-sm mt-1">Send a badge to recognize someone's achievement</p>
@@ -2621,70 +2647,511 @@ function IssueBadgePage({
         <div className="mb-6 bg-emerald-50 border border-emerald-200 rounded-xl p-4 flex items-center gap-3">
           <CheckCircle2 className="h-5 w-5 text-emerald-600" />
           <p className="text-sm text-emerald-700" style={{ fontWeight: 500 }}>
-            Badge issued successfully! The recipient will receive an email notification.
+            Badge issued successfully! The recipients will receive a notification.
           </p>
         </div>
       )}
 
-      <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-6 lg:p-8 space-y-6">
-        <div>
-          <label className="text-sm text-[#94A3B8] mb-1.5 block">Select Badge</label>
-          <select
-            value={selectedBadge}
-            onChange={(e) => setSelectedBadge(e.target.value)}
-            className="w-full h-10 px-3 rounded-xl bg-[#F5F7FA] border border-[#94A3B8]/25 text-sm text-[#1E2A4A] focus:outline-none focus:ring-2 focus:ring-[#4F6DF5]/25"
-          >
-            <option value="">Choose a badge to issue...</option>
-            {recentBadges.filter((b) => b.status === "Active").map((badge) => (
-              <option key={badge.id} value={badge.id}>{badge.icon} {badge.name}</option>
+      <div className="space-y-6">
+        {/* Section 1: Select Badge */}
+        <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-6 shadow-sm">
+          <h3 className="text-[#1E2A4A] mb-1" style={{ fontWeight: 600 }}>Select Badge</h3>
+          <p className="text-sm text-[#94A3B8] mb-5">Choose which badge you want to issue</p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {recentBadges.filter((b) => b.status === "Active").map((badge) => {
+              const selected = selectedBadge === String(badge.id);
+              return (
+                <button
+                  key={badge.id}
+                  onClick={() => setSelectedBadge(String(badge.id))}
+                  className={`relative flex items-start gap-3 p-4 rounded-xl border-2 text-left transition-all ${
+                    selected ? "border-emerald-300 bg-[#EAFBF5] shadow-sm" : "border-[#94A3B8]/25 hover:border-[#94A3B8]/35 hover:bg-[#F5F7FA]"
+                  }`}
+                >
+                  <div className={`h-10 w-10 rounded-xl flex items-center justify-center shrink-0 text-lg transition-colors ${
+                    selected ? "bg-[#DDF7EE]" : "bg-[#EDF2F7]"
+                  }`}>
+                    {badge.icon}
+                  </div>
+                  <div>
+                    <p className="text-sm text-[#1E2A4A]" style={{ fontWeight: 600 }}>{badge.name}</p>
+                    <p className={`text-xs mt-0.5 ${selected ? "text-[#34D399]/70" : "text-[#94A3B8]"}`}>{badge.issued} issued · {badge.createdAt}</p>
+                  </div>
+                  <div className={`absolute top-4 right-4 h-5 w-5 rounded-full border-2 flex items-center justify-center transition-all ${
+                    selected ? "border-emerald-400 bg-[#34D399]" : "border-[#94A3B8]/35"
+                  }`}>
+                    {selected && <Check className="h-3 w-3 text-[#1E2A4A]" />}
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Section 2: Recipients */}
+        <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-6 shadow-sm">
+          <h3 className="text-[#1E2A4A] mb-1" style={{ fontWeight: 600 }}>Recipients</h3>
+          <p className="text-sm text-[#94A3B8] mb-5">Add learners who will receive this badge.</p>
+
+          {/* Method Tabs */}
+          <div className="flex gap-1 p-1 bg-[#EDF2F7] rounded-xl mb-5">
+            {[
+              { value: "csv" as const, label: "Upload CSV", icon: FileSpreadsheet },
+              { value: "paste" as const, label: "Paste Emails", icon: AtSign },
+              { value: "manual" as const, label: "Add Manually", icon: UserPlus },
+            ].map((tab) => (
+              <button
+                key={tab.value}
+                onClick={() => setRecipientMethod(tab.value)}
+                className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-xs transition-all ${
+                  recipientMethod === tab.value
+                    ? "bg-white text-[#1E2A4A] shadow-sm"
+                    : "text-[#94A3B8] hover:text-[#1E2A4A]"
+                }`}
+                style={{ fontWeight: recipientMethod === tab.value ? 600 : 400 }}
+              >
+                <tab.icon className="h-3.5 w-3.5" />
+                {tab.label}
+              </button>
             ))}
-          </select>
+          </div>
+
+          {/* CSV Upload */}
+          {recipientMethod === "csv" && (
+            <div className="space-y-4">
+              {!csvUploaded ? (
+                <>
+                  <button
+                    onClick={() => setCsvUploaded(true)}
+                    className="w-full rounded-xl border-2 border-dashed border-[#94A3B8]/35 bg-[#F5F7FA] py-10 flex flex-col items-center justify-center hover:border-emerald-300 hover:bg-[#EAFBF5] transition-all group"
+                  >
+                    <div className="h-12 w-12 rounded-xl bg-[#EDF2F7] group-hover:bg-[#DDF7EE] flex items-center justify-center mb-3 transition-colors">
+                      <Upload className="h-6 w-6 text-[#94A3B8] group-hover:text-[#34D399] transition-colors" />
+                    </div>
+                    <p className="text-sm text-[#94A3B8] group-hover:text-[#34D399]" style={{ fontWeight: 500 }}>
+                      Drag & drop your CSV file here
+                    </p>
+                    <p className="text-xs text-[#94A3B8] mt-1">or click to browse · .csv only · Max 5 MB</p>
+                  </button>
+                  <div className="flex items-center justify-between">
+                    <button className="inline-flex items-center gap-2 text-xs text-[#34D399] hover:text-[#34D399] transition-colors" style={{ fontWeight: 500 }}>
+                      <Download className="h-3.5 w-3.5" />
+                      Download CSV template
+                    </button>
+                    <p className="text-[11px] text-[#94A3B8]">Required columns: <span style={{ fontWeight: 600 }}>Email, Full name</span></p>
+                  </div>
+                </>
+              ) : (
+                <>
+                  {/* Uploaded file bar */}
+                  <div className="rounded-xl border border-emerald-200 bg-[#EAFBF5] px-4 py-3 flex items-center gap-3">
+                    <div className="h-9 w-9 rounded-lg bg-[#DDF7EE] flex items-center justify-center shrink-0">
+                      <FileSpreadsheet className="h-4 w-4 text-[#34D399]" />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm text-[#1E2A4A] truncate" style={{ fontWeight: 500 }}>recipients_batch_01.csv</p>
+                      <p className="text-xs text-[#94A3B8]">{csvMockRows.length} rows · 18 KB</p>
+                    </div>
+                    <button onClick={() => setCsvUploaded(false)} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs text-[#94A3B8] hover:text-[#FF6B6B] hover:bg-[#FFF1F1] transition-all" style={{ fontWeight: 500 }}>
+                      <Trash2 className="h-3 w-3" />
+                      Remove
+                    </button>
+                  </div>
+
+                  {/* Summary counters */}
+                  <div className="flex gap-3">
+                    <div className="flex-1 flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-emerald-50 border border-emerald-100">
+                      <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+                      <div>
+                        <p className="text-sm text-emerald-700" style={{ fontWeight: 700 }}>{validCsvCount}</p>
+                        <p className="text-[10px] text-emerald-500">Valid</p>
+                      </div>
+                    </div>
+                    <div className="flex-1 flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-[#FFF1F1] border border-[#FF6B6B]/30">
+                      <AlertCircle className="h-4 w-4 text-[#FF6B6B]" />
+                      <div>
+                        <p className="text-sm text-[#FF6B6B]" style={{ fontWeight: 700 }}>{invalidCsvCount}</p>
+                        <p className="text-[10px] text-[#FF6B6B]">Need attention</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Error banner */}
+                  {invalidCsvCount > 0 && (
+                    <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#FFF1F1] border border-[#FF6B6B]/30">
+                      <AlertCircle className="h-4 w-4 text-[#FF6B6B] shrink-0" />
+                      <div className="flex-1">
+                        <p className="text-xs text-[#FF6B6B]" style={{ fontWeight: 600 }}>
+                          {invalidCsvCount} row{invalidCsvCount > 1 ? "s" : ""} need fixing
+                        </p>
+                        <p className="text-[11px] text-[#FF6B6B] mt-0.5">Fix errors in your CSV and re-upload to continue.</p>
+                      </div>
+                      <button
+                        onClick={() => setCsvUploaded(false)}
+                        className="px-3 py-1.5 rounded-lg bg-white border border-[#FF6B6B]/40 text-xs text-[#FF6B6B] hover:bg-[#FFF1F1] transition-colors shrink-0"
+                        style={{ fontWeight: 600 }}
+                      >
+                        Re-upload
+                      </button>
+                    </div>
+                  )}
+
+                  {/* Preview table */}
+                  <div className="rounded-xl border border-[#94A3B8]/25 overflow-hidden">
+                    <div className="bg-[#F5F7FA] px-4 py-2.5 flex items-center justify-between">
+                      <p className="text-xs text-[#94A3B8]" style={{ fontWeight: 600 }}>Validation Preview</p>
+                      <p className="text-[10px] text-[#94A3B8]">
+                        Showing {csvMockRows.length} of {csvMockRows.length} rows
+                      </p>
+                    </div>
+                    <div className="overflow-x-auto">
+                      <table className="w-full text-sm">
+                        <thead>
+                          <tr className="border-b border-[#94A3B8]/25">
+                            <th className="px-4 py-2.5 text-left text-[11px] text-[#94A3B8] w-8" style={{ fontWeight: 500 }}>#</th>
+                            <th className="px-4 py-2.5 text-left text-[11px] text-[#94A3B8]" style={{ fontWeight: 500 }}>Email</th>
+                            <th className="px-4 py-2.5 text-left text-[11px] text-[#94A3B8]" style={{ fontWeight: 500 }}>Name</th>
+                            <th className="px-4 py-2.5 text-right text-[11px] text-[#94A3B8]" style={{ fontWeight: 500 }}>Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {csvMockRows.map((row, i) => {
+                            const cfg = csvStatusConfig[row.status];
+                            const StatusIcon = cfg.icon;
+                            const isErr = row.status !== "valid";
+                            return (
+                              <tr key={i} className={`border-b border-[#94A3B8]/15 transition-colors ${isErr ? "bg-[#FFF1F1]/30" : "hover:bg-[#F5F7FA]"}`}>
+                                <td className="px-4 py-2.5 text-[10px] text-[#94A3B8]">{i + 1}</td>
+                                <td className="px-4 py-2.5">
+                                  <div className="flex items-center gap-2">
+                                    {isErr && <AlertCircle className="h-3.5 w-3.5 text-[#FF6B6B] shrink-0" />}
+                                    <span className={`text-xs ${isErr ? "text-[#FF6B6B]" : "text-[#1E2A4A]"}`} style={{ fontWeight: isErr ? 500 : 400 }}>{row.email}</span>
+                                  </div>
+                                </td>
+                                <td className="px-4 py-2.5 text-xs text-[#94A3B8]">
+                                  {row.name || <span className="text-[#94A3B8] italic">—</span>}
+                                </td>
+                                <td className="px-4 py-2.5 text-right">
+                                  <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full ${cfg.bg} text-[10px] ${cfg.color}`} style={{ fontWeight: 600 }}>
+                                    <StatusIcon className="h-3 w-3" /> {cfg.label}
+                                  </span>
+                                </td>
+                              </tr>
+                            );
+                          })}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+          )}
+
+          {/* Paste Emails */}
+          {recipientMethod === "paste" && (
+            <div className="space-y-3">
+              <textarea
+                value={pasteEmails}
+                onChange={(e) => setPasteEmails(e.target.value)}
+                placeholder={"alice@company.com\nbob@acme.org\ncharlie@example.com"}
+                rows={6}
+                className="w-full px-4 py-3 rounded-xl bg-[#F5F7FA] border border-[#94A3B8]/25 text-sm text-[#1E2A4A] focus:outline-none focus:ring-2 focus:ring-emerald-200 resize-none transition-all placeholder:text-[#94A3B8] font-mono"
+              />
+              <p className="text-xs text-[#94A3B8]">One email per line</p>
+
+              {parsedPasteLines.length > 0 && (
+                <div className="space-y-2">
+                  <div className="flex gap-3">
+                    <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 border border-emerald-100">
+                      <CheckCircle2 className="h-3 w-3 text-emerald-500" />
+                      <span className="text-[11px] text-emerald-600" style={{ fontWeight: 600 }}>{parsedPasteValid.length} valid</span>
+                    </div>
+                    {parsedPasteInvalid.length > 0 && (
+                      <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#FFF1F1] border border-[#FF6B6B]/30">
+                        <AlertCircle className="h-3 w-3 text-[#FF6B6B]" />
+                        <span className="text-[11px] text-[#FF6B6B]" style={{ fontWeight: 600 }}>{parsedPasteInvalid.length} invalid</span>
+                      </div>
+                    )}
+                  </div>
+
+                  {parsedPasteInvalid.length > 0 && (
+                    <div className="rounded-xl border border-[#FF6B6B]/30 bg-[#FFF1F1]/40 p-3 space-y-1.5">
+                      <p className="text-[11px] text-[#FF6B6B]" style={{ fontWeight: 600 }}>Invalid emails found:</p>
+                      {parsedPasteInvalid.map((e, i) => (
+                        <div key={i} className="flex items-center gap-2 text-xs text-[#FF6B6B]">
+                          <AlertCircle className="h-3 w-3 shrink-0" />
+                          <span className="font-mono">{e}</span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {parsedPasteValid.length > 0 && (
+                    <div className="rounded-xl border border-[#94A3B8]/25 p-3">
+                      <p className="text-[11px] text-[#94A3B8] mb-2" style={{ fontWeight: 600 }}>Ready to import:</p>
+                      <div className="flex flex-wrap gap-1.5">
+                        {parsedPasteValid.slice(0, 12).map((e, i) => (
+                          <span key={i} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#EAFBF5] border border-emerald-100 text-[11px] text-[#34D399]">
+                            <CheckCircle2 className="h-2.5 w-2.5" />
+                            {e}
+                          </span>
+                        ))}
+                        {parsedPasteValid.length > 12 && (
+                          <span className="px-2.5 py-1 rounded-lg bg-[#F5F7FA] text-[11px] text-[#94A3B8]" style={{ fontWeight: 500 }}>
+                            +{parsedPasteValid.length - 12} more
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          )}
+
+          {/* Manual Add */}
+          {recipientMethod === "manual" && (
+            <div className="space-y-4">
+              <div className="flex gap-2">
+                <div className="flex-1">
+                  <input
+                    type="email"
+                    placeholder="Email address *"
+                    value={manualEmail}
+                    onChange={(e) => setManualEmail(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && addManualRecipient()}
+                    className="w-full px-4 py-2.5 rounded-xl bg-[#F5F7FA] border border-[#94A3B8]/25 text-sm text-[#1E2A4A] focus:outline-none focus:ring-2 focus:ring-emerald-200 transition-all placeholder:text-[#94A3B8]"
+                  />
+                </div>
+                <div className="flex-1">
+                  <input
+                    type="text"
+                    placeholder="Full name"
+                    value={manualName}
+                    onChange={(e) => setManualName(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && addManualRecipient()}
+                    className="w-full px-4 py-2.5 rounded-xl bg-[#F5F7FA] border border-[#94A3B8]/25 text-sm text-[#1E2A4A] focus:outline-none focus:ring-2 focus:ring-emerald-200 transition-all placeholder:text-[#94A3B8]"
+                  />
+                </div>
+                <button
+                  onClick={addManualRecipient}
+                  disabled={!manualEmail.trim()}
+                  className="h-[42px] px-4 rounded-xl bg-[#34D399] text-[#1E2A4A] text-sm hover:bg-[#2DB985] transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-1.5 shrink-0"
+                  style={{ fontWeight: 600 }}
+                >
+                  <Plus className="h-4 w-4" />
+                  Add
+                </button>
+              </div>
+
+              {manualList.length > 0 ? (
+                <div className="rounded-xl border border-[#94A3B8]/25 overflow-hidden">
+                  <div className="bg-[#F5F7FA] px-4 py-2 flex items-center justify-between">
+                    <p className="text-[11px] text-[#94A3B8]" style={{ fontWeight: 600 }}>{manualList.length} recipient{manualList.length > 1 ? "s" : ""}</p>
+                    <div className="flex gap-2">
+                      <span className="text-[10px] text-emerald-500" style={{ fontWeight: 600 }}>{manualList.filter((r) => r.valid).length} valid</span>
+                      {manualList.some((r) => !r.valid) && (
+                        <span className="text-[10px] text-[#FF6B6B]" style={{ fontWeight: 600 }}>{manualList.filter((r) => !r.valid).length} invalid</span>
+                      )}
+                    </div>
+                  </div>
+                  <div className="divide-y divide-[#94A3B8]/15">
+                    {manualList.map((r, i) => (
+                      <div key={i} className={`flex items-center gap-3 px-4 py-2.5 ${!r.valid ? "bg-[#FFF1F1]/30" : ""}`}>
+                        <div className={`h-7 w-7 rounded-full flex items-center justify-center shrink-0 ${r.valid ? "bg-[#DDF7EE]" : "bg-[#FFE4E4]"}`}>
+                          <span className={`text-[10px] ${r.valid ? "text-[#34D399]" : "text-[#FF6B6B]"}`} style={{ fontWeight: 700 }}>
+                            {(r.name || r.email)[0]?.toUpperCase()}
+                          </span>
+                        </div>
+                        <div className="flex-1 min-w-0 flex items-center gap-4">
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-1.5">
+                              {!r.valid && <AlertCircle className="h-3 w-3 text-[#FF6B6B] shrink-0" />}
+                              <p className={`text-xs truncate ${r.valid ? "text-[#1E2A4A]" : "text-[#FF6B6B]"}`} style={{ fontWeight: 500 }}>{r.email}</p>
+                            </div>
+                          </div>
+                          <p className="text-xs text-[#94A3B8] truncate w-28">{r.name || <span className="text-[#94A3B8] italic">No name</span>}</p>
+                        </div>
+                        <span className={`text-[10px] px-2 py-0.5 rounded-full ${r.valid ? "bg-emerald-50 text-emerald-600" : "bg-[#FFF1F1] text-[#FF6B6B]"}`} style={{ fontWeight: 600 }}>
+                          {r.valid ? "Valid" : "Invalid"}
+                        </span>
+                        <button
+                          onClick={() => setManualList((prev) => prev.filter((_, idx) => idx !== i))}
+                          className="h-7 w-7 rounded-lg hover:bg-[#FFF1F1] flex items-center justify-center transition-colors"
+                        >
+                          <Trash2 className="h-3.5 w-3.5 text-[#94A3B8] hover:text-[#FF6B6B]" />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <div className="rounded-xl border-2 border-dashed border-[#94A3B8]/35 bg-[#F5F7FA] py-8 flex flex-col items-center">
+                  <UserPlus className="h-6 w-6 text-[#94A3B8] mb-2" />
+                  <p className="text-xs text-[#94A3B8]" style={{ fontWeight: 500 }}>No recipients added yet</p>
+                  <p className="text-[11px] text-[#94A3B8] mt-1">Type an email above and press Enter or click Add</p>
+                </div>
+              )}
+            </div>
+          )}
         </div>
 
-        <div>
-          <label className="text-sm text-[#94A3B8] mb-1.5 block">Recipient Email</label>
-          <Input
-            type="email"
-            placeholder="recipient@example.com"
-            value={recipientEmail}
-            onChange={(e) => setRecipientEmail(e.target.value)}
-            className="rounded-xl bg-[#F5F7FA] border-[#94A3B8]/25"
-          />
-          <p className="text-xs text-[#94A3B8] mt-1.5">You can add multiple recipients separated by commas</p>
+        {/* Section 3: Delivery Channel */}
+        <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-6 shadow-sm">
+          <h3 className="text-[#1E2A4A] mb-1" style={{ fontWeight: 600 }}>Delivery Channel</h3>
+          <p className="text-sm text-[#94A3B8] mb-5">How will recipients receive their badge?</p>
+
+          <div className="space-y-3">
+            {/* Email */}
+            <label className="flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all"
+              style={{ borderColor: channelEmail ? "#bef264" : "#f3f4f6", backgroundColor: channelEmail ? "rgba(190,242,100,0.08)" : "transparent" }}
+            >
+              <div
+                onClick={(e) => { e.preventDefault(); setChannelEmail(!channelEmail); }}
+                className={`h-5 w-5 rounded-md border-2 flex items-center justify-center transition-all shrink-0 ${
+                  channelEmail ? "border-emerald-400 bg-[#34D399]" : "border-[#94A3B8]/40"
+                }`}
+              >
+                {channelEmail && <Check className="h-3 w-3 text-[#1E2A4A]" />}
+              </div>
+              <div className="h-9 w-9 rounded-lg bg-[#DDF7EE] flex items-center justify-center shrink-0">
+                <Mail className="h-4 w-4 text-[#34D399]" />
+              </div>
+              <div>
+                <p className="text-sm text-[#1E2A4A]" style={{ fontWeight: 600 }}>Email Notification</p>
+                <p className="text-xs text-[#94A3B8] mt-0.5">Send badge via email with a claim link</p>
+              </div>
+            </label>
+
+            {/* Public Link */}
+            <label className="flex items-center gap-4 p-4 rounded-xl border-2 cursor-pointer transition-all"
+              style={{ borderColor: channelPublic ? "#bef264" : "#f3f4f6", backgroundColor: channelPublic ? "rgba(190,242,100,0.08)" : "transparent" }}
+            >
+              <div
+                onClick={(e) => { e.preventDefault(); setChannelPublic(!channelPublic); }}
+                className={`h-5 w-5 rounded-md border-2 flex items-center justify-center transition-all shrink-0 ${
+                  channelPublic ? "border-emerald-400 bg-[#34D399]" : "border-[#94A3B8]/40"
+                }`}
+              >
+                {channelPublic && <Check className="h-3 w-3 text-[#1E2A4A]" />}
+              </div>
+              <div className="h-9 w-9 rounded-lg bg-[#DDF7EE] flex items-center justify-center shrink-0">
+                <Globe className="h-4 w-4 text-[#34D399]" />
+              </div>
+              <div>
+                <p className="text-sm text-[#1E2A4A]" style={{ fontWeight: 600 }}>Public Badge Link</p>
+                <p className="text-xs text-[#94A3B8] mt-0.5">Generate a shareable public URL for the badge</p>
+              </div>
+            </label>
+          </div>
         </div>
 
-        <div>
-          <label className="text-sm text-[#94A3B8] mb-1.5 block">Personal Message (Optional)</label>
-          <textarea
-            placeholder="Congratulations on completing the certification..."
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            rows={3}
-            className="w-full px-3 py-2 rounded-xl bg-[#F5F7FA] border border-[#94A3B8]/25 text-sm text-[#1E2A4A] focus:outline-none focus:ring-2 focus:ring-[#4F6DF5]/25 resize-none"
-          />
+        {/* Section 4: Learner Message */}
+        <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-6 shadow-sm">
+          <h3 className="text-[#1E2A4A] mb-1" style={{ fontWeight: 600 }}>Learner Message</h3>
+          <p className="text-sm text-[#94A3B8] mb-5">Customize the notification your recipients will receive</p>
+
+          <div className="space-y-4">
+            <div>
+              <label className="text-sm text-[#94A3B8] mb-1.5 block" style={{ fontWeight: 500 }}>Subject Line</label>
+              <div className="relative">
+                <MessageSquare className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-[#94A3B8]" />
+                <input
+                  type="text"
+                  value={subject}
+                  onChange={(e) => setSubject(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#F5F7FA] border border-[#94A3B8]/25 text-sm text-[#1E2A4A] focus:outline-none focus:ring-2 focus:ring-emerald-200 transition-all"
+                />
+              </div>
+            </div>
+            <div>
+              <label className="text-sm text-[#94A3B8] mb-1.5 block" style={{ fontWeight: 500 }}>Message Body</label>
+              <textarea
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+                rows={4}
+                maxLength={1000}
+                className="w-full px-4 py-3 rounded-xl bg-[#F5F7FA] border border-[#94A3B8]/25 text-sm text-[#1E2A4A] focus:outline-none focus:ring-2 focus:ring-emerald-200 resize-none transition-all placeholder:text-[#94A3B8]"
+              />
+              <div className="flex justify-end mt-1">
+                <p className={`text-xs ${message.length > 800 ? "text-[#4F6DF5]" : "text-[#94A3B8]"}`}>
+                  {message.length}/1000
+                </p>
+              </div>
+            </div>
+            {/* Mini preview */}
+            <div className="rounded-xl bg-[#F5F7FA] border border-[#94A3B8]/25 p-4">
+              <div className="flex items-center gap-2 mb-2">
+                <Eye className="h-3.5 w-3.5 text-[#94A3B8]" />
+                <span className="text-[10px] text-[#94A3B8]" style={{ fontWeight: 600 }}>EMAIL PREVIEW</span>
+              </div>
+              <div className="rounded-lg bg-white border border-[#94A3B8]/25 p-4">
+                <p className="text-xs text-[#1E2A4A] mb-2" style={{ fontWeight: 600 }}>{subject || "No subject"}</p>
+                <p className="text-[11px] text-[#94A3B8] whitespace-pre-line">{message || "No message content"}</p>
+                <div className="mt-3 pt-3 border-t border-[#94A3B8]/25 flex items-center gap-2">
+                  <div className="h-6 w-6 rounded-md bg-[#DDF7EE] flex items-center justify-center">
+                    <Award className="h-3 w-3 text-[#34D399]" />
+                  </div>
+                  <span className="text-[10px] text-[#94A3B8]">View your badge on BadgeFlow</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div className="flex items-center gap-4">
-          <label className="text-sm text-[#94A3B8]">Issue Date</label>
-          <Input type="date" defaultValue="2026-02-24" className="rounded-lg bg-[#F5F7FA] border-[#94A3B8]/25 w-auto" />
+        {/* Section 5: Sharing Options */}
+        <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-6 shadow-sm">
+          <h3 className="text-[#1E2A4A] mb-1" style={{ fontWeight: 600 }}>Sharing Options</h3>
+          <p className="text-sm text-[#94A3B8] mb-5">Control how recipients can share their badge</p>
+          <div className="space-y-3">
+            <label className="flex items-center gap-3 p-3 rounded-xl hover:bg-[#F5F7FA] transition-colors cursor-pointer">
+              <div
+                onClick={() => setShareLinkedIn(!shareLinkedIn)}
+                className={`h-5 w-5 rounded-md border-2 flex items-center justify-center transition-all shrink-0 ${
+                  shareLinkedIn ? "border-emerald-400 bg-[#34D399]" : "border-[#94A3B8]/40"
+                }`}
+              >
+                {shareLinkedIn && <Check className="h-3 w-3 text-[#1E2A4A]" />}
+              </div>
+              <Linkedin className="h-4 w-4 text-[#94A3B8] shrink-0" />
+              <div>
+                <p className="text-sm text-[#1E2A4A]" style={{ fontWeight: 500 }}>Enable LinkedIn Share Button</p>
+                <p className="text-xs text-[#94A3B8] mt-0.5">Recipients can share their badge directly to LinkedIn</p>
+              </div>
+            </label>
+            <label className="flex items-center gap-3 p-3 rounded-xl hover:bg-[#F5F7FA] transition-colors cursor-pointer">
+              <div
+                onClick={() => setSharePublicPage(!sharePublicPage)}
+                className={`h-5 w-5 rounded-md border-2 flex items-center justify-center transition-all shrink-0 ${
+                  sharePublicPage ? "border-emerald-400 bg-[#34D399]" : "border-[#94A3B8]/40"
+                }`}
+              >
+                {sharePublicPage && <Check className="h-3 w-3 text-[#1E2A4A]" />}
+              </div>
+              <Globe className="h-4 w-4 text-[#94A3B8] shrink-0" />
+              <div>
+                <p className="text-sm text-[#1E2A4A]" style={{ fontWeight: 500 }}>Public Badge Page Visible</p>
+                <p className="text-xs text-[#94A3B8] mt-0.5">Badge details visible to anyone with the link</p>
+              </div>
+            </label>
+          </div>
         </div>
 
-        <div className="flex gap-3 pt-4 border-t border-[#94A3B8]/25">
-          <Button variant="outline" className="rounded-xl px-6 border-[#94A3B8]/35">Preview</Button>
-          <Button onClick={handleIssue} className="rounded-xl px-6 bg-emerald-600 hover:bg-emerald-700 text-white flex-1 sm:flex-none gap-2">
+        {/* Issue Button */}
+        <div className="flex gap-3 pt-2">
+          <Button variant="outline" className="rounded-xl px-6 border-[#94A3B8]/35">
+            <Eye className="h-4 w-4 mr-2" />
+            Preview
+          </Button>
+          <Button
+            onClick={handleIssue}
+            disabled={!selectedBadge}
+            className="rounded-xl px-8 bg-emerald-600 hover:bg-emerald-700 text-white flex-1 sm:flex-none gap-2 disabled:opacity-40"
+          >
             <Send className="h-4 w-4" />
             Issue Badge
           </Button>
-        </div>
-      </div>
-
-      <div className="mt-6 bg-white rounded-2xl border border-[#94A3B8]/25 p-5 flex items-center gap-4">
-        <div className="h-10 w-10 rounded-xl bg-[#EEF2FF] flex items-center justify-center shrink-0">
-          <Users className="h-5 w-5 text-[#4F6DF5]" />
-        </div>
-        <div className="flex-1">
-          <p className="text-sm text-[#1E2A4A]" style={{ fontWeight: 500 }}>Need to issue badges in bulk?</p>
-          <p className="text-xs text-[#94A3B8]">Upload a CSV file to issue badges to multiple recipients at once. Available on Pro plan.</p>
         </div>
       </div>
     </div>
