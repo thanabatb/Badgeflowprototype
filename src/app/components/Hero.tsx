@@ -19,36 +19,48 @@ export function Hero() {
       <div className="absolute bottom-1/4 right-1/4 w-32 h-32 bg-[#EEF2FF] rounded-full opacity-50"></div>
 
       <div className="relative mx-auto max-w-7xl w-full">
-        <div className="max-w-2xl">
-          <h1 className="text-6xl font-bold tracking-tight text-[#1E2A4A] mb-6">
-            digital<br />
-            <span className="text-6xl font-bold">BADGES</span>
-          </h1>
+        <div className="grid items-center gap-12 lg:grid-cols-2">
+          <div className="max-w-2xl">
+            <h1 className="text-6xl font-bold tracking-tight text-[#1E2A4A] mb-6">
+              digital<br />
+              <span className="text-6xl font-bold">BADGES</span>
+            </h1>
 
-          <p className="text-[#94A3B8] mb-10 max-w-md leading-relaxed">
-            Create, issue, and manage verifiable digital credentials that inspire achievement. Build recognition programs that motivate and celebrate success.
-          </p>
+            <p className="text-[#94A3B8] mb-10 max-w-md leading-relaxed">
+              Create, issue, and manage verifiable digital credentials that inspire achievement. Build recognition programs that motivate and celebrate success.
+            </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 mb-16">
-            <Link to="/register">
-              <Button
-                size="lg"
-                className="bg-[#4F6DF5] hover:bg-[#FF6B6B] text-white rounded-full px-8"
-              >
-                Get started
-              </Button>
-            </Link>
-            <button className="text-[#94A3B8] hover:text-[#1E2A4A] text-left">
-              Read more
-            </button>
+            <div className="flex flex-col sm:flex-row gap-4 mb-16">
+              <Link to="/register">
+                <Button
+                  size="lg"
+                  className="bg-[#4F6DF5] hover:bg-[#FF6B6B] text-white rounded-full px-8"
+                >
+                  Get started
+                </Button>
+              </Link>
+              <button className="text-[#94A3B8] hover:text-[#1E2A4A] text-left">
+                Read more
+              </button>
+            </div>
+
+            {/* Pagination dots */}
+            <div className="flex gap-3">
+              <div className="w-2 h-2 rounded-full border-2 border-[#94A3B8]"></div>
+              <div className="w-2 h-2 rounded-full bg-[#4F6DF5]"></div>
+              <div className="w-2 h-2 rounded-full border-2 border-[#94A3B8]"></div>
+              <div className="w-2 h-2 rounded-full border-2 border-[#94A3B8]"></div>
+            </div>
           </div>
 
-          {/* Pagination dots */}
-          <div className="flex gap-3">
-            <div className="w-2 h-2 rounded-full border-2 border-[#94A3B8]"></div>
-            <div className="w-2 h-2 rounded-full bg-[#4F6DF5]"></div>
-            <div className="w-2 h-2 rounded-full border-2 border-[#94A3B8]"></div>
-            <div className="w-2 h-2 rounded-full border-2 border-[#94A3B8]"></div>
+          <div className="relative">
+            <div className="rounded-3xl border border-[#94A3B8]/25 bg-white/70 p-3 shadow-sm">
+              <img
+                src="/images/hero-badge-illustration.svg"
+                alt="Digital badge illustration on laptop"
+                className="h-auto w-full rounded-2xl object-cover"
+              />
+            </div>
           </div>
         </div>
       </div>
