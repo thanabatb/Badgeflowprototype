@@ -102,7 +102,7 @@ export function Pricing() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-[#F5F7FA] relative">
+    <div className="min-h-screen bg-[#F5F7FA] relative font-body">
 
       {/* Back button */}
       <button
@@ -115,7 +115,7 @@ export function Pricing() {
 
       {/* Hero */}
       <section className="pt-16 pb-12 px-4 text-center bg-[#F5F7FA]">
-        <h1 className="text-[36px] font-bold text-[#1E2A4A] mb-4 leading-[40px]">
+        <h1 className="font-headline text-[40px] font-bold text-[#1E2A4A] mb-4 leading-[48px]">
           Simple, transparent pricing
         </h1>
         <p className="text-[18px] text-[#94A3B8] max-w-xl mx-auto mb-8 leading-[28px]">
@@ -143,7 +143,7 @@ export function Pricing() {
             }`}
           >
             Yearly
-            <span className="ml-1.5 text-xs text-[#34D399] font-bold">–20%</span>
+            <span className="ml-1.5 text-xs text-[#34D399] font-accent">–20%</span>
           </button>
         </div>
       </section>
@@ -165,7 +165,7 @@ export function Pricing() {
               >
                 {plan.highlight && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="bg-[#4F6DF5] text-white text-xs font-bold px-3 py-1 rounded-full whitespace-nowrap">
+                    <span className="bg-[#4F6DF5] text-white text-xs font-accent px-3 py-1 rounded-full whitespace-nowrap">
                       Most popular
                     </span>
                   </div>
@@ -180,21 +180,21 @@ export function Pricing() {
                   >
                     <Icon className={`h-4 w-4 ${plan.highlight ? "text-white" : "text-[#4F6DF5]"}`} />
                   </div>
-                  <h3 className="text-[18px] font-bold text-[#1E2A4A] leading-[28px]">{plan.name}</h3>
+                  <h3 className="font-headline text-[18px] font-bold text-[#1E2A4A] leading-[28px]">{plan.name}</h3>
                 </div>
 
                 {/* Price */}
                 <div className="mb-2">
-                  <span className="text-[36px] font-bold text-[#1E2A4A] leading-[40px]">
+                  <span className="font-headline text-[36px] font-bold text-[#1E2A4A] leading-[40px]">
                     {price === 0 ? "Free" : `$${price}`}
                   </span>
                   {price > 0 && (
-                    <span className="text-[14px] text-[#94A3B8] font-normal leading-[20px] ml-1">/mo</span>
+                    <span className="text-[14px] text-[#94A3B8] font-accent leading-[20px] ml-1">/mo</span>
                   )}
                 </div>
 
                 <p className="text-[14px] text-[#94A3B8] leading-[20px] mb-1">{plan.description}</p>
-                <p className="text-[12px] text-[#4F6DF5] leading-[16px] mb-6">{plan.badgeLimit}</p>
+                <p className="text-[12px] text-[#4F6DF5] font-accent leading-[16px] mb-6">{plan.badgeLimit}</p>
 
                 {/* CTA */}
                 {plan.current ? (
@@ -242,7 +242,7 @@ export function Pricing() {
       {/* Usage summary */}
       <section className="py-12 px-4 bg-[#F5F7FA]">
         <div className="max-w-3xl mx-auto text-center mb-10">
-          <h2 className="text-[24px] font-bold text-[#1E2A4A] leading-[32px] mb-2">Your current usage</h2>
+          <h2 className="font-headline text-[28px] font-bold text-[#1E2A4A] leading-[36px] mb-2">Your current usage</h2>
           <p className="text-[14px] text-[#94A3B8] leading-[20px]">Free plan · Resets monthly</p>
         </div>
         <div className="max-w-3xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -253,9 +253,9 @@ export function Pricing() {
           ].map((item) => (
             <div key={item.label} className="bg-white rounded-[14px] border border-[rgba(148,163,184,0.3)] p-5">
               <p className="text-[14px] text-[#94A3B8] leading-[20px] mb-1">{item.label}</p>
-              <p className="text-[24px] font-bold text-[#1E2A4A] leading-[32px] mb-3">
+              <p className="font-headline text-[28px] font-bold text-[#1E2A4A] leading-[36px] mb-3">
                 {item.used}
-                <span className="text-[14px] font-normal text-[#94A3B8] leading-[20px] ml-1">
+                <span className="text-[14px] font-accent text-[#94A3B8] leading-[20px] ml-1">
                   / {item.limit}
                 </span>
               </p>
@@ -275,7 +275,7 @@ export function Pricing() {
       {/* FAQ */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-2xl mx-auto">
-          <h2 className="text-[24px] font-bold text-[#1E2A4A] leading-[32px] mb-8 text-center">
+          <h2 className="font-headline text-[28px] font-bold text-[#1E2A4A] leading-[36px] mb-8 text-center">
             Frequently asked questions
           </h2>
           <div className="space-y-4">
