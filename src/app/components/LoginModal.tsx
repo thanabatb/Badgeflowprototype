@@ -43,7 +43,7 @@ export function LoginModal({ open, onOpenChange }: LoginModalProps) {
       >
         <SheetHeader className="mb-6 p-0 pr-10 text-left">
           <div className="mb-3 flex items-center gap-2">
-            <div className="flex h-10 w-16 items-center justify-center rounded-full bg-amber-400">
+            <div className="flex h-10 w-16 items-center justify-center rounded-full bg-[#4F6DF5]">
               <div className="h-5 w-5 rounded-full bg-white ml-2"></div>
             </div>
           </div>
@@ -58,7 +58,7 @@ export function LoginModal({ open, onOpenChange }: LoginModalProps) {
           <Button
             onClick={handleGoogleSignIn}
             variant="outline"
-            className="h-12 w-full rounded-xl border-gray-200 hover:bg-gray-50"
+            className="h-12 w-full rounded-xl border-[#94A3B8]/35 hover:bg-[#F5F7FA]"
           >
             <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24">
               <path
@@ -86,7 +86,7 @@ export function LoginModal({ open, onOpenChange }: LoginModalProps) {
               <Separator />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white px-3 text-gray-500">
+              <span className="bg-white px-3 text-[#94A3B8]">
                 Or continue with email
               </span>
             </div>
@@ -103,7 +103,7 @@ export function LoginModal({ open, onOpenChange }: LoginModalProps) {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 autoComplete="email"
-                className="h-12 rounded-xl border-gray-200 bg-white"
+                className="h-12 rounded-xl border-[#94A3B8]/35 bg-white"
               />
             </div>
 
@@ -112,7 +112,7 @@ export function LoginModal({ open, onOpenChange }: LoginModalProps) {
                 <Label htmlFor="login-password">Password</Label>
                 <button
                   type="button"
-                  className="text-xs font-medium text-amber-700 hover:text-amber-800"
+                  className="text-xs font-medium text-[#4F6DF5] hover:text-[#FF6B6B]"
                 >
                   Forgot password?
                 </button>
@@ -124,26 +124,26 @@ export function LoginModal({ open, onOpenChange }: LoginModalProps) {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 autoComplete="current-password"
-                className="h-12 rounded-xl border-gray-200 bg-white"
+                className="h-12 rounded-xl border-[#94A3B8]/35 bg-white"
               />
             </div>
 
             <Button
               type="submit"
-              className="mt-2 h-12 w-full rounded-xl bg-amber-400 text-amber-950 hover:bg-amber-500"
+              className="mt-2 h-12 w-full rounded-xl bg-[#4F6DF5] text-white hover:bg-[#FF6B6B]"
             >
               Sign in
             </Button>
           </form>
 
-          <div className="mt-8 text-center text-sm text-gray-600">
+          <div className="mt-8 text-center text-sm text-[#94A3B8]">
             Don't have an account?{" "}
             <button
               onClick={() => {
                 onOpenChange(false);
                 window.location.href = "/register";
               }}
-              className="text-amber-700 hover:text-amber-800 font-medium"
+              className="text-[#4F6DF5] hover:text-[#FF6B6B] font-medium"
             >
               Sign up
             </button>

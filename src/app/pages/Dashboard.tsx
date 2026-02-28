@@ -105,7 +105,7 @@ export function Dashboard() {
   };
 
   return (
-    <div className="flex h-screen bg-gray-50 overflow-hidden">
+    <div className="flex h-screen bg-[#F5F7FA] overflow-hidden">
       {/* Mobile Sidebar Overlay */}
       {sidebarOpen && (
         <div
@@ -116,7 +116,7 @@ export function Dashboard() {
 
       {/* Sidebar */}
       <aside
-        className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-gray-50 border-r border-gray-200 flex flex-col transition-transform duration-200 ${
+        className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-[#F5F7FA] border-r border-[#94A3B8]/35 flex flex-col transition-transform duration-200 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         }`}
       >
@@ -124,7 +124,7 @@ export function Dashboard() {
         <div className="px-4 pt-6 pb-4 lg:pt-10">
           <div className="mb-2 flex justify-end lg:hidden">
             <button
-              className="text-gray-400 hover:text-gray-600"
+              className="text-[#94A3B8] hover:text-[#1E2A4A]"
               onClick={() => setSidebarOpen(false)}
             >
               <X className="h-5 w-5" />
@@ -132,7 +132,7 @@ export function Dashboard() {
           </div>
           <Button
             onClick={() => setActivePage("create-badge")}
-            className="h-14 w-full rounded-3xl bg-amber-400 text-base text-amber-950 hover:bg-amber-500"
+            className="h-14 w-full rounded-3xl bg-[#4F6DF5] text-base text-white hover:bg-[#FF6B6B]"
             style={{ fontWeight: 600 }}
           >
             <PlusCircle className="h-5 w-5" />
@@ -153,8 +153,8 @@ export function Dashboard() {
                 }}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm transition-colors ${
                   isActive
-                    ? "bg-[#ebe8d9] text-[#9c3528]"
-                    : "text-gray-500 hover:bg-white/70 hover:text-gray-700"
+                    ? "bg-[#E5ECFF] text-[#1E2A4A]"
+                    : "text-[#94A3B8] hover:bg-white/70 hover:text-[#1E2A4A]"
                 }`}
                 style={{ fontWeight: isActive ? 600 : 500 }}
               >
@@ -167,23 +167,23 @@ export function Dashboard() {
 
         {/* Subtle Upgrade Nudge */}
         <div className="px-4 pb-4">
-          <div className="bg-amber-50/70 rounded-2xl p-4 border border-amber-100/50">
+          <div className="bg-[#EEF2FF] rounded-2xl p-4 border border-[#94A3B8]/30">
             <div className="flex items-center gap-2 mb-2">
-              <Sparkles className="h-4 w-4 text-amber-500" />
-              <span className="text-base text-amber-700" style={{ fontWeight: 500 }}>
+              <Sparkles className="h-4 w-4 text-[#4F6DF5]" />
+              <span className="text-base text-[#4F6DF5]" style={{ fontWeight: 500 }}>
                 Free Plan
               </span>
             </div>
-            <p className="mb-3 text-sm text-amber-600/70">
+            <p className="mb-3 text-sm text-[#4F6DF5]/70">
               {isNewUser ? "0 of 5 badges used" : "3 of 5 badges used this month"}
             </p>
-            <div className="w-full bg-amber-100 rounded-full h-1.5 mb-3">
+            <div className="w-full bg-[#E5ECFF] rounded-full h-1.5 mb-3">
               <div
-                className="bg-amber-400 h-1.5 rounded-full transition-all"
+                className="bg-[#4F6DF5] h-1.5 rounded-full transition-all"
                 style={{ width: isNewUser ? "0%" : "60%" }}
               ></div>
             </div>
-            <button className="flex items-center gap-1 text-base text-amber-600 transition-colors hover:text-amber-700">
+            <button className="flex items-center gap-1 text-base text-[#4F6DF5] transition-colors hover:text-[#FF6B6B]">
               View plans
               <ChevronRight className="h-3 w-3" />
             </button>
@@ -191,22 +191,22 @@ export function Dashboard() {
         </div>
 
         {/* User Profile */}
-        <div className="px-4 pb-4 border-t border-gray-100 pt-4">
+        <div className="px-4 pb-4 border-t border-[#94A3B8]/25 pt-4">
           <div className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-full bg-amber-100 flex items-center justify-center overflow-hidden">
-              <span className="text-base text-amber-700" style={{ fontWeight: 600 }}>
+            <div className="h-9 w-9 rounded-full bg-[#E5ECFF] flex items-center justify-center overflow-hidden">
+              <span className="text-base text-[#4F6DF5]" style={{ fontWeight: 600 }}>
                 JD
               </span>
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-base text-gray-900 truncate" style={{ fontWeight: 500 }}>
+              <p className="text-base text-[#1E2A4A] truncate" style={{ fontWeight: 500 }}>
                 John Doe
               </p>
-              <p className="text-sm text-gray-400 truncate">john@example.com</p>
+              <p className="text-sm text-[#94A3B8] truncate">john@example.com</p>
             </div>
             <button
               onClick={handleLogout}
-              className="text-gray-400 hover:text-gray-600 transition-colors"
+              className="text-[#94A3B8] hover:text-[#1E2A4A] transition-colors"
               title="Logout"
             >
               <LogOut className="h-4 w-4" />
@@ -218,19 +218,19 @@ export function Dashboard() {
       {/* Main Content */}
       <div className="flex-1 flex flex-col min-w-0">
         {/* Top Bar */}
-        <header className="bg-white border-b border-gray-100 px-6 py-4 flex items-center gap-4">
+        <header className="bg-white border-b border-[#94A3B8]/25 px-6 py-4 flex items-center gap-4">
           <button
-            className="lg:hidden text-gray-500 hover:text-gray-700"
+            className="lg:hidden text-[#94A3B8] hover:text-[#1E2A4A]"
             onClick={() => setSidebarOpen(true)}
           >
             <Menu className="h-5 w-5" />
           </button>
           <div className="flex-1 max-w-md">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#94A3B8]" />
               <Input
                 placeholder="Search badges, recipients..."
-                className="pl-10 bg-gray-50 border-gray-100 rounded-xl h-10"
+                className="pl-10 bg-[#F5F7FA] border-[#94A3B8]/25 rounded-xl h-10"
               />
             </div>
           </div>
@@ -238,20 +238,20 @@ export function Dashboard() {
             {/* Demo toggle */}
             <button
               onClick={() => setIsNewUser(!isNewUser)}
-              className="hidden sm:flex items-center gap-1.5 text-xs text-gray-400 hover:text-gray-600 bg-gray-50 px-3 py-1.5 rounded-full border border-gray-100 transition-colors"
+              className="hidden sm:flex items-center gap-1.5 text-xs text-[#94A3B8] hover:text-[#1E2A4A] bg-[#F5F7FA] px-3 py-1.5 rounded-full border border-[#94A3B8]/25 transition-colors"
               title="Toggle between new user and existing user view"
             >
               {isNewUser ? (
                 <ToggleLeft className="h-4 w-4" />
               ) : (
-                <ToggleRight className="h-4 w-4 text-amber-500" />
+                <ToggleRight className="h-4 w-4 text-[#4F6DF5]" />
               )}
               {isNewUser ? "New user" : "Has data"}
             </button>
-            <button className="relative text-gray-400 hover:text-gray-600 transition-colors">
+            <button className="relative text-[#94A3B8] hover:text-[#1E2A4A] transition-colors">
               <Bell className="h-5 w-5" />
               {!isNewUser && (
-                <span className="absolute -top-1 -right-1 h-4 w-4 bg-amber-500 rounded-full text-[10px] text-white flex items-center justify-center">
+                <span className="absolute -top-1 -right-1 h-4 w-4 bg-[#FF6B6B] rounded-full text-[10px] text-white flex items-center justify-center">
                   3
                 </span>
               )}
@@ -294,7 +294,7 @@ function EmptyDashboard({ onNavigate }: { onNavigate: (page: ActivePage) => void
       title: "Create your first badge",
       description: "Design a badge template with a name, image, and criteria",
       icon: Palette,
-      color: "bg-amber-50 text-amber-600",
+      color: "bg-[#EEF2FF] text-[#4F6DF5]",
       action: "create-badge" as ActivePage,
       actionLabel: "Create Badge",
       highlight: true,
@@ -304,7 +304,7 @@ function EmptyDashboard({ onNavigate }: { onNavigate: (page: ActivePage) => void
       title: "Issue it to someone",
       description: "Send the badge to a recipient via email",
       icon: Send,
-      color: "bg-green-50 text-green-600",
+      color: "bg-emerald-50 text-emerald-600",
       action: "issue-badge" as ActivePage,
       actionLabel: "Issue Badge",
       highlight: false,
@@ -314,7 +314,7 @@ function EmptyDashboard({ onNavigate }: { onNavigate: (page: ActivePage) => void
       title: "Track engagement",
       description: "See who viewed and accepted your badges",
       icon: BarChart3,
-      color: "bg-purple-50 text-purple-600",
+      color: "bg-[#EEF2FF] text-[#4F6DF5]",
       action: "analytics" as ActivePage,
       actionLabel: "View Analytics",
       highlight: false,
@@ -325,13 +325,13 @@ function EmptyDashboard({ onNavigate }: { onNavigate: (page: ActivePage) => void
     <div className="max-w-3xl mx-auto">
       {/* Welcome Hero */}
       <div className="text-center mb-10 pt-4">
-        <div className="inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-amber-50 mb-5">
-          <Award className="h-8 w-8 text-amber-500" />
+        <div className="inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-[#EEF2FF] mb-5">
+          <Award className="h-8 w-8 text-[#4F6DF5]" />
         </div>
-        <h1 className="text-2xl text-gray-900 mb-2" style={{ fontWeight: 700 }}>
+        <h1 className="text-2xl text-[#1E2A4A] mb-2" style={{ fontWeight: 700 }}>
           Welcome to BadgeFlow, John!
         </h1>
-        <p className="text-gray-500 max-w-md mx-auto">
+        <p className="text-[#94A3B8] max-w-md mx-auto">
           You're all set up. Let's create your first digital badge in just a few steps.
         </p>
       </div>
@@ -344,8 +344,8 @@ function EmptyDashboard({ onNavigate }: { onNavigate: (page: ActivePage) => void
             onClick={() => onNavigate(item.action)}
             className={`w-full text-left flex items-center gap-5 bg-white rounded-2xl p-5 border transition-all group ${
               item.highlight
-                ? "border-amber-200 shadow-sm hover:shadow-md"
-                : "border-gray-100 hover:border-gray-200 hover:shadow-sm"
+                ? "border-[#94A3B8]/35 shadow-sm hover:shadow-md"
+                : "border-[#94A3B8]/25 hover:border-[#94A3B8]/35 hover:shadow-sm"
             }`}
           >
             {/* Step number */}
@@ -356,27 +356,27 @@ function EmptyDashboard({ onNavigate }: { onNavigate: (page: ActivePage) => void
             {/* Content */}
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-2 mb-0.5">
-                <span className="text-[11px] text-gray-400" style={{ fontWeight: 500 }}>
+                <span className="text-[11px] text-[#94A3B8]" style={{ fontWeight: 500 }}>
                   STEP {item.step}
                 </span>
                 {item.highlight && (
-                  <span className="text-[10px] bg-amber-100 text-amber-700 px-2 py-0.5 rounded-full" style={{ fontWeight: 600 }}>
+                  <span className="text-[10px] bg-[#E5ECFF] text-[#4F6DF5] px-2 py-0.5 rounded-full" style={{ fontWeight: 600 }}>
                     START HERE
                   </span>
                 )}
               </div>
-              <p className="text-gray-900" style={{ fontWeight: 600 }}>
+              <p className="text-[#1E2A4A]" style={{ fontWeight: 600 }}>
                 {item.title}
               </p>
-              <p className="text-sm text-gray-400">{item.description}</p>
+              <p className="text-sm text-[#94A3B8]">{item.description}</p>
             </div>
 
             {/* Arrow */}
             <ArrowRight
               className={`h-5 w-5 shrink-0 transition-all ${
                 item.highlight
-                  ? "text-amber-400 group-hover:text-amber-600 group-hover:translate-x-1"
-                  : "text-gray-300 group-hover:text-gray-500 group-hover:translate-x-1"
+                  ? "text-[#4F6DF5] group-hover:text-[#FF6B6B] group-hover:translate-x-1"
+                  : "text-[#94A3B8] group-hover:text-[#1E2A4A] group-hover:translate-x-1"
               }`}
             />
           </button>
@@ -387,45 +387,45 @@ function EmptyDashboard({ onNavigate }: { onNavigate: (page: ActivePage) => void
       <div className="text-center mb-10">
         <Button
           onClick={() => onNavigate("create-badge")}
-          className="bg-amber-400 hover:bg-amber-500 text-amber-950 rounded-xl h-12 px-8 gap-2"
+          className="bg-[#4F6DF5] hover:bg-[#FF6B6B] text-white rounded-xl h-12 px-8 gap-2"
         >
           <PlusCircle className="h-5 w-5" />
           Create Your First Badge
         </Button>
-        <p className="text-xs text-gray-400 mt-3">
+        <p className="text-xs text-[#94A3B8] mt-3">
           It only takes a minute — no credit card required
         </p>
       </div>
 
       {/* Quick tips */}
-      <div className="bg-white rounded-2xl border border-gray-100 p-6">
-        <h3 className="text-gray-700 mb-4 flex items-center gap-2" style={{ fontWeight: 600 }}>
-          <Zap className="h-4 w-4 text-amber-500" />
+      <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-6">
+        <h3 className="text-[#1E2A4A] mb-4 flex items-center gap-2" style={{ fontWeight: 600 }}>
+          <Zap className="h-4 w-4 text-[#4F6DF5]" />
           Quick Tips
         </h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div className="flex gap-3">
-            <div className="h-8 w-8 rounded-lg bg-gray-50 flex items-center justify-center shrink-0">
-              <MousePointerClick className="h-4 w-4 text-gray-400" />
+            <div className="h-8 w-8 rounded-lg bg-[#F5F7FA] flex items-center justify-center shrink-0">
+              <MousePointerClick className="h-4 w-4 text-[#94A3B8]" />
             </div>
             <div>
-              <p className="text-sm text-gray-700" style={{ fontWeight: 500 }}>
+              <p className="text-sm text-[#1E2A4A]" style={{ fontWeight: 500 }}>
                 Use the sidebar
               </p>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-[#94A3B8]">
                 Navigate between creating, issuing, and tracking badges
               </p>
             </div>
           </div>
           <div className="flex gap-3">
-            <div className="h-8 w-8 rounded-lg bg-gray-50 flex items-center justify-center shrink-0">
-              <CircleDot className="h-4 w-4 text-gray-400" />
+            <div className="h-8 w-8 rounded-lg bg-[#F5F7FA] flex items-center justify-center shrink-0">
+              <CircleDot className="h-4 w-4 text-[#94A3B8]" />
             </div>
             <div>
-              <p className="text-sm text-gray-700" style={{ fontWeight: 500 }}>
+              <p className="text-sm text-[#1E2A4A]" style={{ fontWeight: 500 }}>
                 Add your logo
               </p>
-              <p className="text-xs text-gray-400">
+              <p className="text-xs text-[#94A3B8]">
                 Go to Settings to brand your badges with your organization's identity
               </p>
             </div>
@@ -449,63 +449,63 @@ function DashboardOverview({
   if (isNewUser) return <EmptyDashboard onNavigate={onNavigate} />;
 
   const stats = [
-    { label: "Total Badges", value: "4", change: "+2 this month", icon: Award, color: "text-amber-600 bg-amber-50" },
-    { label: "Issued", value: "92", change: "+12 this week", icon: Send, color: "text-green-600 bg-green-50" },
-    { label: "Recipients", value: "78", change: "+8 this week", icon: Users, color: "text-purple-600 bg-purple-50" },
-    { label: "Views", value: "1.2K", change: "+24% vs last month", icon: Eye, color: "text-amber-600 bg-amber-50" },
+    { label: "Total Badges", value: "4", change: "+2 this month", icon: Award, color: "text-[#4F6DF5] bg-[#EEF2FF]" },
+    { label: "Issued", value: "92", change: "+12 this week", icon: Send, color: "text-emerald-600 bg-emerald-50" },
+    { label: "Recipients", value: "78", change: "+8 this week", icon: Users, color: "text-[#4F6DF5] bg-[#EEF2FF]" },
+    { label: "Views", value: "1.2K", change: "+24% vs last month", icon: Eye, color: "text-[#4F6DF5] bg-[#EEF2FF]" },
   ];
 
   return (
     <div className="max-w-6xl">
       <div className="mb-8">
-        <h1 className="text-2xl text-gray-900 mb-1" style={{ fontWeight: 700 }}>
+        <h1 className="text-2xl text-[#1E2A4A] mb-1" style={{ fontWeight: 700 }}>
           Welcome back, John 👋
         </h1>
-        <p className="text-gray-500">Here's what's happening with your badges today.</p>
+        <p className="text-[#94A3B8]">Here's what's happening with your badges today.</p>
       </div>
 
       {/* Quick Actions */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
         <button
           onClick={() => onNavigate("create-badge")}
-          className="group flex items-center gap-4 bg-white rounded-2xl p-5 border border-gray-100 hover:border-amber-200 hover:shadow-sm transition-all text-left"
+          className="group flex items-center gap-4 bg-white rounded-2xl p-5 border border-[#94A3B8]/25 hover:border-[#94A3B8]/35 hover:shadow-sm transition-all text-left"
         >
-          <div className="h-12 w-12 rounded-xl bg-amber-50 flex items-center justify-center group-hover:bg-amber-100 transition-colors">
-            <PlusCircle className="h-6 w-6 text-amber-600" />
+          <div className="h-12 w-12 rounded-xl bg-[#EEF2FF] flex items-center justify-center group-hover:bg-[#E5ECFF] transition-colors">
+            <PlusCircle className="h-6 w-6 text-[#4F6DF5]" />
           </div>
           <div>
-            <p className="text-gray-900" style={{ fontWeight: 600 }}>Create a new badge</p>
-            <p className="text-sm text-gray-400">Design and configure a badge template</p>
+            <p className="text-[#1E2A4A]" style={{ fontWeight: 600 }}>Create a new badge</p>
+            <p className="text-sm text-[#94A3B8]">Design and configure a badge template</p>
           </div>
-          <ArrowUpRight className="h-5 w-5 text-gray-300 ml-auto group-hover:text-amber-500 transition-colors" />
+          <ArrowUpRight className="h-5 w-5 text-[#94A3B8] ml-auto group-hover:text-[#FF6B6B] transition-colors" />
         </button>
         <button
           onClick={() => onNavigate("issue-badge")}
-          className="group flex items-center gap-4 bg-white rounded-2xl p-5 border border-gray-100 hover:border-green-200 hover:shadow-sm transition-all text-left"
+          className="group flex items-center gap-4 bg-white rounded-2xl p-5 border border-[#94A3B8]/25 hover:border-emerald-200 hover:shadow-sm transition-all text-left"
         >
-          <div className="h-12 w-12 rounded-xl bg-green-50 flex items-center justify-center group-hover:bg-green-100 transition-colors">
-            <Send className="h-6 w-6 text-green-600" />
+          <div className="h-12 w-12 rounded-xl bg-emerald-50 flex items-center justify-center group-hover:bg-emerald-100 transition-colors">
+            <Send className="h-6 w-6 text-emerald-600" />
           </div>
           <div>
-            <p className="text-gray-900" style={{ fontWeight: 600 }}>Issue a badge</p>
-            <p className="text-sm text-gray-400">Send a badge to one or more recipients</p>
+            <p className="text-[#1E2A4A]" style={{ fontWeight: 600 }}>Issue a badge</p>
+            <p className="text-sm text-[#94A3B8]">Send a badge to one or more recipients</p>
           </div>
-          <ArrowUpRight className="h-5 w-5 text-gray-300 ml-auto group-hover:text-green-500 transition-colors" />
+          <ArrowUpRight className="h-5 w-5 text-[#94A3B8] ml-auto group-hover:text-emerald-500 transition-colors" />
         </button>
       </div>
 
       {/* Stats Grid */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {stats.map((stat) => (
-          <div key={stat.label} className="bg-white rounded-2xl p-5 border border-gray-100">
+          <div key={stat.label} className="bg-white rounded-2xl p-5 border border-[#94A3B8]/25">
             <div className="flex items-center justify-between mb-3">
               <div className={`h-10 w-10 rounded-xl flex items-center justify-center ${stat.color}`}>
                 <stat.icon className="h-5 w-5" />
               </div>
             </div>
-            <p className="text-2xl text-gray-900 mb-1" style={{ fontWeight: 700 }}>{stat.value}</p>
-            <p className="text-xs text-gray-400">{stat.label}</p>
-            <p className="text-xs text-green-600 mt-1 flex items-center gap-1">
+            <p className="text-2xl text-[#1E2A4A] mb-1" style={{ fontWeight: 700 }}>{stat.value}</p>
+            <p className="text-xs text-[#94A3B8]">{stat.label}</p>
+            <p className="text-xs text-emerald-600 mt-1 flex items-center gap-1">
               <TrendingUp className="h-3 w-3" />
               {stat.change}
             </p>
@@ -515,12 +515,12 @@ function DashboardOverview({
 
       {/* Recent Badges & Activity */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <div className="lg:col-span-2 bg-white rounded-2xl border border-gray-100 p-6">
+        <div className="lg:col-span-2 bg-white rounded-2xl border border-[#94A3B8]/25 p-6">
           <div className="flex items-center justify-between mb-5">
-            <h2 className="text-gray-900" style={{ fontWeight: 600 }}>Recent Badges</h2>
+            <h2 className="text-[#1E2A4A]" style={{ fontWeight: 600 }}>Recent Badges</h2>
             <button
               onClick={() => onNavigate("my-badges")}
-              className="text-sm text-amber-600 hover:text-amber-700 flex items-center gap-1"
+              className="text-sm text-[#4F6DF5] hover:text-[#FF6B6B] flex items-center gap-1"
             >
               View all
               <ChevronRight className="h-4 w-4" />
@@ -528,21 +528,21 @@ function DashboardOverview({
           </div>
           <div className="space-y-3">
             {recentBadges.map((badge) => (
-              <div key={badge.id} className="flex items-center gap-4 p-3 rounded-xl hover:bg-gray-50 transition-colors">
-                <div className="h-11 w-11 rounded-xl bg-gray-50 flex items-center justify-center text-xl">{badge.icon}</div>
+              <div key={badge.id} className="flex items-center gap-4 p-3 rounded-xl hover:bg-[#F5F7FA] transition-colors">
+                <div className="h-11 w-11 rounded-xl bg-[#F5F7FA] flex items-center justify-center text-xl">{badge.icon}</div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm text-gray-900 truncate" style={{ fontWeight: 500 }}>{badge.name}</p>
-                  <p className="text-xs text-gray-400">{badge.issued} issued · {badge.createdAt}</p>
+                  <p className="text-sm text-[#1E2A4A] truncate" style={{ fontWeight: 500 }}>{badge.name}</p>
+                  <p className="text-xs text-[#94A3B8]">{badge.issued} issued · {badge.createdAt}</p>
                 </div>
                 <span
                   className={`text-xs px-2.5 py-1 rounded-full ${
-                    badge.status === "Active" ? "bg-green-50 text-green-600" : "bg-gray-100 text-gray-500"
+                    badge.status === "Active" ? "bg-emerald-50 text-emerald-600" : "bg-[#EDF2F7] text-[#94A3B8]"
                   }`}
                   style={{ fontWeight: 500 }}
                 >
                   {badge.status}
                 </span>
-                <button className="text-gray-300 hover:text-gray-500">
+                <button className="text-[#94A3B8] hover:text-[#1E2A4A]">
                   <MoreHorizontal className="h-4 w-4" />
                 </button>
               </div>
@@ -550,18 +550,18 @@ function DashboardOverview({
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-100 p-6">
-          <h2 className="text-gray-900 mb-5" style={{ fontWeight: 600 }}>Recent Activity</h2>
+        <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-6">
+          <h2 className="text-[#1E2A4A] mb-5" style={{ fontWeight: 600 }}>Recent Activity</h2>
           <div className="space-y-4">
             {recentActivity.map((activity) => (
               <div key={activity.id} className="flex gap-3">
-                <div className="h-8 w-8 rounded-lg bg-gray-50 flex items-center justify-center shrink-0">
-                  <activity.icon className="h-4 w-4 text-gray-400" />
+                <div className="h-8 w-8 rounded-lg bg-[#F5F7FA] flex items-center justify-center shrink-0">
+                  <activity.icon className="h-4 w-4 text-[#94A3B8]" />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-sm text-gray-700" style={{ fontWeight: 500 }}>{activity.action}</p>
-                  <p className="text-xs text-gray-400 truncate">{activity.detail}</p>
-                  <p className="text-xs text-gray-300 mt-0.5 flex items-center gap-1">
+                  <p className="text-sm text-[#1E2A4A]" style={{ fontWeight: 500 }}>{activity.action}</p>
+                  <p className="text-xs text-[#94A3B8] truncate">{activity.detail}</p>
+                  <p className="text-xs text-[#94A3B8] mt-0.5 flex items-center gap-1">
                     <Clock className="h-3 w-3" />
                     {activity.time}
                   </p>
@@ -573,19 +573,19 @@ function DashboardOverview({
       </div>
 
       {/* Pro Tip */}
-      <div className="mt-6 bg-white rounded-2xl border border-gray-100 p-5 flex items-center gap-4">
-        <div className="h-10 w-10 rounded-xl bg-amber-50 flex items-center justify-center shrink-0">
-          <Zap className="h-5 w-5 text-amber-500" />
+      <div className="mt-6 bg-white rounded-2xl border border-[#94A3B8]/25 p-5 flex items-center gap-4">
+        <div className="h-10 w-10 rounded-xl bg-[#EEF2FF] flex items-center justify-center shrink-0">
+          <Zap className="h-5 w-5 text-[#4F6DF5]" />
         </div>
         <div className="flex-1">
-          <p className="text-sm text-gray-700" style={{ fontWeight: 500 }}>
+          <p className="text-sm text-[#1E2A4A]" style={{ fontWeight: 500 }}>
             Pro tip: Add your organization logo to make badges more recognizable
           </p>
-          <p className="text-xs text-gray-400">Go to Settings → Organization to upload your logo</p>
+          <p className="text-xs text-[#94A3B8]">Go to Settings → Organization to upload your logo</p>
         </div>
         <button
           onClick={() => onNavigate("settings")}
-          className="text-sm text-amber-600 hover:text-amber-700 hidden sm:block whitespace-nowrap"
+          className="text-sm text-[#4F6DF5] hover:text-[#FF6B6B] hidden sm:block whitespace-nowrap"
         >
           Go to Settings →
         </button>
@@ -608,20 +608,20 @@ function MyBadgesPage({
     return (
       <div className="max-w-2xl mx-auto pt-8">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-amber-50 mb-5">
-            <Award className="h-8 w-8 text-amber-400" />
+          <div className="inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-[#EEF2FF] mb-5">
+            <Award className="h-8 w-8 text-[#4F6DF5]" />
           </div>
-          <h1 className="text-2xl text-gray-900 mb-2" style={{ fontWeight: 700 }}>
+          <h1 className="text-2xl text-[#1E2A4A] mb-2" style={{ fontWeight: 700 }}>
             No badges yet
           </h1>
-          <p className="text-gray-500 max-w-sm mx-auto">
+          <p className="text-[#94A3B8] max-w-sm mx-auto">
             Badges are digital credentials you create and issue to recognize achievements, skills, or completions.
           </p>
         </div>
 
         {/* Visual guide */}
-        <div className="bg-white rounded-2xl border border-gray-100 p-6 mb-6">
-          <p className="text-sm text-gray-500 mb-4" style={{ fontWeight: 500 }}>
+        <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-6 mb-6">
+          <p className="text-sm text-[#94A3B8] mb-4" style={{ fontWeight: 500 }}>
             A badge includes:
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
@@ -630,10 +630,10 @@ function MyBadgesPage({
               { label: "Criteria", desc: "What it takes to earn it", icon: "📋" },
               { label: "Skills", desc: "Related competencies", icon: "⚡" },
             ].map((item) => (
-              <div key={item.label} className="bg-gray-50 rounded-xl p-4 text-center">
+              <div key={item.label} className="bg-[#F5F7FA] rounded-xl p-4 text-center">
                 <div className="text-2xl mb-2">{item.icon}</div>
-                <p className="text-sm text-gray-700" style={{ fontWeight: 500 }}>{item.label}</p>
-                <p className="text-xs text-gray-400">{item.desc}</p>
+                <p className="text-sm text-[#1E2A4A]" style={{ fontWeight: 500 }}>{item.label}</p>
+                <p className="text-xs text-[#94A3B8]">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -642,12 +642,12 @@ function MyBadgesPage({
         <div className="text-center">
           <Button
             onClick={() => onNavigate("create-badge")}
-            className="bg-amber-400 hover:bg-amber-500 text-amber-950 rounded-xl h-12 px-8 gap-2"
+            className="bg-[#4F6DF5] hover:bg-[#FF6B6B] text-white rounded-xl h-12 px-8 gap-2"
           >
             <PlusCircle className="h-5 w-5" />
             Create Your First Badge
           </Button>
-          <p className="text-xs text-gray-400 mt-3">
+          <p className="text-xs text-[#94A3B8] mt-3">
             Free plan includes up to 5 badge templates
           </p>
         </div>
@@ -664,36 +664,36 @@ function MyBadgesPage({
     <div className="max-w-5xl">
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-2xl text-gray-900" style={{ fontWeight: 700 }}>My Badges</h1>
-          <p className="text-gray-500 text-sm mt-1">Manage and organize all your badge templates</p>
+          <h1 className="text-2xl text-[#1E2A4A]" style={{ fontWeight: 700 }}>My Badges</h1>
+          <p className="text-[#94A3B8] text-sm mt-1">Manage and organize all your badge templates</p>
         </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {allBadges.map((badge) => (
-          <div key={badge.id} className="bg-white rounded-2xl border border-gray-100 p-6 hover:shadow-sm transition-all group">
+          <div key={badge.id} className="bg-white rounded-2xl border border-[#94A3B8]/25 p-6 hover:shadow-sm transition-all group">
             <div className="flex items-start justify-between mb-4">
-              <div className="h-14 w-14 rounded-2xl bg-gray-50 flex items-center justify-center text-2xl">{badge.icon}</div>
+              <div className="h-14 w-14 rounded-2xl bg-[#F5F7FA] flex items-center justify-center text-2xl">{badge.icon}</div>
               <span
                 className={`text-xs px-2.5 py-1 rounded-full ${
-                  badge.status === "Active" ? "bg-green-50 text-green-600" : "bg-gray-100 text-gray-500"
+                  badge.status === "Active" ? "bg-emerald-50 text-emerald-600" : "bg-[#EDF2F7] text-[#94A3B8]"
                 }`}
                 style={{ fontWeight: 500 }}
               >
                 {badge.status}
               </span>
             </div>
-            <h3 className="text-gray-900 mb-1" style={{ fontWeight: 600 }}>{badge.name}</h3>
-            <p className="text-sm text-gray-400 mb-4">{badge.issued} issued · {badge.createdAt}</p>
+            <h3 className="text-[#1E2A4A] mb-1" style={{ fontWeight: 600 }}>{badge.name}</h3>
+            <p className="text-sm text-[#94A3B8] mb-4">{badge.issued} issued · {badge.createdAt}</p>
             <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
               <Button variant="outline" size="sm" className="rounded-lg text-xs flex-1">Edit</Button>
-              <Button size="sm" className="rounded-lg text-xs flex-1 bg-amber-400 hover:bg-amber-500 text-amber-950">Issue</Button>
+              <Button size="sm" className="rounded-lg text-xs flex-1 bg-[#4F6DF5] hover:bg-[#FF6B6B] text-white">Issue</Button>
             </div>
           </div>
         ))}
         <button
           onClick={() => onNavigate("create-badge")}
-          className="border-2 border-dashed border-gray-200 rounded-2xl p-6 flex flex-col items-center justify-center gap-3 text-gray-400 hover:border-amber-300 hover:text-amber-500 transition-colors min-h-[200px]"
+          className="border-2 border-dashed border-[#94A3B8]/35 rounded-2xl p-6 flex flex-col items-center justify-center gap-3 text-[#94A3B8] hover:border-[#94A3B8]/40 hover:text-[#FF6B6B] transition-colors min-h-[200px]"
         >
           <PlusCircle className="h-8 w-8" />
           <span className="text-sm" style={{ fontWeight: 500 }}>Create new badge</span>
@@ -765,16 +765,16 @@ function CreateBadgePage() {
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-1">
-          <div className="h-8 w-8 rounded-lg bg-amber-50 flex items-center justify-center">
-            <PlusCircle className="h-4 w-4 text-amber-600" />
+          <div className="h-8 w-8 rounded-lg bg-[#EEF2FF] flex items-center justify-center">
+            <PlusCircle className="h-4 w-4 text-[#4F6DF5]" />
           </div>
-          <h1 className="text-2xl text-gray-900" style={{ fontWeight: 700 }}>Create Badge</h1>
+          <h1 className="text-2xl text-[#1E2A4A]" style={{ fontWeight: 700 }}>Create Badge</h1>
         </div>
-        <p className="text-gray-400 text-sm ml-11">Design and configure a new digital credential</p>
+        <p className="text-[#94A3B8] text-sm ml-11">Design and configure a new digital credential</p>
       </div>
 
       {/* Progress Indicator */}
-      <div className="bg-white rounded-2xl border border-gray-100 p-4 sm:p-6 mb-6">
+      <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-4 sm:p-6 mb-6">
         <div className="flex items-center justify-between">
           {wizardSteps.map((step, idx) => {
             const isCompleted = completedSteps.includes(step.id);
@@ -794,10 +794,10 @@ function CreateBadgePage() {
                   <div
                     className={`h-9 w-9 rounded-xl flex items-center justify-center shrink-0 transition-all ${
                       isCompleted
-                        ? "bg-amber-400 text-amber-950"
+                        ? "bg-[#4F6DF5] text-white"
                         : isCurrent
-                        ? "bg-amber-50 text-amber-600 ring-2 ring-amber-200"
-                        : "bg-gray-50 text-gray-300"
+                        ? "bg-[#EEF2FF] text-[#4F6DF5] ring-2 ring-[#4F6DF5]/25"
+                        : "bg-[#F5F7FA] text-[#94A3B8]"
                     }`}
                   >
                     {isCompleted ? (
@@ -809,22 +809,22 @@ function CreateBadgePage() {
                   <div className="hidden sm:block text-left">
                     <p
                       className={`text-xs transition-colors ${
-                        isCurrent ? "text-amber-700" : isCompleted ? "text-gray-700" : "text-gray-300"
+                        isCurrent ? "text-[#4F6DF5]" : isCompleted ? "text-[#1E2A4A]" : "text-[#94A3B8]"
                       }`}
                       style={{ fontWeight: isCurrent ? 600 : 500 }}
                     >
                       {step.label}
                     </p>
-                    <p className={`text-[10px] ${isCurrent ? "text-amber-500" : "text-gray-300"}`}>
+                    <p className={`text-[10px] ${isCurrent ? "text-[#4F6DF5]" : "text-[#94A3B8]"}`}>
                       Step {step.id}
                     </p>
                   </div>
                 </button>
                 {idx < wizardSteps.length - 1 && (
                   <div className="flex-1 mx-3 hidden sm:block">
-                    <div className="h-px bg-gray-100 relative">
+                    <div className="h-px bg-[#EDF2F7] relative">
                       <div
-                        className="absolute inset-y-0 left-0 bg-amber-300 transition-all duration-500"
+                        className="absolute inset-y-0 left-0 bg-[#C9D7FF] transition-all duration-500"
                         style={{ width: isCompleted ? "100%" : "0%" }}
                       />
                     </div>
@@ -874,20 +874,20 @@ function CreateBadgePage() {
           <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setShowPublishModal(false)} />
           <div className="relative bg-white rounded-2xl shadow-2xl max-w-md w-full p-8 text-center z-10">
             {/* Confetti / celebration icon */}
-            <div className="mx-auto h-20 w-20 rounded-full bg-lime-50 flex items-center justify-center mb-6 ring-8 ring-lime-100/50">
-              <Award className="h-10 w-10 text-lime-500" />
+            <div className="mx-auto h-20 w-20 rounded-full bg-[#EAFBF5] flex items-center justify-center mb-6 ring-8 ring-emerald-100/50">
+              <Award className="h-10 w-10 text-[#34D399]" />
             </div>
-            <h2 className="text-xl text-gray-900 mb-2" style={{ fontWeight: 700 }}>
+            <h2 className="text-xl text-[#1E2A4A] mb-2" style={{ fontWeight: 700 }}>
               Badge is now live!
             </h2>
-            <p className="text-sm text-gray-400 mb-8 max-w-xs mx-auto">
-              Your badge "<span className="text-gray-600" style={{ fontWeight: 500 }}>{badgeName || "Untitled Badge"}</span>" has been published and is ready to be issued.
+            <p className="text-sm text-[#94A3B8] mb-8 max-w-xs mx-auto">
+              Your badge "<span className="text-[#94A3B8]" style={{ fontWeight: 500 }}>{badgeName || "Untitled Badge"}</span>" has been published and is ready to be issued.
             </p>
 
             <div className="space-y-3">
               <button
                 onClick={() => setShowPublishModal(false)}
-                className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-lime-400 hover:bg-lime-500 text-lime-950 text-sm transition-colors"
+                className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#34D399] hover:bg-[#2DB985] text-[#1E2A4A] text-sm transition-colors"
                 style={{ fontWeight: 600 }}
               >
                 <Send className="h-4 w-4" />
@@ -895,7 +895,7 @@ function CreateBadgePage() {
               </button>
               <button
                 onClick={() => setShowPublishModal(false)}
-                className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-700 text-sm transition-colors"
+                className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#EDF2F7] hover:bg-[#E2E8F0] text-[#1E2A4A] text-sm transition-colors"
                 style={{ fontWeight: 500 }}
               >
                 <Eye className="h-4 w-4" />
@@ -912,7 +912,7 @@ function CreateBadgePage() {
                   setBadgeImage(null);
                   setTags([]);
                 }}
-                className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-gray-400 hover:text-gray-600 text-sm transition-colors"
+                className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-[#94A3B8] hover:text-[#1E2A4A] text-sm transition-colors"
                 style={{ fontWeight: 500 }}
               >
                 <PlusCircle className="h-4 w-4" />
@@ -924,7 +924,7 @@ function CreateBadgePage() {
       )}
 
       {/* Bottom Actions */}
-      <div className="fixed bottom-0 left-0 right-0 lg:left-64 z-30 border-t border-gray-100 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85">
+      <div className="fixed bottom-0 left-0 right-0 lg:left-64 z-30 border-t border-[#94A3B8]/25 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85">
         <div className="px-6 lg:px-8 py-4">
           <div className="max-w-6xl mx-auto">
             <div className="flex items-center justify-between">
@@ -932,22 +932,22 @@ function CreateBadgePage() {
                 variant="outline"
                 onClick={handleBack}
                 disabled={currentStep === 1}
-                className={`rounded-xl px-5 h-11 gap-2 border-gray-200 ${currentStep === 1 ? "opacity-40 cursor-not-allowed" : ""}`}
+                className={`rounded-xl px-5 h-11 gap-2 border-[#94A3B8]/35 ${currentStep === 1 ? "opacity-40 cursor-not-allowed" : ""}`}
               >
                 <ChevronLeft className="h-4 w-4" />
                 Back
               </Button>
 
               <div className="flex items-center gap-3">
-                <button className="text-sm text-gray-400 hover:text-gray-600 transition-colors hidden sm:block">
+                <button className="text-sm text-[#94A3B8] hover:text-[#1E2A4A] transition-colors hidden sm:block">
                   Save Draft
                 </button>
 
                 <Button
                   onClick={handleNext}
                   disabled={!canContinue}
-                  className={`rounded-xl px-6 h-11 gap-2 bg-amber-400 text-amber-950 ${
-                    canContinue ? "hover:bg-amber-500" : "opacity-50 cursor-not-allowed"
+                  className={`rounded-xl px-6 h-11 gap-2 bg-[#4F6DF5] text-white ${
+                    canContinue ? "hover:bg-[#FF6B6B]" : "opacity-50 cursor-not-allowed"
                   }`}
                 >
                   {currentStep === 4 ? "Publish Badge" : "Continue"}
@@ -959,9 +959,9 @@ function CreateBadgePage() {
 
             {/* Subtle plan note */}
             <div className="mt-3 text-center">
-              <p className="text-xs text-gray-300">
+              <p className="text-xs text-[#94A3B8]">
                 Free plan allows up to 5 badge templates.{" "}
-                <button className="text-amber-500 hover:text-amber-600 transition-colors">Upgrade for unlimited →</button>
+                <button className="text-[#4F6DF5] hover:text-[#FF6B6B] transition-colors">Upgrade for unlimited →</button>
               </p>
             </div>
           </div>
@@ -989,29 +989,29 @@ function StepIdentity({
     <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
       {/* Left — Form (3/5 ≈ 60%) */}
       <div className="lg:col-span-3 space-y-5">
-        <div className="bg-white rounded-2xl border border-gray-100 p-6 lg:p-8 space-y-6">
+        <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-6 lg:p-8 space-y-6">
           <div>
-            <h2 className="text-gray-900 mb-1" style={{ fontWeight: 600 }}>Badge Identity</h2>
-            <p className="text-sm text-gray-400">Start with the basics — name, purpose, and description.</p>
+            <h2 className="text-[#1E2A4A] mb-1" style={{ fontWeight: 600 }}>Badge Identity</h2>
+            <p className="text-sm text-[#94A3B8]">Start with the basics — name, purpose, and description.</p>
           </div>
 
           {/* Badge Name */}
           <div>
-            <label className="text-sm text-gray-700 mb-1.5 block" style={{ fontWeight: 500 }}>
-              Badge Name <span className="text-amber-500">*</span>
+            <label className="text-sm text-[#1E2A4A] mb-1.5 block" style={{ fontWeight: 500 }}>
+              Badge Name <span className="text-[#4F6DF5]">*</span>
             </label>
             <Input
               placeholder="e.g., React Developer Certification"
               value={badgeName}
               onChange={(e) => setBadgeName(e.target.value)}
-              className="rounded-xl bg-gray-50/80 border-gray-100 h-11 focus-visible:ring-amber-200"
+              className="rounded-xl bg-[#F5F7FA] border-[#94A3B8]/25 h-11 focus-visible:ring-[#4F6DF5]/25"
             />
-            <p className="text-xs text-gray-300 mt-1.5">Choose a clear, descriptive name. This will appear on the badge.</p>
+            <p className="text-xs text-[#94A3B8] mt-1.5">Choose a clear, descriptive name. This will appear on the badge.</p>
           </div>
 
           {/* Short Description */}
           <div>
-            <label className="text-sm text-gray-700 mb-1.5 block" style={{ fontWeight: 500 }}>
+            <label className="text-sm text-[#1E2A4A] mb-1.5 block" style={{ fontWeight: 500 }}>
               Short Description
             </label>
             <textarea
@@ -1020,11 +1020,11 @@ function StepIdentity({
               onChange={(e) => setShortDesc(e.target.value)}
               rows={2}
               maxLength={160}
-              className="w-full px-4 py-3 rounded-xl bg-gray-50/80 border border-gray-100 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-200 resize-none transition-all placeholder:text-gray-300"
+              className="w-full px-4 py-3 rounded-xl bg-[#F5F7FA] border border-[#94A3B8]/25 text-sm text-[#1E2A4A] focus:outline-none focus:ring-2 focus:ring-[#4F6DF5]/25 resize-none transition-all placeholder:text-[#94A3B8]"
             />
             <div className="flex justify-between mt-1.5">
-              <p className="text-xs text-gray-300">Appears in previews and shared links</p>
-              <p className={`text-xs ${shortDesc.length > 140 ? "text-amber-500" : "text-gray-300"}`}>
+              <p className="text-xs text-[#94A3B8]">Appears in previews and shared links</p>
+              <p className={`text-xs ${shortDesc.length > 140 ? "text-[#4F6DF5]" : "text-[#94A3B8]"}`}>
                 {shortDesc.length}/160
               </p>
             </div>
@@ -1032,7 +1032,7 @@ function StepIdentity({
 
           {/* Badge Image Upload */}
           <div>
-            <label className="text-sm text-gray-700 mb-3 block" style={{ fontWeight: 500 }}>
+            <label className="text-sm text-[#1E2A4A] mb-3 block" style={{ fontWeight: 500 }}>
               Badge Image
             </label>
             {badgeImage ? (
@@ -1040,11 +1040,11 @@ function StepIdentity({
                 <img
                   src={badgeImage}
                   alt="Badge"
-                  className="h-36 w-36 rounded-2xl object-cover border border-gray-100"
+                  className="h-36 w-36 rounded-2xl object-cover border border-[#94A3B8]/25"
                 />
                 <div className="absolute inset-0 rounded-2xl bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
                   <label className="h-9 w-9 rounded-lg bg-white/90 flex items-center justify-center cursor-pointer hover:bg-white transition-colors">
-                    <ImageIcon className="h-4 w-4 text-gray-700" />
+                    <ImageIcon className="h-4 w-4 text-[#1E2A4A]" />
                     <input
                       type="file"
                       accept="image/*"
@@ -1063,17 +1063,17 @@ function StepIdentity({
                     onClick={() => setBadgeImage(null)}
                     className="h-9 w-9 rounded-lg bg-white/90 flex items-center justify-center hover:bg-white transition-colors"
                   >
-                    <X className="h-4 w-4 text-red-500" />
+                    <X className="h-4 w-4 text-[#FF6B6B]" />
                   </button>
                 </div>
               </div>
             ) : (
-              <label className="flex flex-col items-center justify-center h-40 w-full max-w-xs rounded-2xl border-2 border-dashed border-gray-200 bg-gray-50/50 hover:border-amber-300 hover:bg-amber-50/30 transition-all cursor-pointer group">
-                <div className="h-12 w-12 rounded-xl bg-amber-100/60 flex items-center justify-center mb-3 group-hover:bg-amber-200/60 transition-colors">
-                  <ImageIcon className="h-6 w-6 text-amber-400" />
+              <label className="flex flex-col items-center justify-center h-40 w-full max-w-xs rounded-2xl border-2 border-dashed border-[#94A3B8]/35 bg-[#F5F7FA] hover:border-[#94A3B8]/40 hover:bg-[#EEF2FF] transition-all cursor-pointer group">
+                <div className="h-12 w-12 rounded-xl bg-[#E5ECFF] flex items-center justify-center mb-3 group-hover:bg-[#DCE5FF] transition-colors">
+                  <ImageIcon className="h-6 w-6 text-[#4F6DF5]" />
                 </div>
-                <p className="text-sm text-gray-500" style={{ fontWeight: 500 }}>Click to upload</p>
-                <p className="text-xs text-gray-300 mt-1">PNG, JPG or SVG · Max 2MB</p>
+                <p className="text-sm text-[#94A3B8]" style={{ fontWeight: 500 }}>Click to upload</p>
+                <p className="text-xs text-[#94A3B8] mt-1">PNG, JPG or SVG · Max 2MB</p>
                 <input
                   type="file"
                   accept="image/*"
@@ -1089,13 +1089,13 @@ function StepIdentity({
                 />
               </label>
             )}
-            <p className="text-xs text-gray-300 mt-1.5">Recommended: 512×512px square image for best display</p>
+            <p className="text-xs text-[#94A3B8] mt-1.5">Recommended: 512×512px square image for best display</p>
           </div>
 
           {/* Badge Purpose — Radio Cards */}
           <div>
-            <label className="text-sm text-gray-700 mb-3 block" style={{ fontWeight: 500 }}>
-              Badge Purpose <span className="text-amber-500">*</span>
+            <label className="text-sm text-[#1E2A4A] mb-3 block" style={{ fontWeight: 500 }}>
+              Badge Purpose <span className="text-[#4F6DF5]">*</span>
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               {purposeOptions.map((opt) => {
@@ -1107,35 +1107,35 @@ function StepIdentity({
                     onClick={() => setPurpose(opt.value)}
                     className={`relative flex items-start gap-3 p-4 rounded-xl border-2 text-left transition-all ${
                       isSelected
-                        ? "border-amber-300 bg-amber-50/60"
-                        : "border-gray-100 bg-white hover:border-gray-200 hover:bg-gray-50/50"
+                        ? "border-[#94A3B8]/40 bg-[#EEF2FF]"
+                        : "border-[#94A3B8]/25 bg-white hover:border-[#94A3B8]/35 hover:bg-[#F5F7FA]"
                     }`}
                   >
                     <div
                       className={`h-9 w-9 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
-                        isSelected ? "bg-amber-400 text-amber-950" : "bg-gray-100 text-gray-400"
+                        isSelected ? "bg-[#4F6DF5] text-white" : "bg-[#EDF2F7] text-[#94A3B8]"
                       }`}
                     >
                       <opt.icon className="h-4 w-4" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <p
-                        className={`text-sm ${isSelected ? "text-amber-900" : "text-gray-700"}`}
+                        className={`text-sm ${isSelected ? "text-[#1E2A4A]" : "text-[#1E2A4A]"}`}
                         style={{ fontWeight: 600 }}
                       >
                         {opt.label}
                       </p>
-                      <p className={`text-xs mt-0.5 ${isSelected ? "text-amber-600/70" : "text-gray-400"}`}>
+                      <p className={`text-xs mt-0.5 ${isSelected ? "text-[#4F6DF5]/70" : "text-[#94A3B8]"}`}>
                         {opt.desc}
                       </p>
                     </div>
                     {/* Selection indicator */}
                     <div
                       className={`absolute top-3 right-3 h-5 w-5 rounded-full border-2 flex items-center justify-center transition-all ${
-                        isSelected ? "border-amber-400 bg-amber-400" : "border-gray-200"
+                        isSelected ? "border-[#4F6DF5] bg-[#4F6DF5]" : "border-[#94A3B8]/35"
                       }`}
                     >
-                      {isSelected && <Check className="h-3 w-3 text-amber-950" />}
+                      {isSelected && <Check className="h-3 w-3 text-white" />}
                     </div>
                   </button>
                 );
@@ -1145,20 +1145,20 @@ function StepIdentity({
 
           {/* Tags */}
           <div>
-            <label className="text-sm text-gray-700 mb-1.5 flex items-center gap-2" style={{ fontWeight: 500 }}>
-              <Tag className="h-3.5 w-3.5 text-gray-400" />
+            <label className="text-sm text-[#1E2A4A] mb-1.5 flex items-center gap-2" style={{ fontWeight: 500 }}>
+              <Tag className="h-3.5 w-3.5 text-[#94A3B8]" />
               Tags
-              <span className="text-xs text-gray-300" style={{ fontWeight: 400 }}>Optional</span>
+              <span className="text-xs text-[#94A3B8]" style={{ fontWeight: 400 }}>Optional</span>
             </label>
-            <div className="flex flex-wrap items-center gap-2 p-3 rounded-xl bg-gray-50/80 border border-gray-100 min-h-[44px] focus-within:ring-2 focus-within:ring-amber-200 transition-all">
+            <div className="flex flex-wrap items-center gap-2 p-3 rounded-xl bg-[#F5F7FA] border border-[#94A3B8]/25 min-h-[44px] focus-within:ring-2 focus-within:ring-[#4F6DF5]/25 transition-all">
               {tags.map((tag) => (
                 <span
                   key={tag}
-                  className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-amber-100/80 text-amber-800 text-xs"
+                  className="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-[#E5ECFF] text-[#4F6DF5] text-xs"
                   style={{ fontWeight: 500 }}
                 >
                   {tag}
-                  <button onClick={() => handleRemoveTag(tag)} className="hover:text-amber-950 transition-colors">
+                  <button onClick={() => handleRemoveTag(tag)} className="hover:text-white transition-colors">
                     <X className="h-3 w-3" />
                   </button>
                 </span>
@@ -1169,10 +1169,10 @@ function StepIdentity({
                 onChange={(e) => setTagInput(e.target.value)}
                 onKeyDown={handleAddTag}
                 placeholder={tags.length === 0 ? "Type a tag and press Enter..." : "Add more..."}
-                className="flex-1 min-w-[120px] bg-transparent text-sm text-gray-700 focus:outline-none placeholder:text-gray-300"
+                className="flex-1 min-w-[120px] bg-transparent text-sm text-[#1E2A4A] focus:outline-none placeholder:text-[#94A3B8]"
               />
             </div>
-            <p className="text-xs text-gray-300 mt-1.5">Press Enter to add. Tags help recipients discover your badge.</p>
+            <p className="text-xs text-[#94A3B8] mt-1.5">Press Enter to add. Tags help recipients discover your badge.</p>
           </div>
         </div>
       </div>
@@ -1180,10 +1180,10 @@ function StepIdentity({
       {/* Right — Live Preview (2/5 ≈ 40%) */}
       <div className="lg:col-span-2 space-y-5">
         {/* Badge Preview Card */}
-        <div className="bg-white rounded-2xl border border-gray-100 p-6 sticky top-6" style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 6px 24px rgba(0,0,0,0.03)" }}>
+        <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-6 sticky top-6" style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 6px 24px rgba(0,0,0,0.03)" }}>
           <div className="flex items-center justify-between mb-5">
-            <p className="text-xs text-gray-400" style={{ fontWeight: 600, letterSpacing: "0.05em" }}>LIVE PREVIEW</p>
-            <div className="flex items-center gap-1 text-xs text-amber-500">
+            <p className="text-xs text-[#94A3B8]" style={{ fontWeight: 600, letterSpacing: "0.05em" }}>LIVE PREVIEW</p>
+            <div className="flex items-center gap-1 text-xs text-[#4F6DF5]">
               <Eye className="h-3 w-3" />
               <span style={{ fontWeight: 500 }}>Auto-updating</span>
             </div>
@@ -1192,46 +1192,46 @@ function StepIdentity({
           {/* Badge Visual */}
           <div className="flex flex-col items-center mb-6">
             {badgeImage ? (
-              <img src={badgeImage} alt="Badge" className="h-28 w-28 rounded-2xl object-cover border border-gray-100 mb-4" />
+              <img src={badgeImage} alt="Badge" className="h-28 w-28 rounded-2xl object-cover border border-[#94A3B8]/25 mb-4" />
             ) : (
-              <div className="h-28 w-28 rounded-2xl bg-gradient-to-br from-amber-50 to-amber-100/50 border-2 border-dashed border-amber-200/60 flex flex-col items-center justify-center gap-2 mb-4">
-                <ImageIcon className="h-8 w-8 text-amber-300" />
-                <span className="text-[10px] text-amber-400" style={{ fontWeight: 500 }}>Badge Image</span>
+              <div className="h-28 w-28 rounded-2xl bg-gradient-to-br from-[#EEF2FF] to-[#E5ECFF] border-2 border-dashed border-[#94A3B8]/35 flex flex-col items-center justify-center gap-2 mb-4">
+                <ImageIcon className="h-8 w-8 text-[#C9D7FF]" />
+                <span className="text-[10px] text-[#4F6DF5]" style={{ fontWeight: 500 }}>Badge Image</span>
               </div>
             )}
             <h3
-              className={`text-center text-lg ${badgeName ? "text-gray-900" : "text-gray-300"}`}
+              className={`text-center text-lg ${badgeName ? "text-[#1E2A4A]" : "text-[#94A3B8]"}`}
               style={{ fontWeight: 700 }}
             >
               {badgeName || "Badge Name"}
             </h3>
-            <p className={`text-center text-sm mt-1 max-w-[240px] ${shortDesc ? "text-gray-500" : "text-gray-300"}`}>
+            <p className={`text-center text-sm mt-1 max-w-[240px] ${shortDesc ? "text-[#94A3B8]" : "text-[#94A3B8]"}`}>
               {shortDesc || "Short description will appear here"}
             </p>
           </div>
 
           {/* Meta Info */}
-          <div className="border-t border-gray-100 pt-4 space-y-3">
+          <div className="border-t border-[#94A3B8]/25 pt-4 space-y-3">
             <div className="flex items-center gap-2.5">
-              <div className="h-7 w-7 rounded-full bg-amber-100 flex items-center justify-center">
-                <span className="text-[10px] text-amber-700" style={{ fontWeight: 600 }}>JD</span>
+              <div className="h-7 w-7 rounded-full bg-[#E5ECFF] flex items-center justify-center">
+                <span className="text-[10px] text-[#4F6DF5]" style={{ fontWeight: 600 }}>JD</span>
               </div>
               <div>
-                <p className="text-xs text-gray-700" style={{ fontWeight: 500 }}>John Doe</p>
-                <p className="text-[10px] text-gray-400">Issuer · BadgeFlow</p>
+                <p className="text-xs text-[#1E2A4A]" style={{ fontWeight: 500 }}>John Doe</p>
+                <p className="text-[10px] text-[#94A3B8]">Issuer · BadgeFlow</p>
               </div>
             </div>
             {purpose && (
               <div className="flex items-center gap-2">
-                <div className="h-5 w-5 rounded bg-amber-50 flex items-center justify-center">
+                <div className="h-5 w-5 rounded bg-[#EEF2FF] flex items-center justify-center">
                   {purposeOptions.find((p) => p.value === purpose)?.icon &&
                     (() => {
                       const Icon = purposeOptions.find((p) => p.value === purpose)!.icon;
-                      return <Icon className="h-3 w-3 text-amber-500" />;
+                      return <Icon className="h-3 w-3 text-[#4F6DF5]" />;
                     })()
                   }
                 </div>
-                <span className="text-xs text-gray-500" style={{ fontWeight: 500 }}>
+                <span className="text-xs text-[#94A3B8]" style={{ fontWeight: 500 }}>
                   {purposeOptions.find((p) => p.value === purpose)?.label}
                 </span>
               </div>
@@ -1241,7 +1241,7 @@ function StepIdentity({
                 {tags.map((tag) => (
                   <span
                     key={tag}
-                    className="text-[10px] px-2 py-0.5 rounded-full bg-gray-100 text-gray-500"
+                    className="text-[10px] px-2 py-0.5 rounded-full bg-[#EDF2F7] text-[#94A3B8]"
                     style={{ fontWeight: 500 }}
                   >
                     {tag}
@@ -1252,29 +1252,29 @@ function StepIdentity({
           </div>
 
           {/* LinkedIn Share Preview */}
-          <div className="mt-5 pt-5 border-t border-gray-100">
+          <div className="mt-5 pt-5 border-t border-[#94A3B8]/25">
             <div className="flex items-center gap-1.5 mb-3">
-              <Share2 className="h-3 w-3 text-gray-400" />
-              <p className="text-[10px] text-gray-400" style={{ fontWeight: 600, letterSpacing: "0.05em" }}>SHARE PREVIEW</p>
+              <Share2 className="h-3 w-3 text-[#94A3B8]" />
+              <p className="text-[10px] text-[#94A3B8]" style={{ fontWeight: 600, letterSpacing: "0.05em" }}>SHARE PREVIEW</p>
             </div>
-            <div className="rounded-xl border border-gray-100 overflow-hidden">
-              <div className="bg-gray-50 h-16 flex items-center justify-center overflow-hidden">
+            <div className="rounded-xl border border-[#94A3B8]/25 overflow-hidden">
+              <div className="bg-[#F5F7FA] h-16 flex items-center justify-center overflow-hidden">
                 {badgeImage ? (
                   <img src={badgeImage} alt="Preview" className="w-full h-full object-cover" />
                 ) : (
-                  <ImageIcon className="h-5 w-5 text-gray-200" />
+                  <ImageIcon className="h-5 w-5 text-[#CBD5E1]" />
                 )}
               </div>
               <div className="p-3 bg-white">
-                <p className={`text-xs truncate ${badgeName ? "text-gray-800" : "text-gray-300"}`} style={{ fontWeight: 600 }}>
+                <p className={`text-xs truncate ${badgeName ? "text-[#1E2A4A]" : "text-[#94A3B8]"}`} style={{ fontWeight: 600 }}>
                   {badgeName ? `${badgeName} — Issued by John Doe` : "Badge Name — Issued by John Doe"}
                 </p>
-                <p className="text-[10px] text-gray-400 mt-0.5 truncate">
+                <p className="text-[10px] text-[#94A3B8] mt-0.5 truncate">
                   {shortDesc || "Badge description preview"}
                 </p>
                 <div className="flex items-center gap-1.5 mt-2">
                   <Linkedin className="h-3 w-3 text-[#0A66C2]" />
-                  <span className="text-[10px] text-gray-400">badgeflow.io</span>
+                  <span className="text-[10px] text-[#94A3B8]">badgeflow.io</span>
                 </div>
               </div>
             </div>
@@ -1364,9 +1364,9 @@ function StepCriteria() {
   return (
     <div className="max-w-2xl mx-auto space-y-6">
       {/* Section 1: Issuing Method */}
-      <div className="bg-white rounded-2xl border border-gray-100 p-6">
-        <h3 className="text-gray-900 mb-1" style={{ fontWeight: 600 }}>Issuing Method</h3>
-        <p className="text-sm text-gray-400 mb-5">How will this badge be issued to recipients?</p>
+      <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-6">
+        <h3 className="text-[#1E2A4A] mb-1" style={{ fontWeight: 600 }}>Issuing Method</h3>
+        <p className="text-sm text-[#94A3B8] mb-5">How will this badge be issued to recipients?</p>
         <div className="space-y-3">
           {issuingMethods.map((method) => {
             const selected = issuingMethod === method.value;
@@ -1384,27 +1384,27 @@ function StepCriteria() {
                 }}
                 className={`relative w-full flex items-start gap-4 p-4 rounded-xl border-2 text-left transition-all ${
                   selected
-                    ? "border-lime-300 bg-lime-50/60"
-                    : "border-gray-100 bg-white hover:border-gray-200 hover:bg-gray-50/50"
+                    ? "border-emerald-300 bg-[#EAFBF5]"
+                    : "border-[#94A3B8]/25 bg-white hover:border-[#94A3B8]/35 hover:bg-[#F5F7FA]"
                 }`}
               >
                 <div className={`h-10 w-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
-                  selected ? "bg-lime-400 text-lime-950" : "bg-gray-100 text-gray-400"
+                  selected ? "bg-[#34D399] text-[#1E2A4A]" : "bg-[#EDF2F7] text-[#94A3B8]"
                 }`}>
                   <method.icon className="h-5 w-5" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className={`text-sm ${selected ? "text-lime-900" : "text-gray-700"}`} style={{ fontWeight: 600 }}>
+                  <p className={`text-sm ${selected ? "text-[#1E2A4A]" : "text-[#1E2A4A]"}`} style={{ fontWeight: 600 }}>
                     {method.label}
                   </p>
-                  <p className={`text-xs mt-0.5 ${selected ? "text-lime-600/70" : "text-gray-400"}`}>
+                  <p className={`text-xs mt-0.5 ${selected ? "text-[#34D399]/70" : "text-[#94A3B8]"}`}>
                     {method.desc}
                   </p>
                 </div>
                 <div className={`absolute top-4 right-4 h-5 w-5 rounded-full border-2 flex items-center justify-center transition-all ${
-                  selected ? "border-lime-400 bg-lime-400" : "border-gray-200"
+                  selected ? "border-emerald-400 bg-[#34D399]" : "border-[#94A3B8]/35"
                 }`}>
-                  {selected && <Check className="h-3 w-3 text-lime-950" />}
+                  {selected && <Check className="h-3 w-3 text-[#1E2A4A]" />}
                 </div>
               </button>
             );
@@ -1413,9 +1413,9 @@ function StepCriteria() {
 
         {/* Conditional: Auto from course */}
         {issuingMethod === "auto" && (
-          <div className="mt-5 p-4 rounded-xl bg-lime-50/40 border border-lime-100 space-y-4">
+          <div className="mt-5 p-4 rounded-xl bg-[#EAFBF5] border border-emerald-100 space-y-4">
             <div>
-              <label className="text-sm text-gray-600 mb-1.5 block" style={{ fontWeight: 500 }}>Connected Platform</label>
+              <label className="text-sm text-[#94A3B8] mb-1.5 block" style={{ fontWeight: 500 }}>Connected Platform</label>
               <div className="relative">
                 <select
                   value={platform}
@@ -1424,21 +1424,21 @@ function StepCriteria() {
                     setCourse("");
                     setPlatformConnected(false);
                   }}
-                  className="w-full appearance-none px-4 py-2.5 pr-10 rounded-xl bg-white border border-gray-200 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-lime-200 transition-all"
+                  className="w-full appearance-none px-4 py-2.5 pr-10 rounded-xl bg-white border border-[#94A3B8]/35 text-sm text-[#1E2A4A] focus:outline-none focus:ring-2 focus:ring-emerald-200 transition-all"
                 >
                   <option value="">Select platform...</option>
                   {platformOptions.map((p) => (
                     <option key={p} value={p}>{p}</option>
                   ))}
                 </select>
-                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none" />
+                <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#94A3B8] pointer-events-none" />
               </div>
             </div>
 
             {platform && !platformConnected && (
               <button
                 onClick={() => setPlatformConnected(true)}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-lime-400 text-lime-950 text-sm hover:bg-lime-500 transition-colors"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#34D399] text-[#1E2A4A] text-sm hover:bg-[#2DB985] transition-colors"
                 style={{ fontWeight: 600 }}
               >
                 <Zap className="h-3.5 w-3.5" />
@@ -1449,22 +1449,22 @@ function StepCriteria() {
             {platform && platformConnected && (
               <div>
                 <div className="flex items-center gap-2 mb-3">
-                  <CheckCircle2 className="h-4 w-4 text-green-500" />
-                  <span className="text-xs text-green-600" style={{ fontWeight: 500 }}>Connected to {platform}</span>
+                  <CheckCircle2 className="h-4 w-4 text-emerald-500" />
+                  <span className="text-xs text-emerald-600" style={{ fontWeight: 500 }}>Connected to {platform}</span>
                 </div>
-                <label className="text-sm text-gray-600 mb-1.5 block" style={{ fontWeight: 500 }}>Select Course</label>
+                <label className="text-sm text-[#94A3B8] mb-1.5 block" style={{ fontWeight: 500 }}>Select Course</label>
                 <div className="relative">
                   <select
                     value={course}
                     onChange={(e) => setCourse(e.target.value)}
-                    className="w-full appearance-none px-4 py-2.5 pr-10 rounded-xl bg-white border border-gray-200 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-lime-200 transition-all"
+                    className="w-full appearance-none px-4 py-2.5 pr-10 rounded-xl bg-white border border-[#94A3B8]/35 text-sm text-[#1E2A4A] focus:outline-none focus:ring-2 focus:ring-emerald-200 transition-all"
                   >
                     <option value="">Select course...</option>
                     {(courseOptions[platform] || []).map((c) => (
                       <option key={c} value={c}>{c}</option>
                     ))}
                   </select>
-                  <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400 pointer-events-none" />
+                  <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#94A3B8] pointer-events-none" />
                 </div>
               </div>
             )}
@@ -1472,61 +1472,61 @@ function StepCriteria() {
         )}
 
         {/* Helper note */}
-        <div className="mt-4 flex items-center gap-2 px-3 py-2 rounded-lg bg-amber-50/60 border border-amber-100">
-          <ArrowRight className="h-3.5 w-3.5 text-amber-400 shrink-0" />
-          <p className="text-xs text-amber-600/80">Recipients will be added in Step 3 (Delivery).</p>
+        <div className="mt-4 flex items-center gap-2 px-3 py-2 rounded-lg bg-[#EEF2FF] border border-[#94A3B8]/30">
+          <ArrowRight className="h-3.5 w-3.5 text-[#4F6DF5] shrink-0" />
+          <p className="text-xs text-[#4F6DF5]/80">Recipients will be added in Step 3 (Delivery).</p>
         </div>
       </div>
 
       {/* Section 2: Criteria Rules */}
-      <div className="bg-white rounded-2xl border border-gray-100 p-6">
-        <h3 className="text-gray-900 mb-1" style={{ fontWeight: 600 }}>Criteria Rules</h3>
-        <p className="text-sm text-gray-400 mb-5">Define what learners need to achieve to earn this badge</p>
+      <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-6">
+        <h3 className="text-[#1E2A4A] mb-1" style={{ fontWeight: 600 }}>Criteria Rules</h3>
+        <p className="text-sm text-[#94A3B8] mb-5">Define what learners need to achieve to earn this badge</p>
 
         {rules.length === 0 ? (
-          <div className="rounded-xl border-2 border-dashed border-gray-200 bg-gray-50/50 py-10 flex flex-col items-center justify-center">
-            <div className="h-12 w-12 rounded-xl bg-gray-100 flex items-center justify-center mb-3">
-              <ClipboardList className="h-6 w-6 text-gray-300" />
+          <div className="rounded-xl border-2 border-dashed border-[#94A3B8]/35 bg-[#F5F7FA] py-10 flex flex-col items-center justify-center">
+            <div className="h-12 w-12 rounded-xl bg-[#EDF2F7] flex items-center justify-center mb-3">
+              <ClipboardList className="h-6 w-6 text-[#94A3B8]" />
             </div>
-            <p className="text-sm text-gray-400" style={{ fontWeight: 500 }}>No rules added yet</p>
-            <p className="text-xs text-gray-300 mt-1">Add rules to define earning criteria</p>
+            <p className="text-sm text-[#94A3B8]" style={{ fontWeight: 500 }}>No rules added yet</p>
+            <p className="text-xs text-[#94A3B8] mt-1">Add rules to define earning criteria</p>
           </div>
         ) : (
           <div className="space-y-3">
             {rules.map((rule, idx) => (
               <div
                 key={rule.id}
-                className="p-4 rounded-xl bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow"
+                className="p-4 rounded-xl bg-white border border-[#94A3B8]/25 shadow-sm hover:shadow-md transition-shadow"
               >
                 <div className="flex items-center gap-3">
-                  <div className="h-9 w-9 rounded-lg bg-lime-100 flex items-center justify-center shrink-0">
-                    <rule.icon className="h-4 w-4 text-lime-600" />
+                  <div className="h-9 w-9 rounded-lg bg-[#DDF7EE] flex items-center justify-center shrink-0">
+                    <rule.icon className="h-4 w-4 text-[#34D399]" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm text-gray-800" style={{ fontWeight: 600 }}>{rule.label}</p>
+                    <p className="text-sm text-[#1E2A4A]" style={{ fontWeight: 600 }}>{rule.label}</p>
                     {rule.hasThreshold ? (
                       <div className="flex items-center gap-2 mt-1.5">
-                        <span className="text-xs text-gray-400">Minimum:</span>
+                        <span className="text-xs text-[#94A3B8]">Minimum:</span>
                         <input
                           type="number"
                           value={rule.threshold ?? 0}
                           onChange={(e) => updateThreshold(rule.id, Number(e.target.value))}
-                          className="w-16 px-2 py-1 rounded-lg bg-gray-50 border border-gray-200 text-xs text-gray-700 focus:outline-none focus:ring-2 focus:ring-lime-200 text-center"
+                          className="w-16 px-2 py-1 rounded-lg bg-[#F5F7FA] border border-[#94A3B8]/35 text-xs text-[#1E2A4A] focus:outline-none focus:ring-2 focus:ring-emerald-200 text-center"
                         />
-                        <span className="text-xs text-gray-400">{rule.unit}</span>
+                        <span className="text-xs text-[#94A3B8]">{rule.unit}</span>
                       </div>
                     ) : !rule.isCustomText ? (
-                      <p className="text-xs text-gray-400 mt-0.5">Required to complete</p>
+                      <p className="text-xs text-[#94A3B8] mt-0.5">Required to complete</p>
                     ) : null}
                   </div>
-                  <span className="text-[10px] text-gray-300 bg-gray-50 px-2 py-0.5 rounded-full" style={{ fontWeight: 500 }}>
+                  <span className="text-[10px] text-[#94A3B8] bg-[#F5F7FA] px-2 py-0.5 rounded-full" style={{ fontWeight: 500 }}>
                     Rule {idx + 1}
                   </span>
                   <button
                     onClick={() => removeRule(rule.id)}
-                    className="h-8 w-8 rounded-lg hover:bg-red-50 flex items-center justify-center transition-colors group"
+                    className="h-8 w-8 rounded-lg hover:bg-[#FFF1F1] flex items-center justify-center transition-colors group"
                   >
-                    <Trash2 className="h-4 w-4 text-gray-300 group-hover:text-red-400 transition-colors" />
+                    <Trash2 className="h-4 w-4 text-[#94A3B8] group-hover:text-[#FF6B6B] transition-colors" />
                   </button>
                 </div>
                 {rule.isCustomText && (
@@ -1536,7 +1536,7 @@ function StepCriteria() {
                       placeholder="Describe the requirement, e.g. 'Submit a portfolio project'"
                       value={rule.customText || ""}
                       onChange={(e) => updateCustomText(rule.id, e.target.value)}
-                      className="w-full px-3 py-2 rounded-lg bg-gray-50 border border-gray-200 text-xs text-gray-700 focus:outline-none focus:ring-2 focus:ring-lime-200 transition-all placeholder:text-gray-300"
+                      className="w-full px-3 py-2 rounded-lg bg-[#F5F7FA] border border-[#94A3B8]/35 text-xs text-[#1E2A4A] focus:outline-none focus:ring-2 focus:ring-emerald-200 transition-all placeholder:text-[#94A3B8]"
                     />
                   </div>
                 )}
@@ -1549,24 +1549,24 @@ function StepCriteria() {
           <button
             onClick={() => setShowRuleMenu(!showRuleMenu)}
             disabled={availableTemplates.length === 0}
-            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border-2 border-dashed border-gray-200 text-sm text-gray-500 hover:border-lime-300 hover:text-lime-700 hover:bg-lime-50/50 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl border-2 border-dashed border-[#94A3B8]/35 text-sm text-[#94A3B8] hover:border-emerald-300 hover:text-[#34D399] hover:bg-[#EAFBF5] transition-all disabled:opacity-40 disabled:cursor-not-allowed"
             style={{ fontWeight: 500 }}
           >
             <Plus className="h-4 w-4" />
             Add Rule
           </button>
           {showRuleMenu && availableTemplates.length > 0 && (
-            <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl border border-gray-100 shadow-lg z-20 py-1.5 overflow-hidden">
+            <div className="absolute top-full left-0 mt-2 w-64 bg-white rounded-xl border border-[#94A3B8]/25 shadow-lg z-20 py-1.5 overflow-hidden">
               {availableTemplates.map((t) => (
                 <button
                   key={t.id}
                   onClick={() => addRule(t)}
-                  className="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-lime-50 transition-colors text-left"
+                  className="w-full flex items-center gap-3 px-4 py-2.5 hover:bg-[#EAFBF5] transition-colors text-left"
                 >
-                  <div className="h-7 w-7 rounded-lg bg-gray-100 flex items-center justify-center">
-                    <t.icon className="h-3.5 w-3.5 text-gray-500" />
+                  <div className="h-7 w-7 rounded-lg bg-[#EDF2F7] flex items-center justify-center">
+                    <t.icon className="h-3.5 w-3.5 text-[#94A3B8]" />
                   </div>
-                  <span className="text-sm text-gray-700" style={{ fontWeight: 500 }}>{t.label}</span>
+                  <span className="text-sm text-[#1E2A4A]" style={{ fontWeight: 500 }}>{t.label}</span>
                 </button>
               ))}
             </div>
@@ -1575,9 +1575,9 @@ function StepCriteria() {
       </div>
 
       {/* Section 3: Evidence Requirement */}
-      <div className="bg-white rounded-2xl border border-gray-100 p-6">
+      <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-6">
         <div className="flex items-center justify-between mb-1">
-          <h3 className="text-gray-900" style={{ fontWeight: 600 }}>Evidence Requirement</h3>
+          <h3 className="text-[#1E2A4A]" style={{ fontWeight: 600 }}>Evidence Requirement</h3>
           <button
             onClick={() => setRequireEvidence(!requireEvidence)}
             className="relative h-7 w-12 rounded-full transition-colors"
@@ -1589,51 +1589,51 @@ function StepCriteria() {
             />
           </button>
         </div>
-        <p className="text-sm text-gray-400 mb-4">Require learners to attach evidence before earning</p>
+        <p className="text-sm text-[#94A3B8] mb-4">Require learners to attach evidence before earning</p>
 
         {requireEvidence && (
-          <div className="space-y-3 p-4 rounded-xl bg-lime-50/40 border border-lime-100">
+          <div className="space-y-3 p-4 rounded-xl bg-[#EAFBF5] border border-emerald-100">
             <label className="flex items-center gap-3 cursor-pointer group">
               <div
                 onClick={() => setAllowFileUpload(!allowFileUpload)}
                 className={`h-5 w-5 rounded-md border-2 flex items-center justify-center transition-all ${
-                  allowFileUpload ? "border-lime-400 bg-lime-400" : "border-gray-300"
+                  allowFileUpload ? "border-emerald-400 bg-[#34D399]" : "border-[#94A3B8]/40"
                 }`}
               >
-                {allowFileUpload && <Check className="h-3 w-3 text-lime-950" />}
+                {allowFileUpload && <Check className="h-3 w-3 text-[#1E2A4A]" />}
               </div>
               <div className="flex items-center gap-2">
-                <Upload className="h-4 w-4 text-gray-400" />
-                <span className="text-sm text-gray-700" style={{ fontWeight: 500 }}>Allow file upload</span>
+                <Upload className="h-4 w-4 text-[#94A3B8]" />
+                <span className="text-sm text-[#1E2A4A]" style={{ fontWeight: 500 }}>Allow file upload</span>
               </div>
-              <span className="text-xs text-gray-300 ml-auto">PDF, PNG, JPG</span>
+              <span className="text-xs text-[#94A3B8] ml-auto">PDF, PNG, JPG</span>
             </label>
 
             <label className="flex items-center gap-3 cursor-pointer group">
               <div
                 onClick={() => setAllowUrlLink(!allowUrlLink)}
                 className={`h-5 w-5 rounded-md border-2 flex items-center justify-center transition-all ${
-                  allowUrlLink ? "border-lime-400 bg-lime-400" : "border-gray-300"
+                  allowUrlLink ? "border-emerald-400 bg-[#34D399]" : "border-[#94A3B8]/40"
                 }`}
               >
-                {allowUrlLink && <Check className="h-3 w-3 text-lime-950" />}
+                {allowUrlLink && <Check className="h-3 w-3 text-[#1E2A4A]" />}
               </div>
               <div className="flex items-center gap-2">
-                <Link className="h-4 w-4 text-gray-400" />
-                <span className="text-sm text-gray-700" style={{ fontWeight: 500 }}>Allow URL link</span>
+                <Link className="h-4 w-4 text-[#94A3B8]" />
+                <span className="text-sm text-[#1E2A4A]" style={{ fontWeight: 500 }}>Allow URL link</span>
               </div>
-              <span className="text-xs text-gray-300 ml-auto">Portfolio, GitHub, etc.</span>
+              <span className="text-xs text-[#94A3B8] ml-auto">Portfolio, GitHub, etc.</span>
             </label>
           </div>
         )}
       </div>
 
       {/* Section 4: Notes to Learners */}
-      <div className="bg-white rounded-2xl border border-gray-100 p-6">
-        <h3 className="text-gray-900 mb-1" style={{ fontWeight: 600 }}>Notes to Learners</h3>
-        <p className="text-sm text-gray-400 mb-4">
+      <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-6">
+        <h3 className="text-[#1E2A4A] mb-1" style={{ fontWeight: 600 }}>Notes to Learners</h3>
+        <p className="text-sm text-[#94A3B8] mb-4">
           Add optional instructions or context for learners
-          <span className="ml-2 text-xs text-gray-300" style={{ fontWeight: 400 }}>Optional</span>
+          <span className="ml-2 text-xs text-[#94A3B8]" style={{ fontWeight: 400 }}>Optional</span>
         </p>
         <textarea
           placeholder="e.g. Please complete all modules before requesting this badge..."
@@ -1641,10 +1641,10 @@ function StepCriteria() {
           onChange={(e) => setNotes(e.target.value)}
           rows={3}
           maxLength={500}
-          className="w-full px-4 py-3 rounded-xl bg-gray-50/80 border border-gray-100 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-lime-200 resize-none transition-all placeholder:text-gray-300"
+          className="w-full px-4 py-3 rounded-xl bg-[#F5F7FA] border border-[#94A3B8]/25 text-sm text-[#1E2A4A] focus:outline-none focus:ring-2 focus:ring-emerald-200 resize-none transition-all placeholder:text-[#94A3B8]"
         />
         <div className="flex justify-end mt-1.5">
-          <p className={`text-xs ${notes.length > 400 ? "text-amber-500" : "text-gray-300"}`}>
+          <p className={`text-xs ${notes.length > 400 ? "text-[#4F6DF5]" : "text-[#94A3B8]"}`}>
             {notes.length}/500
           </p>
         </div>
@@ -1674,10 +1674,10 @@ const csvMockRows: CsvRow[] = [
 ];
 
 const csvStatusConfig: Record<CsvRowStatus, { label: string; color: string; bg: string; icon: typeof CheckCircle2 }> = {
-  valid: { label: "Valid", color: "text-green-600", bg: "bg-green-50", icon: CheckCircle2 },
-  invalid_email: { label: "Invalid email", color: "text-red-500", bg: "bg-red-50", icon: AlertCircle },
-  missing_name: { label: "Missing name", color: "text-amber-600", bg: "bg-amber-50", icon: AlertCircle },
-  duplicate: { label: "Duplicate", color: "text-orange-500", bg: "bg-orange-50", icon: AlertCircle },
+  valid: { label: "Valid", color: "text-emerald-600", bg: "bg-emerald-50", icon: CheckCircle2 },
+  invalid_email: { label: "Invalid email", color: "text-[#FF6B6B]", bg: "bg-[#FFF1F1]", icon: AlertCircle },
+  missing_name: { label: "Missing name", color: "text-[#4F6DF5]", bg: "bg-[#EEF2FF]", icon: AlertCircle },
+  duplicate: { label: "Duplicate", color: "text-[#FF6B6B]", bg: "bg-[#FFF1F1]", icon: AlertCircle },
 };
 
 const isValidEmail = (e: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
@@ -1718,9 +1718,9 @@ function StepDelivery() {
   return (
     <div className="max-w-2xl mx-auto space-y-6">
       {/* Section 1: Issue Mode */}
-      <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
-        <h3 className="text-gray-900 mb-1" style={{ fontWeight: 600 }}>Issue Mode</h3>
-        <p className="text-sm text-gray-400 mb-5">When do you want to issue this badge?</p>
+      <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-6 shadow-sm">
+        <h3 className="text-[#1E2A4A] mb-1" style={{ fontWeight: 600 }}>Issue Mode</h3>
+        <p className="text-sm text-[#94A3B8] mb-5">When do you want to issue this badge?</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {[
             { value: "later" as const, label: "Issue Later", desc: "Publish badge now, send to learners later", icon: Clock },
@@ -1732,31 +1732,31 @@ function StepDelivery() {
                 key={opt.value}
                 onClick={() => setIssueMode(opt.value)}
                 className={`relative flex items-start gap-3 p-4 rounded-xl border-2 text-left transition-all ${
-                  selected ? "border-lime-300 bg-lime-50/60 shadow-sm" : "border-gray-100 hover:border-gray-200 hover:bg-gray-50/50"
+                  selected ? "border-emerald-300 bg-[#EAFBF5] shadow-sm" : "border-[#94A3B8]/25 hover:border-[#94A3B8]/35 hover:bg-[#F5F7FA]"
                 }`}
               >
                 <div className={`h-10 w-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
-                  selected ? "bg-lime-400 text-lime-950" : "bg-gray-100 text-gray-400"
+                  selected ? "bg-[#34D399] text-[#1E2A4A]" : "bg-[#EDF2F7] text-[#94A3B8]"
                 }`}>
                   <opt.icon className="h-5 w-5" />
                 </div>
                 <div>
-                  <p className={`text-sm ${selected ? "text-lime-900" : "text-gray-700"}`} style={{ fontWeight: 600 }}>{opt.label}</p>
-                  <p className={`text-xs mt-0.5 ${selected ? "text-lime-600/70" : "text-gray-400"}`}>{opt.desc}</p>
+                  <p className={`text-sm ${selected ? "text-[#1E2A4A]" : "text-[#1E2A4A]"}`} style={{ fontWeight: 600 }}>{opt.label}</p>
+                  <p className={`text-xs mt-0.5 ${selected ? "text-[#34D399]/70" : "text-[#94A3B8]"}`}>{opt.desc}</p>
                 </div>
                 <div className={`absolute top-4 right-4 h-5 w-5 rounded-full border-2 flex items-center justify-center transition-all ${
-                  selected ? "border-lime-400 bg-lime-400" : "border-gray-200"
+                  selected ? "border-emerald-400 bg-[#34D399]" : "border-[#94A3B8]/35"
                 }`}>
-                  {selected && <Check className="h-3 w-3 text-lime-950" />}
+                  {selected && <Check className="h-3 w-3 text-[#1E2A4A]" />}
                 </div>
               </button>
             );
           })}
         </div>
         {/* Helper text */}
-        <div className="mt-4 flex items-start gap-2.5 px-3.5 py-2.5 rounded-xl bg-gray-50 border border-gray-100">
-          <Info className="h-3.5 w-3.5 text-gray-400 shrink-0 mt-0.5" />
-          <p className="text-xs text-gray-500">
+        <div className="mt-4 flex items-start gap-2.5 px-3.5 py-2.5 rounded-xl bg-[#F5F7FA] border border-[#94A3B8]/25">
+          <Info className="h-3.5 w-3.5 text-[#94A3B8] shrink-0 mt-0.5" />
+          <p className="text-xs text-[#94A3B8]">
             <span style={{ fontWeight: 600 }}>Issue later</span> = publish badge now and send to learners later.
             You can always add more recipients after publishing.
           </p>
@@ -1764,17 +1764,17 @@ function StepDelivery() {
       </div>
 
       {/* Section 2: Recipients — always visible */}
-      <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
+      <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-6 shadow-sm">
         <div className="flex items-start justify-between mb-1">
-          <h3 className="text-gray-900" style={{ fontWeight: 600 }}>Recipients</h3>
+          <h3 className="text-[#1E2A4A]" style={{ fontWeight: 600 }}>Recipients</h3>
           {!isIssueNow && (
-            <span className="px-2.5 py-0.5 rounded-full bg-gray-100 text-[10px] text-gray-400" style={{ fontWeight: 600 }}>Optional for now</span>
+            <span className="px-2.5 py-0.5 rounded-full bg-[#EDF2F7] text-[10px] text-[#94A3B8]" style={{ fontWeight: 600 }}>Optional for now</span>
           )}
         </div>
-        <p className="text-sm text-gray-400 mb-5">Add learners who will receive this badge.</p>
+        <p className="text-sm text-[#94A3B8] mb-5">Add learners who will receive this badge.</p>
 
         {/* Method Tabs */}
-        <div className="flex gap-1 p-1 bg-gray-100 rounded-xl mb-5">
+        <div className="flex gap-1 p-1 bg-[#EDF2F7] rounded-xl mb-5">
           {[
             { value: "csv" as const, label: "Upload CSV", icon: FileSpreadsheet },
             { value: "paste" as const, label: "Paste Emails", icon: AtSign },
@@ -1785,8 +1785,8 @@ function StepDelivery() {
               onClick={() => setRecipientMethod(tab.value)}
               className={`flex-1 flex items-center justify-center gap-2 py-2.5 rounded-lg text-xs transition-all ${
                 recipientMethod === tab.value
-                  ? "bg-white text-gray-800 shadow-sm"
-                  : "text-gray-400 hover:text-gray-600"
+                  ? "bg-white text-[#1E2A4A] shadow-sm"
+                  : "text-[#94A3B8] hover:text-[#1E2A4A]"
               }`}
               style={{ fontWeight: recipientMethod === tab.value ? 600 : 400 }}
             >
@@ -1803,36 +1803,36 @@ function StepDelivery() {
               <>
                 <button
                   onClick={() => setCsvUploaded(true)}
-                  className="w-full rounded-xl border-2 border-dashed border-gray-200 bg-gray-50/50 py-10 flex flex-col items-center justify-center hover:border-lime-300 hover:bg-lime-50/30 transition-all group"
+                  className="w-full rounded-xl border-2 border-dashed border-[#94A3B8]/35 bg-[#F5F7FA] py-10 flex flex-col items-center justify-center hover:border-emerald-300 hover:bg-[#EAFBF5] transition-all group"
                 >
-                  <div className="h-12 w-12 rounded-xl bg-gray-100 group-hover:bg-lime-100 flex items-center justify-center mb-3 transition-colors">
-                    <Upload className="h-6 w-6 text-gray-300 group-hover:text-lime-500 transition-colors" />
+                  <div className="h-12 w-12 rounded-xl bg-[#EDF2F7] group-hover:bg-[#DDF7EE] flex items-center justify-center mb-3 transition-colors">
+                    <Upload className="h-6 w-6 text-[#94A3B8] group-hover:text-[#34D399] transition-colors" />
                   </div>
-                  <p className="text-sm text-gray-500 group-hover:text-lime-700" style={{ fontWeight: 500 }}>
+                  <p className="text-sm text-[#94A3B8] group-hover:text-[#34D399]" style={{ fontWeight: 500 }}>
                     Drag & drop your CSV file here
                   </p>
-                  <p className="text-xs text-gray-300 mt-1">or click to browse · .csv only · Max 5 MB</p>
+                  <p className="text-xs text-[#94A3B8] mt-1">or click to browse · .csv only · Max 5 MB</p>
                 </button>
                 <div className="flex items-center justify-between">
-                  <button className="inline-flex items-center gap-2 text-xs text-lime-600 hover:text-lime-700 transition-colors" style={{ fontWeight: 500 }}>
+                  <button className="inline-flex items-center gap-2 text-xs text-[#34D399] hover:text-[#34D399] transition-colors" style={{ fontWeight: 500 }}>
                     <Download className="h-3.5 w-3.5" />
                     Download CSV template
                   </button>
-                  <p className="text-[11px] text-gray-300">Required columns: <span style={{ fontWeight: 600 }}>Email, Full name</span></p>
+                  <p className="text-[11px] text-[#94A3B8]">Required columns: <span style={{ fontWeight: 600 }}>Email, Full name</span></p>
                 </div>
               </>
             ) : (
               <>
                 {/* Uploaded file bar */}
-                <div className="rounded-xl border border-lime-200 bg-lime-50/40 px-4 py-3 flex items-center gap-3">
-                  <div className="h-9 w-9 rounded-lg bg-lime-100 flex items-center justify-center shrink-0">
-                    <FileSpreadsheet className="h-4 w-4 text-lime-600" />
+                <div className="rounded-xl border border-emerald-200 bg-[#EAFBF5] px-4 py-3 flex items-center gap-3">
+                  <div className="h-9 w-9 rounded-lg bg-[#DDF7EE] flex items-center justify-center shrink-0">
+                    <FileSpreadsheet className="h-4 w-4 text-[#34D399]" />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <p className="text-sm text-gray-800 truncate" style={{ fontWeight: 500 }}>recipients_batch_01.csv</p>
-                    <p className="text-xs text-gray-400">{csvMockRows.length} rows · 18 KB</p>
+                    <p className="text-sm text-[#1E2A4A] truncate" style={{ fontWeight: 500 }}>recipients_batch_01.csv</p>
+                    <p className="text-xs text-[#94A3B8]">{csvMockRows.length} rows · 18 KB</p>
                   </div>
-                  <button onClick={() => setCsvUploaded(false)} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs text-gray-400 hover:text-red-500 hover:bg-red-50 transition-all" style={{ fontWeight: 500 }}>
+                  <button onClick={() => setCsvUploaded(false)} className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs text-[#94A3B8] hover:text-[#FF6B6B] hover:bg-[#FFF1F1] transition-all" style={{ fontWeight: 500 }}>
                     <Trash2 className="h-3 w-3" />
                     Remove
                   </button>
@@ -1840,35 +1840,35 @@ function StepDelivery() {
 
                 {/* Summary counters */}
                 <div className="flex gap-3">
-                  <div className="flex-1 flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-green-50 border border-green-100">
-                    <CheckCircle2 className="h-4 w-4 text-green-500" />
+                  <div className="flex-1 flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-emerald-50 border border-emerald-100">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-500" />
                     <div>
-                      <p className="text-sm text-green-700" style={{ fontWeight: 700 }}>{validCsvCount}</p>
-                      <p className="text-[10px] text-green-500">Valid</p>
+                      <p className="text-sm text-emerald-700" style={{ fontWeight: 700 }}>{validCsvCount}</p>
+                      <p className="text-[10px] text-emerald-500">Valid</p>
                     </div>
                   </div>
-                  <div className="flex-1 flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-red-50 border border-red-100">
-                    <AlertCircle className="h-4 w-4 text-red-400" />
+                  <div className="flex-1 flex items-center gap-2.5 px-3.5 py-2.5 rounded-xl bg-[#FFF1F1] border border-[#FF6B6B]/30">
+                    <AlertCircle className="h-4 w-4 text-[#FF6B6B]" />
                     <div>
-                      <p className="text-sm text-red-600" style={{ fontWeight: 700 }}>{invalidCsvCount}</p>
-                      <p className="text-[10px] text-red-400">Need attention</p>
+                      <p className="text-sm text-[#FF6B6B]" style={{ fontWeight: 700 }}>{invalidCsvCount}</p>
+                      <p className="text-[10px] text-[#FF6B6B]">Need attention</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Error banner */}
                 {invalidCsvCount > 0 && (
-                  <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-red-50 border border-red-100">
-                    <AlertCircle className="h-4 w-4 text-red-400 shrink-0" />
+                  <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#FFF1F1] border border-[#FF6B6B]/30">
+                    <AlertCircle className="h-4 w-4 text-[#FF6B6B] shrink-0" />
                     <div className="flex-1">
-                      <p className="text-xs text-red-600" style={{ fontWeight: 600 }}>
+                      <p className="text-xs text-[#FF6B6B]" style={{ fontWeight: 600 }}>
                         {invalidCsvCount} row{invalidCsvCount > 1 ? "s" : ""} need fixing
                       </p>
-                      <p className="text-[11px] text-red-400 mt-0.5">Fix errors in your CSV and re-upload to continue.</p>
+                      <p className="text-[11px] text-[#FF6B6B] mt-0.5">Fix errors in your CSV and re-upload to continue.</p>
                     </div>
                     <button
                       onClick={() => setCsvUploaded(false)}
-                      className="px-3 py-1.5 rounded-lg bg-white border border-red-200 text-xs text-red-500 hover:bg-red-50 transition-colors shrink-0"
+                      className="px-3 py-1.5 rounded-lg bg-white border border-[#FF6B6B]/40 text-xs text-[#FF6B6B] hover:bg-[#FFF1F1] transition-colors shrink-0"
                       style={{ fontWeight: 600 }}
                     >
                       Re-upload
@@ -1877,21 +1877,21 @@ function StepDelivery() {
                 )}
 
                 {/* Preview table */}
-                <div className="rounded-xl border border-gray-100 overflow-hidden">
-                  <div className="bg-gray-50 px-4 py-2.5 flex items-center justify-between">
-                    <p className="text-xs text-gray-500" style={{ fontWeight: 600 }}>Validation Preview</p>
-                    <p className="text-[10px] text-gray-400">
+                <div className="rounded-xl border border-[#94A3B8]/25 overflow-hidden">
+                  <div className="bg-[#F5F7FA] px-4 py-2.5 flex items-center justify-between">
+                    <p className="text-xs text-[#94A3B8]" style={{ fontWeight: 600 }}>Validation Preview</p>
+                    <p className="text-[10px] text-[#94A3B8]">
                       Showing {csvMockRows.length} of {csvMockRows.length} rows
                     </p>
                   </div>
                   <div className="overflow-x-auto">
                     <table className="w-full text-sm">
                       <thead>
-                        <tr className="border-b border-gray-100">
-                          <th className="px-4 py-2.5 text-left text-[11px] text-gray-400 w-8" style={{ fontWeight: 500 }}>#</th>
-                          <th className="px-4 py-2.5 text-left text-[11px] text-gray-400" style={{ fontWeight: 500 }}>Email</th>
-                          <th className="px-4 py-2.5 text-left text-[11px] text-gray-400" style={{ fontWeight: 500 }}>Name</th>
-                          <th className="px-4 py-2.5 text-right text-[11px] text-gray-400" style={{ fontWeight: 500 }}>Status</th>
+                        <tr className="border-b border-[#94A3B8]/25">
+                          <th className="px-4 py-2.5 text-left text-[11px] text-[#94A3B8] w-8" style={{ fontWeight: 500 }}>#</th>
+                          <th className="px-4 py-2.5 text-left text-[11px] text-[#94A3B8]" style={{ fontWeight: 500 }}>Email</th>
+                          <th className="px-4 py-2.5 text-left text-[11px] text-[#94A3B8]" style={{ fontWeight: 500 }}>Name</th>
+                          <th className="px-4 py-2.5 text-right text-[11px] text-[#94A3B8]" style={{ fontWeight: 500 }}>Status</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -1900,16 +1900,16 @@ function StepDelivery() {
                           const StatusIcon = cfg.icon;
                           const isErr = row.status !== "valid";
                           return (
-                            <tr key={i} className={`border-b border-gray-50 transition-colors ${isErr ? "bg-red-50/30" : "hover:bg-gray-50/50"}`}>
-                              <td className="px-4 py-2.5 text-[10px] text-gray-300">{i + 1}</td>
+                            <tr key={i} className={`border-b border-[#94A3B8]/15 transition-colors ${isErr ? "bg-[#FFF1F1]/30" : "hover:bg-[#F5F7FA]"}`}>
+                              <td className="px-4 py-2.5 text-[10px] text-[#94A3B8]">{i + 1}</td>
                               <td className="px-4 py-2.5">
                                 <div className="flex items-center gap-2">
-                                  {isErr && <AlertCircle className="h-3.5 w-3.5 text-red-400 shrink-0" />}
-                                  <span className={`text-xs ${isErr ? "text-red-500" : "text-gray-700"}`} style={{ fontWeight: isErr ? 500 : 400 }}>{row.email}</span>
+                                  {isErr && <AlertCircle className="h-3.5 w-3.5 text-[#FF6B6B] shrink-0" />}
+                                  <span className={`text-xs ${isErr ? "text-[#FF6B6B]" : "text-[#1E2A4A]"}`} style={{ fontWeight: isErr ? 500 : 400 }}>{row.email}</span>
                                 </div>
                               </td>
-                              <td className="px-4 py-2.5 text-xs text-gray-500">
-                                {row.name || <span className="text-gray-300 italic">—</span>}
+                              <td className="px-4 py-2.5 text-xs text-[#94A3B8]">
+                                {row.name || <span className="text-[#94A3B8] italic">—</span>}
                               </td>
                               <td className="px-4 py-2.5 text-right">
                                 <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full ${cfg.bg} text-[10px] ${cfg.color}`} style={{ fontWeight: 600 }}>
@@ -1936,32 +1936,32 @@ function StepDelivery() {
               onChange={(e) => setPasteEmails(e.target.value)}
               placeholder={"alice@company.com\nbob@acme.org\ncharlie@example.com"}
               rows={6}
-              className="w-full px-4 py-3 rounded-xl bg-gray-50/80 border border-gray-100 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-lime-200 resize-none transition-all placeholder:text-gray-300 font-mono"
+              className="w-full px-4 py-3 rounded-xl bg-[#F5F7FA] border border-[#94A3B8]/25 text-sm text-[#1E2A4A] focus:outline-none focus:ring-2 focus:ring-emerald-200 resize-none transition-all placeholder:text-[#94A3B8] font-mono"
             />
-            <p className="text-xs text-gray-300">One email per line</p>
+            <p className="text-xs text-[#94A3B8]">One email per line</p>
 
             {parsedPasteLines.length > 0 && (
               <div className="space-y-2">
                 {/* Summary */}
                 <div className="flex gap-3">
-                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-green-50 border border-green-100">
-                    <CheckCircle2 className="h-3 w-3 text-green-500" />
-                    <span className="text-[11px] text-green-600" style={{ fontWeight: 600 }}>{parsedPasteValid.length} valid</span>
+                  <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 border border-emerald-100">
+                    <CheckCircle2 className="h-3 w-3 text-emerald-500" />
+                    <span className="text-[11px] text-emerald-600" style={{ fontWeight: 600 }}>{parsedPasteValid.length} valid</span>
                   </div>
                   {parsedPasteInvalid.length > 0 && (
-                    <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-50 border border-red-100">
-                      <AlertCircle className="h-3 w-3 text-red-400" />
-                      <span className="text-[11px] text-red-500" style={{ fontWeight: 600 }}>{parsedPasteInvalid.length} invalid</span>
+                    <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#FFF1F1] border border-[#FF6B6B]/30">
+                      <AlertCircle className="h-3 w-3 text-[#FF6B6B]" />
+                      <span className="text-[11px] text-[#FF6B6B]" style={{ fontWeight: 600 }}>{parsedPasteInvalid.length} invalid</span>
                     </div>
                   )}
                 </div>
 
                 {/* Invalid email highlights */}
                 {parsedPasteInvalid.length > 0 && (
-                  <div className="rounded-xl border border-red-100 bg-red-50/40 p-3 space-y-1.5">
-                    <p className="text-[11px] text-red-500" style={{ fontWeight: 600 }}>Invalid emails found:</p>
+                  <div className="rounded-xl border border-[#FF6B6B]/30 bg-[#FFF1F1]/40 p-3 space-y-1.5">
+                    <p className="text-[11px] text-[#FF6B6B]" style={{ fontWeight: 600 }}>Invalid emails found:</p>
                     {parsedPasteInvalid.map((e, i) => (
-                      <div key={i} className="flex items-center gap-2 text-xs text-red-500">
+                      <div key={i} className="flex items-center gap-2 text-xs text-[#FF6B6B]">
                         <AlertCircle className="h-3 w-3 shrink-0" />
                         <span className="font-mono">{e}</span>
                       </div>
@@ -1971,17 +1971,17 @@ function StepDelivery() {
 
                 {/* Parsed list preview */}
                 {parsedPasteValid.length > 0 && (
-                  <div className="rounded-xl border border-gray-100 p-3">
-                    <p className="text-[11px] text-gray-400 mb-2" style={{ fontWeight: 600 }}>Ready to import:</p>
+                  <div className="rounded-xl border border-[#94A3B8]/25 p-3">
+                    <p className="text-[11px] text-[#94A3B8] mb-2" style={{ fontWeight: 600 }}>Ready to import:</p>
                     <div className="flex flex-wrap gap-1.5">
                       {parsedPasteValid.slice(0, 12).map((e, i) => (
-                        <span key={i} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-lime-50 border border-lime-100 text-[11px] text-lime-700">
+                        <span key={i} className="inline-flex items-center gap-1 px-2.5 py-1 rounded-lg bg-[#EAFBF5] border border-emerald-100 text-[11px] text-[#34D399]">
                           <CheckCircle2 className="h-2.5 w-2.5" />
                           {e}
                         </span>
                       ))}
                       {parsedPasteValid.length > 12 && (
-                        <span className="px-2.5 py-1 rounded-lg bg-gray-50 text-[11px] text-gray-400" style={{ fontWeight: 500 }}>
+                        <span className="px-2.5 py-1 rounded-lg bg-[#F5F7FA] text-[11px] text-[#94A3B8]" style={{ fontWeight: 500 }}>
                           +{parsedPasteValid.length - 12} more
                         </span>
                       )}
@@ -2005,7 +2005,7 @@ function StepDelivery() {
                   value={manualEmail}
                   onChange={(e) => setManualEmail(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && addManualRecipient()}
-                  className="w-full px-4 py-2.5 rounded-xl bg-gray-50/80 border border-gray-100 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-lime-200 transition-all placeholder:text-gray-300"
+                  className="w-full px-4 py-2.5 rounded-xl bg-[#F5F7FA] border border-[#94A3B8]/25 text-sm text-[#1E2A4A] focus:outline-none focus:ring-2 focus:ring-emerald-200 transition-all placeholder:text-[#94A3B8]"
                 />
               </div>
               <div className="flex-1">
@@ -2015,13 +2015,13 @@ function StepDelivery() {
                   value={manualName}
                   onChange={(e) => setManualName(e.target.value)}
                   onKeyDown={(e) => e.key === "Enter" && addManualRecipient()}
-                  className="w-full px-4 py-2.5 rounded-xl bg-gray-50/80 border border-gray-100 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-lime-200 transition-all placeholder:text-gray-300"
+                  className="w-full px-4 py-2.5 rounded-xl bg-[#F5F7FA] border border-[#94A3B8]/25 text-sm text-[#1E2A4A] focus:outline-none focus:ring-2 focus:ring-emerald-200 transition-all placeholder:text-[#94A3B8]"
                 />
               </div>
               <button
                 onClick={addManualRecipient}
                 disabled={!manualEmail.trim()}
-                className="h-[42px] px-4 rounded-xl bg-lime-400 text-lime-950 text-sm hover:bg-lime-500 transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-1.5 shrink-0"
+                className="h-[42px] px-4 rounded-xl bg-[#34D399] text-[#1E2A4A] text-sm hover:bg-[#2DB985] transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-1.5 shrink-0"
                 style={{ fontWeight: 600 }}
               >
                 <Plus className="h-4 w-4" />
@@ -2031,51 +2031,51 @@ function StepDelivery() {
 
             {/* Recipient table */}
             {manualList.length > 0 ? (
-              <div className="rounded-xl border border-gray-100 overflow-hidden">
-                <div className="bg-gray-50 px-4 py-2 flex items-center justify-between">
-                  <p className="text-[11px] text-gray-500" style={{ fontWeight: 600 }}>{manualList.length} recipient{manualList.length > 1 ? "s" : ""}</p>
+              <div className="rounded-xl border border-[#94A3B8]/25 overflow-hidden">
+                <div className="bg-[#F5F7FA] px-4 py-2 flex items-center justify-between">
+                  <p className="text-[11px] text-[#94A3B8]" style={{ fontWeight: 600 }}>{manualList.length} recipient{manualList.length > 1 ? "s" : ""}</p>
                   <div className="flex gap-2">
-                    <span className="text-[10px] text-green-500" style={{ fontWeight: 600 }}>{manualList.filter((r) => r.valid).length} valid</span>
+                    <span className="text-[10px] text-emerald-500" style={{ fontWeight: 600 }}>{manualList.filter((r) => r.valid).length} valid</span>
                     {manualList.some((r) => !r.valid) && (
-                      <span className="text-[10px] text-red-400" style={{ fontWeight: 600 }}>{manualList.filter((r) => !r.valid).length} invalid</span>
+                      <span className="text-[10px] text-[#FF6B6B]" style={{ fontWeight: 600 }}>{manualList.filter((r) => !r.valid).length} invalid</span>
                     )}
                   </div>
                 </div>
-                <div className="divide-y divide-gray-50">
+                <div className="divide-y divide-[#94A3B8]/15">
                   {manualList.map((r, i) => (
-                    <div key={i} className={`flex items-center gap-3 px-4 py-2.5 ${!r.valid ? "bg-red-50/30" : ""}`}>
-                      <div className={`h-7 w-7 rounded-full flex items-center justify-center shrink-0 ${r.valid ? "bg-lime-100" : "bg-red-100"}`}>
-                        <span className={`text-[10px] ${r.valid ? "text-lime-700" : "text-red-500"}`} style={{ fontWeight: 700 }}>
+                    <div key={i} className={`flex items-center gap-3 px-4 py-2.5 ${!r.valid ? "bg-[#FFF1F1]/30" : ""}`}>
+                      <div className={`h-7 w-7 rounded-full flex items-center justify-center shrink-0 ${r.valid ? "bg-[#DDF7EE]" : "bg-[#FFE4E4]"}`}>
+                        <span className={`text-[10px] ${r.valid ? "text-[#34D399]" : "text-[#FF6B6B]"}`} style={{ fontWeight: 700 }}>
                           {(r.name || r.email)[0]?.toUpperCase()}
                         </span>
                       </div>
                       <div className="flex-1 min-w-0 flex items-center gap-4">
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-1.5">
-                            {!r.valid && <AlertCircle className="h-3 w-3 text-red-400 shrink-0" />}
-                            <p className={`text-xs truncate ${r.valid ? "text-gray-700" : "text-red-500"}`} style={{ fontWeight: 500 }}>{r.email}</p>
+                            {!r.valid && <AlertCircle className="h-3 w-3 text-[#FF6B6B] shrink-0" />}
+                            <p className={`text-xs truncate ${r.valid ? "text-[#1E2A4A]" : "text-[#FF6B6B]"}`} style={{ fontWeight: 500 }}>{r.email}</p>
                           </div>
                         </div>
-                        <p className="text-xs text-gray-400 truncate w-28">{r.name || <span className="text-gray-300 italic">No name</span>}</p>
+                        <p className="text-xs text-[#94A3B8] truncate w-28">{r.name || <span className="text-[#94A3B8] italic">No name</span>}</p>
                       </div>
-                      <span className={`text-[10px] px-2 py-0.5 rounded-full ${r.valid ? "bg-green-50 text-green-600" : "bg-red-50 text-red-500"}`} style={{ fontWeight: 600 }}>
+                      <span className={`text-[10px] px-2 py-0.5 rounded-full ${r.valid ? "bg-emerald-50 text-emerald-600" : "bg-[#FFF1F1] text-[#FF6B6B]"}`} style={{ fontWeight: 600 }}>
                         {r.valid ? "Valid" : "Invalid"}
                       </span>
                       <button
                         onClick={() => setManualList((prev) => prev.filter((_, idx) => idx !== i))}
-                        className="h-7 w-7 rounded-lg hover:bg-red-50 flex items-center justify-center transition-colors"
+                        className="h-7 w-7 rounded-lg hover:bg-[#FFF1F1] flex items-center justify-center transition-colors"
                       >
-                        <Trash2 className="h-3.5 w-3.5 text-gray-300 hover:text-red-400" />
+                        <Trash2 className="h-3.5 w-3.5 text-[#94A3B8] hover:text-[#FF6B6B]" />
                       </button>
                     </div>
                   ))}
                 </div>
               </div>
             ) : (
-              <div className="rounded-xl border-2 border-dashed border-gray-200 bg-gray-50/50 py-8 flex flex-col items-center">
-                <UserPlus className="h-6 w-6 text-gray-300 mb-2" />
-                <p className="text-xs text-gray-400" style={{ fontWeight: 500 }}>No recipients added yet</p>
-                <p className="text-[11px] text-gray-300 mt-1">Type an email above and press Enter or click Add</p>
+              <div className="rounded-xl border-2 border-dashed border-[#94A3B8]/35 bg-[#F5F7FA] py-8 flex flex-col items-center">
+                <UserPlus className="h-6 w-6 text-[#94A3B8] mb-2" />
+                <p className="text-xs text-[#94A3B8]" style={{ fontWeight: 500 }}>No recipients added yet</p>
+                <p className="text-[11px] text-[#94A3B8] mt-1">Type an email above and press Enter or click Add</p>
               </div>
             )}
           </div>
@@ -2083,19 +2083,19 @@ function StepDelivery() {
       </div>
 
       {/* Section 3: Delivery Channel */}
-      <div className={`bg-white rounded-2xl border border-gray-100 p-6 shadow-sm transition-opacity ${!isIssueNow ? "opacity-60" : ""}`}>
+      <div className={`bg-white rounded-2xl border border-[#94A3B8]/25 p-6 shadow-sm transition-opacity ${!isIssueNow ? "opacity-60" : ""}`}>
         <div className="flex items-start justify-between mb-1">
-          <h3 className="text-gray-900" style={{ fontWeight: 600 }}>Delivery Channel</h3>
+          <h3 className="text-[#1E2A4A]" style={{ fontWeight: 600 }}>Delivery Channel</h3>
           {!isIssueNow && (
-            <span className="px-2.5 py-0.5 rounded-full bg-gray-100 text-[10px] text-gray-400 shrink-0" style={{ fontWeight: 600 }}>Configured on issue</span>
+            <span className="px-2.5 py-0.5 rounded-full bg-[#EDF2F7] text-[10px] text-[#94A3B8] shrink-0" style={{ fontWeight: 600 }}>Configured on issue</span>
           )}
         </div>
-        <p className="text-sm text-gray-400 mb-5">How will recipients receive their badge?</p>
+        <p className="text-sm text-[#94A3B8] mb-5">How will recipients receive their badge?</p>
 
         {!isIssueNow && (
-          <div className="flex items-center gap-2.5 px-3.5 py-3 rounded-xl bg-amber-50/60 border border-amber-100 mb-5">
-            <Info className="h-4 w-4 text-amber-400 shrink-0" />
-            <p className="text-xs text-amber-600">Notification settings will be configured when you issue the badge.</p>
+          <div className="flex items-center gap-2.5 px-3.5 py-3 rounded-xl bg-[#EEF2FF] border border-[#94A3B8]/30 mb-5">
+            <Info className="h-4 w-4 text-[#4F6DF5] shrink-0" />
+            <p className="text-xs text-[#4F6DF5]">Notification settings will be configured when you issue the badge.</p>
           </div>
         )}
 
@@ -2107,17 +2107,17 @@ function StepDelivery() {
             <div
               onClick={(e) => { e.preventDefault(); if (isIssueNow) setChannelEmail(!channelEmail); }}
               className={`h-5 w-5 rounded-md border-2 flex items-center justify-center transition-all shrink-0 ${
-                channelEmail ? "border-lime-400 bg-lime-400" : "border-gray-300"
+                channelEmail ? "border-emerald-400 bg-[#34D399]" : "border-[#94A3B8]/40"
               }`}
             >
-              {channelEmail && <Check className="h-3 w-3 text-lime-950" />}
+              {channelEmail && <Check className="h-3 w-3 text-[#1E2A4A]" />}
             </div>
-            <div className="h-9 w-9 rounded-lg bg-lime-100 flex items-center justify-center shrink-0">
-              <Mail className="h-4 w-4 text-lime-600" />
+            <div className="h-9 w-9 rounded-lg bg-[#DDF7EE] flex items-center justify-center shrink-0">
+              <Mail className="h-4 w-4 text-[#34D399]" />
             </div>
             <div>
-              <p className="text-sm text-gray-800" style={{ fontWeight: 600 }}>Email Notification</p>
-              <p className="text-xs text-gray-400 mt-0.5">Send badge via email with a claim link</p>
+              <p className="text-sm text-[#1E2A4A]" style={{ fontWeight: 600 }}>Email Notification</p>
+              <p className="text-xs text-[#94A3B8] mt-0.5">Send badge via email with a claim link</p>
             </div>
           </label>
 
@@ -2128,82 +2128,82 @@ function StepDelivery() {
             <div
               onClick={(e) => { e.preventDefault(); if (isIssueNow) setChannelPublic(!channelPublic); }}
               className={`h-5 w-5 rounded-md border-2 flex items-center justify-center transition-all shrink-0 ${
-                channelPublic ? "border-lime-400 bg-lime-400" : "border-gray-300"
+                channelPublic ? "border-emerald-400 bg-[#34D399]" : "border-[#94A3B8]/40"
               }`}
             >
-              {channelPublic && <Check className="h-3 w-3 text-lime-950" />}
+              {channelPublic && <Check className="h-3 w-3 text-[#1E2A4A]" />}
             </div>
-            <div className="h-9 w-9 rounded-lg bg-lime-100 flex items-center justify-center shrink-0">
-              <Globe className="h-4 w-4 text-lime-600" />
+            <div className="h-9 w-9 rounded-lg bg-[#DDF7EE] flex items-center justify-center shrink-0">
+              <Globe className="h-4 w-4 text-[#34D399]" />
             </div>
             <div>
-              <p className="text-sm text-gray-800" style={{ fontWeight: 600 }}>Public Badge Link</p>
-              <p className="text-xs text-gray-400 mt-0.5">Generate a shareable public URL for the badge</p>
+              <p className="text-sm text-[#1E2A4A]" style={{ fontWeight: 600 }}>Public Badge Link</p>
+              <p className="text-xs text-[#94A3B8] mt-0.5">Generate a shareable public URL for the badge</p>
             </div>
           </label>
         </div>
       </div>
 
       {/* Section 4: Learner Message — only active if Issue Now */}
-      <div className={`bg-white rounded-2xl border border-gray-100 p-6 shadow-sm transition-opacity ${!isIssueNow ? "opacity-60" : ""}`}>
+      <div className={`bg-white rounded-2xl border border-[#94A3B8]/25 p-6 shadow-sm transition-opacity ${!isIssueNow ? "opacity-60" : ""}`}>
         <div className="flex items-start justify-between mb-1">
-          <h3 className="text-gray-900" style={{ fontWeight: 600 }}>Learner Message</h3>
+          <h3 className="text-[#1E2A4A]" style={{ fontWeight: 600 }}>Learner Message</h3>
           {!isIssueNow && (
-            <span className="px-2.5 py-0.5 rounded-full bg-gray-100 text-[10px] text-gray-400 shrink-0" style={{ fontWeight: 600 }}>Configured on issue</span>
+            <span className="px-2.5 py-0.5 rounded-full bg-[#EDF2F7] text-[10px] text-[#94A3B8] shrink-0" style={{ fontWeight: 600 }}>Configured on issue</span>
           )}
         </div>
-        <p className="text-sm text-gray-400 mb-5">Customize the notification your recipients will receive</p>
+        <p className="text-sm text-[#94A3B8] mb-5">Customize the notification your recipients will receive</p>
 
         {!isIssueNow && (
-          <div className="flex items-center gap-2.5 px-3.5 py-3 rounded-xl bg-amber-50/60 border border-amber-100">
-            <Info className="h-4 w-4 text-amber-400 shrink-0" />
-            <p className="text-xs text-amber-600">Notifications will be configured when you issue the badge.</p>
+          <div className="flex items-center gap-2.5 px-3.5 py-3 rounded-xl bg-[#EEF2FF] border border-[#94A3B8]/30">
+            <Info className="h-4 w-4 text-[#4F6DF5] shrink-0" />
+            <p className="text-xs text-[#4F6DF5]">Notifications will be configured when you issue the badge.</p>
           </div>
         )}
 
         {isIssueNow && (
           <div className="space-y-4">
             <div>
-              <label className="text-sm text-gray-600 mb-1.5 block" style={{ fontWeight: 500 }}>Subject Line</label>
+              <label className="text-sm text-[#94A3B8] mb-1.5 block" style={{ fontWeight: 500 }}>Subject Line</label>
               <div className="relative">
-                <MessageSquare className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-300" />
+                <MessageSquare className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-[#94A3B8]" />
                 <input
                   type="text"
                   value={subject}
                   onChange={(e) => setSubject(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-gray-50/80 border border-gray-100 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-lime-200 transition-all"
+                  className="w-full pl-10 pr-4 py-2.5 rounded-xl bg-[#F5F7FA] border border-[#94A3B8]/25 text-sm text-[#1E2A4A] focus:outline-none focus:ring-2 focus:ring-emerald-200 transition-all"
                 />
               </div>
             </div>
             <div>
-              <label className="text-sm text-gray-600 mb-1.5 block" style={{ fontWeight: 500 }}>Message Body</label>
+              <label className="text-sm text-[#94A3B8] mb-1.5 block" style={{ fontWeight: 500 }}>Message Body</label>
               <textarea
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
                 rows={4}
                 maxLength={1000}
-                className="w-full px-4 py-3 rounded-xl bg-gray-50/80 border border-gray-100 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-lime-200 resize-none transition-all placeholder:text-gray-300"
+                className="w-full px-4 py-3 rounded-xl bg-[#F5F7FA] border border-[#94A3B8]/25 text-sm text-[#1E2A4A] focus:outline-none focus:ring-2 focus:ring-emerald-200 resize-none transition-all placeholder:text-[#94A3B8]"
               />
               <div className="flex justify-end mt-1">
-                <p className={`text-xs ${message.length > 800 ? "text-amber-500" : "text-gray-300"}`}>
+                <p className={`text-xs ${message.length > 800 ? "text-[#4F6DF5]" : "text-[#94A3B8]"}`}>
                   {message.length}/1000
                 </p>
               </div>
             </div>
             {/* Mini preview */}
-            <div className="rounded-xl bg-gray-50 border border-gray-100 p-4">
+            <div className="rounded-xl bg-[#F5F7FA] border border-[#94A3B8]/25 p-4">
               <div className="flex items-center gap-2 mb-2">
-                <Eye className="h-3.5 w-3.5 text-gray-400" />
-                <span className="text-[10px] text-gray-400" style={{ fontWeight: 600 }}>EMAIL PREVIEW</span>
+                <Eye className="h-3.5 w-3.5 text-[#94A3B8]" />
+                <span className="text-[10px] text-[#94A3B8]" style={{ fontWeight: 600 }}>EMAIL PREVIEW</span>
               </div>
-              <div className="rounded-lg bg-white border border-gray-100 p-4">
-                <p className="text-xs text-gray-800 mb-2" style={{ fontWeight: 600 }}>{subject || "No subject"}</p>
-                <p className="text-[11px] text-gray-500 whitespace-pre-line">{message || "No message content"}</p>
-                <div className="mt-3 pt-3 border-t border-gray-100 flex items-center gap-2">
-                  <div className="h-6 w-6 rounded-md bg-lime-100 flex items-center justify-center">
-                    <Award className="h-3 w-3 text-lime-600" />
+              <div className="rounded-lg bg-white border border-[#94A3B8]/25 p-4">
+                <p className="text-xs text-[#1E2A4A] mb-2" style={{ fontWeight: 600 }}>{subject || "No subject"}</p>
+                <p className="text-[11px] text-[#94A3B8] whitespace-pre-line">{message || "No message content"}</p>
+                <div className="mt-3 pt-3 border-t border-[#94A3B8]/25 flex items-center gap-2">
+                  <div className="h-6 w-6 rounded-md bg-[#DDF7EE] flex items-center justify-center">
+                    <Award className="h-3 w-3 text-[#34D399]" />
                   </div>
-                  <span className="text-[10px] text-gray-400">View your badge on BadgeFlow</span>
+                  <span className="text-[10px] text-[#94A3B8]">View your badge on BadgeFlow</span>
                 </div>
               </div>
             </div>
@@ -2212,38 +2212,38 @@ function StepDelivery() {
       </div>
 
       {/* Section 5: Sharing Options */}
-      <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
-        <h3 className="text-gray-900 mb-1" style={{ fontWeight: 600 }}>Sharing Options</h3>
-        <p className="text-sm text-gray-400 mb-5">Control how recipients can share their badge</p>
+      <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-6 shadow-sm">
+        <h3 className="text-[#1E2A4A] mb-1" style={{ fontWeight: 600 }}>Sharing Options</h3>
+        <p className="text-sm text-[#94A3B8] mb-5">Control how recipients can share their badge</p>
         <div className="space-y-3">
-          <label className="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50 transition-colors cursor-pointer">
+          <label className="flex items-center gap-3 p-3 rounded-xl hover:bg-[#F5F7FA] transition-colors cursor-pointer">
             <div
               onClick={() => setShareLinkedIn(!shareLinkedIn)}
               className={`h-5 w-5 rounded-md border-2 flex items-center justify-center transition-all shrink-0 ${
-                shareLinkedIn ? "border-lime-400 bg-lime-400" : "border-gray-300"
+                shareLinkedIn ? "border-emerald-400 bg-[#34D399]" : "border-[#94A3B8]/40"
               }`}
             >
-              {shareLinkedIn && <Check className="h-3 w-3 text-lime-950" />}
+              {shareLinkedIn && <Check className="h-3 w-3 text-[#1E2A4A]" />}
             </div>
-            <Linkedin className="h-4 w-4 text-gray-400 shrink-0" />
+            <Linkedin className="h-4 w-4 text-[#94A3B8] shrink-0" />
             <div>
-              <p className="text-sm text-gray-700" style={{ fontWeight: 500 }}>Enable LinkedIn Share Button</p>
-              <p className="text-xs text-gray-400 mt-0.5">Recipients can share their badge directly to LinkedIn</p>
+              <p className="text-sm text-[#1E2A4A]" style={{ fontWeight: 500 }}>Enable LinkedIn Share Button</p>
+              <p className="text-xs text-[#94A3B8] mt-0.5">Recipients can share their badge directly to LinkedIn</p>
             </div>
           </label>
-          <label className="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50 transition-colors cursor-pointer">
+          <label className="flex items-center gap-3 p-3 rounded-xl hover:bg-[#F5F7FA] transition-colors cursor-pointer">
             <div
               onClick={() => setSharePublicPage(!sharePublicPage)}
               className={`h-5 w-5 rounded-md border-2 flex items-center justify-center transition-all shrink-0 ${
-                sharePublicPage ? "border-lime-400 bg-lime-400" : "border-gray-300"
+                sharePublicPage ? "border-emerald-400 bg-[#34D399]" : "border-[#94A3B8]/40"
               }`}
             >
-              {sharePublicPage && <Check className="h-3 w-3 text-lime-950" />}
+              {sharePublicPage && <Check className="h-3 w-3 text-[#1E2A4A]" />}
             </div>
-            <Globe className="h-4 w-4 text-gray-400 shrink-0" />
+            <Globe className="h-4 w-4 text-[#94A3B8] shrink-0" />
             <div>
-              <p className="text-sm text-gray-700" style={{ fontWeight: 500 }}>Public Badge Page Visible</p>
-              <p className="text-xs text-gray-400 mt-0.5">Badge details visible to anyone with the link</p>
+              <p className="text-sm text-[#1E2A4A]" style={{ fontWeight: 500 }}>Public Badge Page Visible</p>
+              <p className="text-xs text-[#94A3B8] mt-0.5">Badge details visible to anyone with the link</p>
             </div>
           </label>
         </div>
@@ -2285,17 +2285,17 @@ function StepReview({
     step: number;
     children: React.ReactNode;
   }) => (
-    <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm hover:shadow-md transition-shadow">
+    <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-5 shadow-sm hover:shadow-md transition-shadow">
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-2.5">
-          <div className="h-8 w-8 rounded-lg bg-gray-50 flex items-center justify-center">
-            <Icon className="h-4 w-4 text-gray-400" />
+          <div className="h-8 w-8 rounded-lg bg-[#F5F7FA] flex items-center justify-center">
+            <Icon className="h-4 w-4 text-[#94A3B8]" />
           </div>
-          <h4 className="text-sm text-gray-900" style={{ fontWeight: 600 }}>{title}</h4>
+          <h4 className="text-sm text-[#1E2A4A]" style={{ fontWeight: 600 }}>{title}</h4>
         </div>
         <button
           onClick={() => onEditStep(step)}
-          className="text-[11px] text-lime-600 hover:text-lime-700 transition-colors px-2.5 py-1 rounded-lg hover:bg-lime-50"
+          className="text-[11px] text-[#34D399] hover:text-[#34D399] transition-colors px-2.5 py-1 rounded-lg hover:bg-[#EAFBF5]"
           style={{ fontWeight: 600 }}
         >
           Edit
@@ -2306,9 +2306,9 @@ function StepReview({
   );
 
   const DetailRow = ({ label, value, muted }: { label: string; value: React.ReactNode; muted?: boolean }) => (
-    <div className="flex items-start justify-between py-2 border-b border-gray-50 last:border-0">
-      <span className="text-xs text-gray-400 shrink-0 w-28" style={{ fontWeight: 500 }}>{label}</span>
-      <span className={`text-xs text-right ${muted ? "text-gray-300 italic" : "text-gray-700"}`} style={{ fontWeight: muted ? 400 : 500 }}>{value}</span>
+    <div className="flex items-start justify-between py-2 border-b border-[#94A3B8]/15 last:border-0">
+      <span className="text-xs text-[#94A3B8] shrink-0 w-28" style={{ fontWeight: 500 }}>{label}</span>
+      <span className={`text-xs text-right ${muted ? "text-[#94A3B8] italic" : "text-[#1E2A4A]"}`} style={{ fontWeight: muted ? 400 : 500 }}>{value}</span>
     </div>
   );
 
@@ -2317,9 +2317,9 @@ function StepReview({
       {/* Left Column — Summary Cards */}
       <div className="lg:col-span-3 space-y-4">
         {/* Readiness banner */}
-        <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-lime-50 border border-lime-100">
-          <CheckCircle2 className="h-4 w-4 text-lime-500 shrink-0" />
-          <p className="text-xs text-lime-700" style={{ fontWeight: 500 }}>
+        <div className="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#EAFBF5] border border-emerald-100">
+          <CheckCircle2 className="h-4 w-4 text-[#34D399] shrink-0" />
+          <p className="text-xs text-[#34D399]" style={{ fontWeight: 500 }}>
             All steps complete — your badge is ready to publish.
           </p>
         </div>
@@ -2336,7 +2336,7 @@ function StepReview({
                 tags.length > 0 ? (
                   <div className="flex flex-wrap gap-1 justify-end">
                     {tags.map((t) => (
-                      <span key={t} className="px-2 py-0.5 rounded-md bg-gray-100 text-[10px] text-gray-500" style={{ fontWeight: 500 }}>
+                      <span key={t} className="px-2 py-0.5 rounded-md bg-[#EDF2F7] text-[10px] text-[#94A3B8]" style={{ fontWeight: 500 }}>
                         {t}
                       </span>
                     ))}
@@ -2348,7 +2348,7 @@ function StepReview({
             <DetailRow
               label="Badge Image"
               value={badgeImage ? (
-                <span className="inline-flex items-center gap-1 text-green-600">
+                <span className="inline-flex items-center gap-1 text-emerald-600">
                   <CheckCircle2 className="h-3 w-3" /> Uploaded
                 </span>
               ) : "Default"}
@@ -2366,11 +2366,11 @@ function StepReview({
               value={
                 <div className="space-y-1 text-right">
                   <div className="flex items-center gap-1.5 justify-end">
-                    <BookOpen className="h-3 w-3 text-lime-500" />
+                    <BookOpen className="h-3 w-3 text-[#34D399]" />
                     <span>Course Completed</span>
                   </div>
                   <div className="flex items-center gap-1.5 justify-end">
-                    <Target className="h-3 w-3 text-lime-500" />
+                    <Target className="h-3 w-3 text-[#34D399]" />
                     <span>Quiz Score ≥ 80%</span>
                   </div>
                 </div>
@@ -2389,10 +2389,10 @@ function StepReview({
               label="Channels"
               value={
                 <div className="flex items-center gap-1.5 justify-end">
-                  <Mail className="h-3 w-3 text-gray-400" />
+                  <Mail className="h-3 w-3 text-[#94A3B8]" />
                   <span>Email</span>
-                  <span className="text-gray-300 mx-0.5">·</span>
-                  <Globe className="h-3 w-3 text-gray-400" />
+                  <span className="text-[#94A3B8] mx-0.5">·</span>
+                  <Globe className="h-3 w-3 text-[#94A3B8]" />
                   <span>Public Link</span>
                 </div>
               }
@@ -2401,10 +2401,10 @@ function StepReview({
               label="Sharing"
               value={
                 <div className="flex items-center gap-1.5 justify-end">
-                  <Linkedin className="h-3 w-3 text-gray-400" />
+                  <Linkedin className="h-3 w-3 text-[#94A3B8]" />
                   <span>LinkedIn</span>
-                  <span className="text-gray-300 mx-0.5">·</span>
-                  <Globe className="h-3 w-3 text-gray-400" />
+                  <span className="text-[#94A3B8] mx-0.5">·</span>
+                  <Globe className="h-3 w-3 text-[#94A3B8]" />
                   <span>Public page</span>
                 </div>
               }
@@ -2416,83 +2416,83 @@ function StepReview({
       {/* Right Column — Previews */}
       <div className="lg:col-span-2 space-y-4">
         {/* Badge Preview Card */}
-        <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
+        <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-5 shadow-sm">
           <div className="flex items-center gap-2 mb-4">
-            <Eye className="h-3.5 w-3.5 text-gray-400" />
-            <span className="text-[10px] text-gray-400" style={{ fontWeight: 600 }}>BADGE PREVIEW</span>
+            <Eye className="h-3.5 w-3.5 text-[#94A3B8]" />
+            <span className="text-[10px] text-[#94A3B8]" style={{ fontWeight: 600 }}>BADGE PREVIEW</span>
           </div>
-          <div className="rounded-xl bg-gradient-to-br from-gray-50 to-gray-100/50 border border-gray-100 p-6 text-center">
+          <div className="rounded-xl bg-gradient-to-br from-[#F5F7FA] to-[#EDF2F7] border border-[#94A3B8]/25 p-6 text-center">
             {/* Badge visual */}
-            <div className="mx-auto h-24 w-24 rounded-2xl bg-gradient-to-br from-amber-100 to-amber-200 flex items-center justify-center mb-4 shadow-lg shadow-amber-100/50 ring-4 ring-white">
+            <div className="mx-auto h-24 w-24 rounded-2xl bg-gradient-to-br from-[#E5ECFF] to-[#DCE5FF] flex items-center justify-center mb-4 shadow-lg shadow-[#E5ECFF] ring-4 ring-white">
               {badgeImage ? (
                 <img src={badgeImage} alt="Badge" className="h-full w-full rounded-2xl object-cover" />
               ) : (
-                <Award className="h-12 w-12 text-amber-500" />
+                <Award className="h-12 w-12 text-[#4F6DF5]" />
               )}
             </div>
-            <h3 className="text-sm text-gray-900 mb-1" style={{ fontWeight: 700 }}>
+            <h3 className="text-sm text-[#1E2A4A] mb-1" style={{ fontWeight: 700 }}>
               {badgeName || "Untitled Badge"}
             </h3>
-            <p className="text-[11px] text-gray-400 mb-3 line-clamp-2">
+            <p className="text-[11px] text-[#94A3B8] mb-3 line-clamp-2">
               {shortDesc || "No description provided"}
             </p>
             {purpose && (
-              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-amber-50 text-[10px] text-amber-600" style={{ fontWeight: 600 }}>
+              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#EEF2FF] text-[10px] text-[#4F6DF5]" style={{ fontWeight: 600 }}>
                 {purposeLabel}
               </span>
             )}
-            <div className="mt-4 pt-4 border-t border-gray-200/50 flex items-center justify-center gap-1.5">
-              <div className="h-4 w-4 rounded bg-amber-100 flex items-center justify-center">
-                <Award className="h-2.5 w-2.5 text-amber-600" />
+            <div className="mt-4 pt-4 border-t border-[#94A3B8]/35 flex items-center justify-center gap-1.5">
+              <div className="h-4 w-4 rounded bg-[#E5ECFF] flex items-center justify-center">
+                <Award className="h-2.5 w-2.5 text-[#4F6DF5]" />
               </div>
-              <span className="text-[9px] text-gray-300" style={{ fontWeight: 500 }}>Issued by BadgeFlow</span>
+              <span className="text-[9px] text-[#94A3B8]" style={{ fontWeight: 500 }}>Issued by BadgeFlow</span>
             </div>
           </div>
         </div>
 
         {/* Public Badge Page Preview */}
-        <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
+        <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-5 shadow-sm">
           <div className="flex items-center gap-2 mb-4">
-            <Globe className="h-3.5 w-3.5 text-gray-400" />
-            <span className="text-[10px] text-gray-400" style={{ fontWeight: 600 }}>PUBLIC PAGE PREVIEW</span>
+            <Globe className="h-3.5 w-3.5 text-[#94A3B8]" />
+            <span className="text-[10px] text-[#94A3B8]" style={{ fontWeight: 600 }}>PUBLIC PAGE PREVIEW</span>
           </div>
-          <div className="rounded-xl border border-gray-100 overflow-hidden">
+          <div className="rounded-xl border border-[#94A3B8]/25 overflow-hidden">
             {/* Browser chrome */}
-            <div className="bg-gray-50 px-3 py-2 flex items-center gap-2 border-b border-gray-100">
+            <div className="bg-[#F5F7FA] px-3 py-2 flex items-center gap-2 border-b border-[#94A3B8]/25">
               <div className="flex gap-1.5">
-                <div className="h-2 w-2 rounded-full bg-gray-200" />
-                <div className="h-2 w-2 rounded-full bg-gray-200" />
-                <div className="h-2 w-2 rounded-full bg-gray-200" />
+                <div className="h-2 w-2 rounded-full bg-[#E2E8F0]" />
+                <div className="h-2 w-2 rounded-full bg-[#E2E8F0]" />
+                <div className="h-2 w-2 rounded-full bg-[#E2E8F0]" />
               </div>
-              <div className="flex-1 bg-white rounded px-2.5 py-0.5 text-[9px] text-gray-300 truncate border border-gray-100">
+              <div className="flex-1 bg-white rounded px-2.5 py-0.5 text-[9px] text-[#94A3B8] truncate border border-[#94A3B8]/25">
                 badgeflow.io/badge/{(badgeName || "untitled").toLowerCase().replace(/\s+/g, "-").slice(0, 20)}
               </div>
             </div>
             {/* Page content mock */}
             <div className="p-4 bg-white">
               <div className="flex items-start gap-3">
-                <div className="h-10 w-10 rounded-lg bg-amber-50 flex items-center justify-center shrink-0">
-                  <Award className="h-5 w-5 text-amber-400" />
+                <div className="h-10 w-10 rounded-lg bg-[#EEF2FF] flex items-center justify-center shrink-0">
+                  <Award className="h-5 w-5 text-[#4F6DF5]" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-[11px] text-gray-800 truncate" style={{ fontWeight: 600 }}>{badgeName || "Untitled Badge"}</p>
-                  <p className="text-[10px] text-gray-400 mt-0.5 line-clamp-2">{shortDesc || "No description"}</p>
+                  <p className="text-[11px] text-[#1E2A4A] truncate" style={{ fontWeight: 600 }}>{badgeName || "Untitled Badge"}</p>
+                  <p className="text-[10px] text-[#94A3B8] mt-0.5 line-clamp-2">{shortDesc || "No description"}</p>
                 </div>
               </div>
               <div className="mt-3 flex gap-2">
-                <div className="h-1.5 rounded-full bg-gray-100 flex-1" />
-                <div className="h-1.5 rounded-full bg-gray-100 w-2/5" />
+                <div className="h-1.5 rounded-full bg-[#EDF2F7] flex-1" />
+                <div className="h-1.5 rounded-full bg-[#EDF2F7] w-2/5" />
               </div>
               <div className="mt-2 flex gap-2">
-                <div className="h-1.5 rounded-full bg-gray-100 w-3/5" />
-                <div className="h-1.5 rounded-full bg-gray-100 flex-1" />
+                <div className="h-1.5 rounded-full bg-[#EDF2F7] w-3/5" />
+                <div className="h-1.5 rounded-full bg-[#EDF2F7] flex-1" />
               </div>
               <div className="mt-3 flex items-center gap-2">
-                <div className="h-6 px-3 rounded bg-lime-100 flex items-center">
-                  <span className="text-[9px] text-lime-700" style={{ fontWeight: 600 }}>Claim Badge</span>
+                <div className="h-6 px-3 rounded bg-[#DDF7EE] flex items-center">
+                  <span className="text-[9px] text-[#34D399]" style={{ fontWeight: 600 }}>Claim Badge</span>
                 </div>
-                <div className="h-6 px-3 rounded bg-gray-50 flex items-center">
-                  <span className="text-[9px] text-gray-400" style={{ fontWeight: 500 }}>Share</span>
+                <div className="h-6 px-3 rounded bg-[#F5F7FA] flex items-center">
+                  <span className="text-[9px] text-[#94A3B8]" style={{ fontWeight: 500 }}>Share</span>
                 </div>
               </div>
             </div>
@@ -2500,34 +2500,34 @@ function StepReview({
         </div>
 
         {/* LinkedIn Share Preview */}
-        <div className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
+        <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-5 shadow-sm">
           <div className="flex items-center gap-2 mb-4">
-            <Linkedin className="h-3.5 w-3.5 text-gray-400" />
-            <span className="text-[10px] text-gray-400" style={{ fontWeight: 600 }}>LINKEDIN SHARE PREVIEW</span>
+            <Linkedin className="h-3.5 w-3.5 text-[#94A3B8]" />
+            <span className="text-[10px] text-[#94A3B8]" style={{ fontWeight: 600 }}>LINKEDIN SHARE PREVIEW</span>
           </div>
-          <div className="rounded-xl border border-gray-200 overflow-hidden">
+          <div className="rounded-xl border border-[#94A3B8]/35 overflow-hidden">
             {/* LinkedIn post mock */}
-            <div className="bg-gradient-to-r from-amber-50 to-lime-50 h-16 flex items-center justify-center">
-              <Award className="h-8 w-8 text-amber-400" />
+            <div className="bg-gradient-to-r from-[#EEF2FF] to-emerald-50 h-16 flex items-center justify-center">
+              <Award className="h-8 w-8 text-[#4F6DF5]" />
             </div>
-            <div className="p-3 bg-white border-t border-gray-100">
-              <p className="text-[10px] text-gray-800 truncate" style={{ fontWeight: 600 }}>
+            <div className="p-3 bg-white border-t border-[#94A3B8]/25">
+              <p className="text-[10px] text-[#1E2A4A] truncate" style={{ fontWeight: 600 }}>
                 I just earned "{badgeName || "Untitled Badge"}"!
               </p>
-              <p className="text-[9px] text-gray-400 mt-0.5">badgeflow.io · Issued via BadgeFlow</p>
-              <div className="mt-2 pt-2 border-t border-gray-100 flex items-center gap-4">
-                <span className="text-[9px] text-gray-300">👍 Like</span>
-                <span className="text-[9px] text-gray-300">💬 Comment</span>
-                <span className="text-[9px] text-gray-300">🔄 Repost</span>
+              <p className="text-[9px] text-[#94A3B8] mt-0.5">badgeflow.io · Issued via BadgeFlow</p>
+              <div className="mt-2 pt-2 border-t border-[#94A3B8]/25 flex items-center gap-4">
+                <span className="text-[9px] text-[#94A3B8]">👍 Like</span>
+                <span className="text-[9px] text-[#94A3B8]">💬 Comment</span>
+                <span className="text-[9px] text-[#94A3B8]">🔄 Repost</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Final confidence note */}
-        <div className="flex items-start gap-2.5 px-4 py-3 rounded-xl bg-gray-50 border border-gray-100">
-          <Info className="h-3.5 w-3.5 text-gray-400 shrink-0 mt-0.5" />
-          <p className="text-[11px] text-gray-400">
+        <div className="flex items-start gap-2.5 px-4 py-3 rounded-xl bg-[#F5F7FA] border border-[#94A3B8]/25">
+          <Info className="h-3.5 w-3.5 text-[#94A3B8] shrink-0 mt-0.5" />
+          <p className="text-[11px] text-[#94A3B8]">
             After publishing, you can still edit badge details and add recipients at any time.
           </p>
         </div>
@@ -2560,39 +2560,39 @@ function IssueBadgePage({
     return (
       <div className="max-w-2xl mx-auto pt-8">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-green-50 mb-5">
-            <Send className="h-8 w-8 text-green-400" />
+          <div className="inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-emerald-50 mb-5">
+            <Send className="h-8 w-8 text-emerald-400" />
           </div>
-          <h1 className="text-2xl text-gray-900 mb-2" style={{ fontWeight: 700 }}>
+          <h1 className="text-2xl text-[#1E2A4A] mb-2" style={{ fontWeight: 700 }}>
             No badges to issue yet
           </h1>
-          <p className="text-gray-500 max-w-sm mx-auto">
+          <p className="text-[#94A3B8] max-w-sm mx-auto">
             Before issuing a badge, you'll need to create one first. It only takes a minute!
           </p>
         </div>
 
         {/* Visual flow */}
-        <div className="bg-white rounded-2xl border border-gray-100 p-6 mb-6">
+        <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-6 mb-6">
           <div className="flex items-center justify-center gap-3">
             <div className="flex flex-col items-center gap-2">
-              <div className="h-12 w-12 rounded-xl bg-amber-50 flex items-center justify-center">
-                <Palette className="h-6 w-6 text-amber-500" />
+              <div className="h-12 w-12 rounded-xl bg-[#EEF2FF] flex items-center justify-center">
+                <Palette className="h-6 w-6 text-[#4F6DF5]" />
               </div>
-              <span className="text-xs text-gray-500" style={{ fontWeight: 500 }}>Create</span>
+              <span className="text-xs text-[#94A3B8]" style={{ fontWeight: 500 }}>Create</span>
             </div>
-            <ChevronRight className="h-5 w-5 text-gray-300 mt-[-18px]" />
+            <ChevronRight className="h-5 w-5 text-[#94A3B8] mt-[-18px]" />
             <div className="flex flex-col items-center gap-2">
-              <div className="h-12 w-12 rounded-xl bg-green-50 flex items-center justify-center">
-                <Send className="h-6 w-6 text-green-500" />
+              <div className="h-12 w-12 rounded-xl bg-emerald-50 flex items-center justify-center">
+                <Send className="h-6 w-6 text-emerald-500" />
               </div>
-              <span className="text-xs text-gray-500" style={{ fontWeight: 500 }}>Issue</span>
+              <span className="text-xs text-[#94A3B8]" style={{ fontWeight: 500 }}>Issue</span>
             </div>
-            <ChevronRight className="h-5 w-5 text-gray-300 mt-[-18px]" />
+            <ChevronRight className="h-5 w-5 text-[#94A3B8] mt-[-18px]" />
             <div className="flex flex-col items-center gap-2">
-              <div className="h-12 w-12 rounded-xl bg-purple-50 flex items-center justify-center">
-                <CheckCircle2 className="h-6 w-6 text-purple-500" />
+              <div className="h-12 w-12 rounded-xl bg-[#EEF2FF] flex items-center justify-center">
+                <CheckCircle2 className="h-6 w-6 text-[#4F6DF5]" />
               </div>
-              <span className="text-xs text-gray-500" style={{ fontWeight: 500 }}>Accepted</span>
+              <span className="text-xs text-[#94A3B8]" style={{ fontWeight: 500 }}>Accepted</span>
             </div>
           </div>
         </div>
@@ -2600,7 +2600,7 @@ function IssueBadgePage({
         <div className="text-center">
           <Button
             onClick={() => onNavigate("create-badge")}
-            className="bg-amber-400 hover:bg-amber-500 text-amber-950 rounded-xl h-12 px-8 gap-2"
+            className="bg-[#4F6DF5] hover:bg-[#FF6B6B] text-white rounded-xl h-12 px-8 gap-2"
           >
             <PlusCircle className="h-5 w-5" />
             Create a Badge First
@@ -2613,26 +2613,26 @@ function IssueBadgePage({
   return (
     <div className="max-w-3xl">
       <div className="mb-8">
-        <h1 className="text-2xl text-gray-900" style={{ fontWeight: 700 }}>Issue Badge</h1>
-        <p className="text-gray-500 text-sm mt-1">Send a badge to recognize someone's achievement</p>
+        <h1 className="text-2xl text-[#1E2A4A]" style={{ fontWeight: 700 }}>Issue Badge</h1>
+        <p className="text-[#94A3B8] text-sm mt-1">Send a badge to recognize someone's achievement</p>
       </div>
 
       {showSuccess && (
-        <div className="mb-6 bg-green-50 border border-green-200 rounded-xl p-4 flex items-center gap-3">
-          <CheckCircle2 className="h-5 w-5 text-green-600" />
-          <p className="text-sm text-green-700" style={{ fontWeight: 500 }}>
+        <div className="mb-6 bg-emerald-50 border border-emerald-200 rounded-xl p-4 flex items-center gap-3">
+          <CheckCircle2 className="h-5 w-5 text-emerald-600" />
+          <p className="text-sm text-emerald-700" style={{ fontWeight: 500 }}>
             Badge issued successfully! The recipient will receive an email notification.
           </p>
         </div>
       )}
 
-      <div className="bg-white rounded-2xl border border-gray-100 p-6 lg:p-8 space-y-6">
+      <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-6 lg:p-8 space-y-6">
         <div>
-          <label className="text-sm text-gray-600 mb-1.5 block">Select Badge</label>
+          <label className="text-sm text-[#94A3B8] mb-1.5 block">Select Badge</label>
           <select
             value={selectedBadge}
             onChange={(e) => setSelectedBadge(e.target.value)}
-            className="w-full h-10 px-3 rounded-xl bg-gray-50 border border-gray-100 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-200"
+            className="w-full h-10 px-3 rounded-xl bg-[#F5F7FA] border border-[#94A3B8]/25 text-sm text-[#1E2A4A] focus:outline-none focus:ring-2 focus:ring-[#4F6DF5]/25"
           >
             <option value="">Choose a badge to issue...</option>
             {recentBadges.filter((b) => b.status === "Active").map((badge) => (
@@ -2642,49 +2642,49 @@ function IssueBadgePage({
         </div>
 
         <div>
-          <label className="text-sm text-gray-600 mb-1.5 block">Recipient Email</label>
+          <label className="text-sm text-[#94A3B8] mb-1.5 block">Recipient Email</label>
           <Input
             type="email"
             placeholder="recipient@example.com"
             value={recipientEmail}
             onChange={(e) => setRecipientEmail(e.target.value)}
-            className="rounded-xl bg-gray-50 border-gray-100"
+            className="rounded-xl bg-[#F5F7FA] border-[#94A3B8]/25"
           />
-          <p className="text-xs text-gray-400 mt-1.5">You can add multiple recipients separated by commas</p>
+          <p className="text-xs text-[#94A3B8] mt-1.5">You can add multiple recipients separated by commas</p>
         </div>
 
         <div>
-          <label className="text-sm text-gray-600 mb-1.5 block">Personal Message (Optional)</label>
+          <label className="text-sm text-[#94A3B8] mb-1.5 block">Personal Message (Optional)</label>
           <textarea
             placeholder="Congratulations on completing the certification..."
             value={message}
             onChange={(e) => setMessage(e.target.value)}
             rows={3}
-            className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-100 text-sm text-gray-700 focus:outline-none focus:ring-2 focus:ring-amber-200 resize-none"
+            className="w-full px-3 py-2 rounded-xl bg-[#F5F7FA] border border-[#94A3B8]/25 text-sm text-[#1E2A4A] focus:outline-none focus:ring-2 focus:ring-[#4F6DF5]/25 resize-none"
           />
         </div>
 
         <div className="flex items-center gap-4">
-          <label className="text-sm text-gray-600">Issue Date</label>
-          <Input type="date" defaultValue="2026-02-24" className="rounded-lg bg-gray-50 border-gray-100 w-auto" />
+          <label className="text-sm text-[#94A3B8]">Issue Date</label>
+          <Input type="date" defaultValue="2026-02-24" className="rounded-lg bg-[#F5F7FA] border-[#94A3B8]/25 w-auto" />
         </div>
 
-        <div className="flex gap-3 pt-4 border-t border-gray-100">
-          <Button variant="outline" className="rounded-xl px-6 border-gray-200">Preview</Button>
-          <Button onClick={handleIssue} className="rounded-xl px-6 bg-green-600 hover:bg-green-700 text-white flex-1 sm:flex-none gap-2">
+        <div className="flex gap-3 pt-4 border-t border-[#94A3B8]/25">
+          <Button variant="outline" className="rounded-xl px-6 border-[#94A3B8]/35">Preview</Button>
+          <Button onClick={handleIssue} className="rounded-xl px-6 bg-emerald-600 hover:bg-emerald-700 text-white flex-1 sm:flex-none gap-2">
             <Send className="h-4 w-4" />
             Issue Badge
           </Button>
         </div>
       </div>
 
-      <div className="mt-6 bg-white rounded-2xl border border-gray-100 p-5 flex items-center gap-4">
-        <div className="h-10 w-10 rounded-xl bg-purple-50 flex items-center justify-center shrink-0">
-          <Users className="h-5 w-5 text-purple-500" />
+      <div className="mt-6 bg-white rounded-2xl border border-[#94A3B8]/25 p-5 flex items-center gap-4">
+        <div className="h-10 w-10 rounded-xl bg-[#EEF2FF] flex items-center justify-center shrink-0">
+          <Users className="h-5 w-5 text-[#4F6DF5]" />
         </div>
         <div className="flex-1">
-          <p className="text-sm text-gray-700" style={{ fontWeight: 500 }}>Need to issue badges in bulk?</p>
-          <p className="text-xs text-gray-400">Upload a CSV file to issue badges to multiple recipients at once. Available on Pro plan.</p>
+          <p className="text-sm text-[#1E2A4A]" style={{ fontWeight: 500 }}>Need to issue badges in bulk?</p>
+          <p className="text-xs text-[#94A3B8]">Upload a CSV file to issue badges to multiple recipients at once. Available on Pro plan.</p>
         </div>
       </div>
     </div>
@@ -2705,54 +2705,54 @@ function RecipientsPage({
     return (
       <div className="max-w-2xl mx-auto pt-8">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-purple-50 mb-5">
-            <Users className="h-8 w-8 text-purple-400" />
+          <div className="inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-[#EEF2FF] mb-5">
+            <Users className="h-8 w-8 text-[#4F6DF5]" />
           </div>
-          <h1 className="text-2xl text-gray-900 mb-2" style={{ fontWeight: 700 }}>
+          <h1 className="text-2xl text-[#1E2A4A] mb-2" style={{ fontWeight: 700 }}>
             No recipients yet
           </h1>
-          <p className="text-gray-500 max-w-sm mx-auto">
+          <p className="text-[#94A3B8] max-w-sm mx-auto">
             Recipients will appear here after you issue your first badge. Start by creating a badge, then issue it to someone.
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-100 p-6 mb-6">
-          <div className="flex items-center gap-4 p-3 rounded-xl bg-gray-50">
-            <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
-              <Users className="h-5 w-5 text-gray-400" />
+        <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-6 mb-6">
+          <div className="flex items-center gap-4 p-3 rounded-xl bg-[#F5F7FA]">
+            <div className="h-10 w-10 rounded-full bg-[#E2E8F0] flex items-center justify-center">
+              <Users className="h-5 w-5 text-[#94A3B8]" />
             </div>
             <div className="flex-1">
-              <div className="h-3 w-32 bg-gray-200 rounded-full mb-2"></div>
-              <div className="h-2.5 w-48 bg-gray-100 rounded-full"></div>
+              <div className="h-3 w-32 bg-[#E2E8F0] rounded-full mb-2"></div>
+              <div className="h-2.5 w-48 bg-[#EDF2F7] rounded-full"></div>
             </div>
-            <div className="h-6 w-14 bg-gray-200 rounded-full"></div>
+            <div className="h-6 w-14 bg-[#E2E8F0] rounded-full"></div>
           </div>
           <div className="flex items-center gap-4 p-3 rounded-xl opacity-60">
-            <div className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center">
-              <Users className="h-5 w-5 text-gray-300" />
+            <div className="h-10 w-10 rounded-full bg-[#EDF2F7] flex items-center justify-center">
+              <Users className="h-5 w-5 text-[#94A3B8]" />
             </div>
             <div className="flex-1">
-              <div className="h-3 w-28 bg-gray-100 rounded-full mb-2"></div>
-              <div className="h-2.5 w-40 bg-gray-50 rounded-full"></div>
+              <div className="h-3 w-28 bg-[#EDF2F7] rounded-full mb-2"></div>
+              <div className="h-2.5 w-40 bg-[#F5F7FA] rounded-full"></div>
             </div>
-            <div className="h-6 w-14 bg-gray-100 rounded-full"></div>
+            <div className="h-6 w-14 bg-[#EDF2F7] rounded-full"></div>
           </div>
           <div className="flex items-center gap-4 p-3 rounded-xl opacity-30">
-            <div className="h-10 w-10 rounded-full bg-gray-100 flex items-center justify-center">
-              <Users className="h-5 w-5 text-gray-200" />
+            <div className="h-10 w-10 rounded-full bg-[#EDF2F7] flex items-center justify-center">
+              <Users className="h-5 w-5 text-[#CBD5E1]" />
             </div>
             <div className="flex-1">
-              <div className="h-3 w-36 bg-gray-50 rounded-full mb-2"></div>
-              <div className="h-2.5 w-44 bg-gray-50 rounded-full"></div>
+              <div className="h-3 w-36 bg-[#F5F7FA] rounded-full mb-2"></div>
+              <div className="h-2.5 w-44 bg-[#F5F7FA] rounded-full"></div>
             </div>
-            <div className="h-6 w-14 bg-gray-50 rounded-full"></div>
+            <div className="h-6 w-14 bg-[#F5F7FA] rounded-full"></div>
           </div>
         </div>
 
         <div className="text-center">
           <Button
             onClick={() => onNavigate("create-badge")}
-            className="bg-amber-400 hover:bg-amber-500 text-amber-950 rounded-xl h-12 px-8 gap-2"
+            className="bg-[#4F6DF5] hover:bg-[#FF6B6B] text-white rounded-xl h-12 px-8 gap-2"
           >
             <PlusCircle className="h-5 w-5" />
             Create a Badge to Get Started
@@ -2771,34 +2771,34 @@ function RecipientsPage({
   ];
 
   const avatarColors = [
-    "bg-amber-100 text-amber-700", "bg-green-100 text-green-700", "bg-purple-100 text-purple-700",
-    "bg-amber-100 text-amber-700", "bg-rose-100 text-rose-700",
+    "bg-[#E5ECFF] text-[#4F6DF5]", "bg-emerald-100 text-emerald-700", "bg-[#E5ECFF] text-[#4F6DF5]",
+    "bg-[#E5ECFF] text-[#4F6DF5]", "bg-[#FFE4E4] text-[#FF6B6B]",
   ];
 
   return (
     <div className="max-w-5xl">
       <div className="flex items-center justify-between mb-8">
         <div>
-          <h1 className="text-2xl text-gray-900" style={{ fontWeight: 700 }}>Recipients</h1>
-          <p className="text-gray-500 text-sm mt-1">People who have received your badges</p>
+          <h1 className="text-2xl text-[#1E2A4A]" style={{ fontWeight: 700 }}>Recipients</h1>
+          <p className="text-[#94A3B8] text-sm mt-1">People who have received your badges</p>
         </div>
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden">
+      <div className="bg-white rounded-2xl border border-[#94A3B8]/25 overflow-hidden">
         <div className="overflow-x-auto">
           <table className="w-full">
             <thead>
-              <tr className="border-b border-gray-100">
-                <th className="text-left px-6 py-4 text-xs text-gray-400" style={{ fontWeight: 500 }}>Recipient</th>
-                <th className="text-left px-6 py-4 text-xs text-gray-400 hidden sm:table-cell" style={{ fontWeight: 500 }}>Email</th>
-                <th className="text-left px-6 py-4 text-xs text-gray-400" style={{ fontWeight: 500 }}>Badges</th>
-                <th className="text-left px-6 py-4 text-xs text-gray-400 hidden md:table-cell" style={{ fontWeight: 500 }}>Last Issued</th>
+              <tr className="border-b border-[#94A3B8]/25">
+                <th className="text-left px-6 py-4 text-xs text-[#94A3B8]" style={{ fontWeight: 500 }}>Recipient</th>
+                <th className="text-left px-6 py-4 text-xs text-[#94A3B8] hidden sm:table-cell" style={{ fontWeight: 500 }}>Email</th>
+                <th className="text-left px-6 py-4 text-xs text-[#94A3B8]" style={{ fontWeight: 500 }}>Badges</th>
+                <th className="text-left px-6 py-4 text-xs text-[#94A3B8] hidden md:table-cell" style={{ fontWeight: 500 }}>Last Issued</th>
                 <th className="px-6 py-4"></th>
               </tr>
             </thead>
             <tbody>
               {recipients.map((r, i) => (
-                <tr key={r.id} className="border-b border-gray-50 hover:bg-gray-50 transition-colors">
+                <tr key={r.id} className="border-b border-[#94A3B8]/15 hover:bg-[#F5F7FA] transition-colors">
                   <td className="px-6 py-4">
                     <div className="flex items-center gap-3">
                       <div
@@ -2807,16 +2807,16 @@ function RecipientsPage({
                       >
                         {r.avatar}
                       </div>
-                      <span className="text-sm text-gray-900" style={{ fontWeight: 500 }}>{r.name}</span>
+                      <span className="text-sm text-[#1E2A4A]" style={{ fontWeight: 500 }}>{r.name}</span>
                     </div>
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-500 hidden sm:table-cell">{r.email}</td>
+                  <td className="px-6 py-4 text-sm text-[#94A3B8] hidden sm:table-cell">{r.email}</td>
                   <td className="px-6 py-4">
-                    <span className="text-sm text-gray-700 bg-gray-100 px-2.5 py-1 rounded-full">{r.badges}</span>
+                    <span className="text-sm text-[#1E2A4A] bg-[#EDF2F7] px-2.5 py-1 rounded-full">{r.badges}</span>
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-400 hidden md:table-cell">{r.lastIssued}</td>
+                  <td className="px-6 py-4 text-sm text-[#94A3B8] hidden md:table-cell">{r.lastIssued}</td>
                   <td className="px-6 py-4">
-                    <button className="text-gray-300 hover:text-gray-500">
+                    <button className="text-[#94A3B8] hover:text-[#1E2A4A]">
                       <MoreHorizontal className="h-4 w-4" />
                     </button>
                   </td>
@@ -2844,33 +2844,33 @@ function AnalyticsPage({
     return (
       <div className="max-w-2xl mx-auto pt-8">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-amber-50 mb-5">
-            <BarChart3 className="h-8 w-8 text-amber-400" />
+          <div className="inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-[#EEF2FF] mb-5">
+            <BarChart3 className="h-8 w-8 text-[#4F6DF5]" />
           </div>
-          <h1 className="text-2xl text-gray-900 mb-2" style={{ fontWeight: 700 }}>
+          <h1 className="text-2xl text-[#1E2A4A] mb-2" style={{ fontWeight: 700 }}>
             No analytics data yet
           </h1>
-          <p className="text-gray-500 max-w-sm mx-auto">
+          <p className="text-[#94A3B8] max-w-sm mx-auto">
             Once you start issuing badges, you'll see data on views, acceptance rates, and engagement trends right here.
           </p>
         </div>
 
         {/* Preview of what analytics looks like */}
-        <div className="bg-white rounded-2xl border border-gray-100 p-6 mb-6">
-          <p className="text-xs text-gray-400 mb-4" style={{ fontWeight: 500 }}>PREVIEW</p>
+        <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-6 mb-6">
+          <p className="text-xs text-[#94A3B8] mb-4" style={{ fontWeight: 500 }}>PREVIEW</p>
           <div className="grid grid-cols-3 gap-4 mb-6">
             {["Issued", "Views", "Accepted"].map((label) => (
-              <div key={label} className="bg-gray-50 rounded-xl p-4 text-center">
-                <p className="text-2xl text-gray-200" style={{ fontWeight: 700 }}>—</p>
-                <p className="text-xs text-gray-400 mt-1">{label}</p>
+              <div key={label} className="bg-[#F5F7FA] rounded-xl p-4 text-center">
+                <p className="text-2xl text-[#CBD5E1]" style={{ fontWeight: 700 }}>—</p>
+                <p className="text-xs text-[#94A3B8] mt-1">{label}</p>
               </div>
             ))}
           </div>
           <div className="flex items-end gap-3 h-24">
             {[20, 35, 25, 45, 55, 40].map((h, i) => (
               <div key={i} className="flex-1 flex flex-col items-center gap-1">
-                <div className="w-full bg-gray-100 rounded-t-lg" style={{ height: `${h}%` }}></div>
-                <span className="text-[10px] text-gray-300">—</span>
+                <div className="w-full bg-[#EDF2F7] rounded-t-lg" style={{ height: `${h}%` }}></div>
+                <span className="text-[10px] text-[#94A3B8]">—</span>
               </div>
             ))}
           </div>
@@ -2879,7 +2879,7 @@ function AnalyticsPage({
         <div className="text-center">
           <Button
             onClick={() => onNavigate("create-badge")}
-            className="bg-amber-400 hover:bg-amber-500 text-amber-950 rounded-xl h-12 px-8 gap-2"
+            className="bg-[#4F6DF5] hover:bg-[#FF6B6B] text-white rounded-xl h-12 px-8 gap-2"
           >
             <PlusCircle className="h-5 w-5" />
             Create a Badge to Start Tracking
@@ -2898,48 +2898,48 @@ function AnalyticsPage({
   return (
     <div className="max-w-5xl">
       <div className="mb-8">
-        <h1 className="text-2xl text-gray-900" style={{ fontWeight: 700 }}>Analytics</h1>
-        <p className="text-gray-500 text-sm mt-1">Track how your badges are performing</p>
+        <h1 className="text-2xl text-[#1E2A4A]" style={{ fontWeight: 700 }}>Analytics</h1>
+        <p className="text-[#94A3B8] text-sm mt-1">Track how your badges are performing</p>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
-        <div className="bg-white rounded-2xl border border-gray-100 p-5">
-          <p className="text-xs text-gray-400 mb-1">Total Issued (6 mo)</p>
-          <p className="text-3xl text-gray-900" style={{ fontWeight: 700 }}>103</p>
-          <p className="text-xs text-green-600 mt-1">+42% vs previous period</p>
+        <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-5">
+          <p className="text-xs text-[#94A3B8] mb-1">Total Issued (6 mo)</p>
+          <p className="text-3xl text-[#1E2A4A]" style={{ fontWeight: 700 }}>103</p>
+          <p className="text-xs text-emerald-600 mt-1">+42% vs previous period</p>
         </div>
-        <div className="bg-white rounded-2xl border border-gray-100 p-5">
-          <p className="text-xs text-gray-400 mb-1">Total Views</p>
-          <p className="text-3xl text-gray-900" style={{ fontWeight: 700 }}>1,630</p>
-          <p className="text-xs text-green-600 mt-1">+28% vs previous period</p>
+        <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-5">
+          <p className="text-xs text-[#94A3B8] mb-1">Total Views</p>
+          <p className="text-3xl text-[#1E2A4A]" style={{ fontWeight: 700 }}>1,630</p>
+          <p className="text-xs text-emerald-600 mt-1">+28% vs previous period</p>
         </div>
-        <div className="bg-white rounded-2xl border border-gray-100 p-5">
-          <p className="text-xs text-gray-400 mb-1">Acceptance Rate</p>
-          <p className="text-3xl text-gray-900" style={{ fontWeight: 700 }}>94%</p>
-          <p className="text-xs text-green-600 mt-1">+3% vs previous period</p>
+        <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-5">
+          <p className="text-xs text-[#94A3B8] mb-1">Acceptance Rate</p>
+          <p className="text-3xl text-[#1E2A4A]" style={{ fontWeight: 700 }}>94%</p>
+          <p className="text-xs text-emerald-600 mt-1">+3% vs previous period</p>
         </div>
       </div>
 
-      <div className="bg-white rounded-2xl border border-gray-100 p-6">
-        <h2 className="text-gray-900 mb-6" style={{ fontWeight: 600 }}>Badges Issued Per Month</h2>
+      <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-6">
+        <h2 className="text-[#1E2A4A] mb-6" style={{ fontWeight: 600 }}>Badges Issued Per Month</h2>
         <div className="flex items-end gap-3 h-48">
           {monthlyData.map((d) => (
             <div key={d.month} className="flex-1 flex flex-col items-center gap-2">
-              <span className="text-xs text-gray-500" style={{ fontWeight: 500 }}>{d.issued}</span>
+              <span className="text-xs text-[#94A3B8]" style={{ fontWeight: 500 }}>{d.issued}</span>
               <div
-                className="w-full bg-amber-400 rounded-t-lg transition-all hover:bg-amber-500"
+                className="w-full bg-[#4F6DF5] rounded-t-lg transition-all hover:bg-[#FF6B6B]"
                 style={{ height: `${(d.issued / maxIssued) * 100}%`, minHeight: "8px" }}
               />
-              <span className="text-xs text-gray-400">{d.month}</span>
+              <span className="text-xs text-[#94A3B8]">{d.month}</span>
             </div>
           ))}
         </div>
       </div>
 
       <div className="mt-6 text-center">
-        <p className="text-xs text-gray-400">
+        <p className="text-xs text-[#94A3B8]">
           Want detailed analytics with custom reports?{" "}
-          <button className="text-amber-600 hover:text-amber-700">Explore Pro features →</button>
+          <button className="text-[#4F6DF5] hover:text-[#FF6B6B]">Explore Pro features →</button>
         </p>
       </div>
     </div>
@@ -2953,77 +2953,77 @@ function SettingsPage() {
   return (
     <div className="max-w-3xl">
       <div className="mb-8">
-        <h1 className="text-2xl text-gray-900" style={{ fontWeight: 700 }}>Settings</h1>
-        <p className="text-gray-500 text-sm mt-1">Manage your account and organization settings</p>
+        <h1 className="text-2xl text-[#1E2A4A]" style={{ fontWeight: 700 }}>Settings</h1>
+        <p className="text-[#94A3B8] text-sm mt-1">Manage your account and organization settings</p>
       </div>
 
       <div className="space-y-6">
-        <div className="bg-white rounded-2xl border border-gray-100 p-6">
-          <h2 className="text-gray-900 mb-4" style={{ fontWeight: 600 }}>Profile</h2>
+        <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-6">
+          <h2 className="text-[#1E2A4A] mb-4" style={{ fontWeight: 600 }}>Profile</h2>
           <div className="flex items-center gap-4 mb-6">
-            <div className="h-16 w-16 rounded-full bg-amber-100 flex items-center justify-center">
-              <span className="text-lg text-amber-700" style={{ fontWeight: 600 }}>JD</span>
+            <div className="h-16 w-16 rounded-full bg-[#E5ECFF] flex items-center justify-center">
+              <span className="text-lg text-[#4F6DF5]" style={{ fontWeight: 600 }}>JD</span>
             </div>
             <div>
-              <p className="text-gray-900" style={{ fontWeight: 500 }}>John Doe</p>
-              <p className="text-sm text-gray-400">john@example.com</p>
+              <p className="text-[#1E2A4A]" style={{ fontWeight: 500 }}>John Doe</p>
+              <p className="text-sm text-[#94A3B8]">john@example.com</p>
             </div>
-            <Button variant="outline" size="sm" className="ml-auto rounded-lg border-gray-200">Edit</Button>
+            <Button variant="outline" size="sm" className="ml-auto rounded-lg border-[#94A3B8]/35">Edit</Button>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="text-sm text-gray-600 mb-1.5 block">Full Name</label>
-              <Input defaultValue="John Doe" className="rounded-xl bg-gray-50 border-gray-100" />
+              <label className="text-sm text-[#94A3B8] mb-1.5 block">Full Name</label>
+              <Input defaultValue="John Doe" className="rounded-xl bg-[#F5F7FA] border-[#94A3B8]/25" />
             </div>
             <div>
-              <label className="text-sm text-gray-600 mb-1.5 block">Email</label>
-              <Input defaultValue="john@example.com" className="rounded-xl bg-gray-50 border-gray-100" />
+              <label className="text-sm text-[#94A3B8] mb-1.5 block">Email</label>
+              <Input defaultValue="john@example.com" className="rounded-xl bg-[#F5F7FA] border-[#94A3B8]/25" />
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-100 p-6">
-          <h2 className="text-gray-900 mb-4" style={{ fontWeight: 600 }}>Organization</h2>
+        <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-6">
+          <h2 className="text-[#1E2A4A] mb-4" style={{ fontWeight: 600 }}>Organization</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <div>
-              <label className="text-sm text-gray-600 mb-1.5 block">Organization Name</label>
-              <Input defaultValue="Acme Corp" className="rounded-xl bg-gray-50 border-gray-100" />
+              <label className="text-sm text-[#94A3B8] mb-1.5 block">Organization Name</label>
+              <Input defaultValue="Acme Corp" className="rounded-xl bg-[#F5F7FA] border-[#94A3B8]/25" />
             </div>
             <div>
-              <label className="text-sm text-gray-600 mb-1.5 block">Website</label>
-              <Input defaultValue="https://acme.com" className="rounded-xl bg-gray-50 border-gray-100" />
+              <label className="text-sm text-[#94A3B8] mb-1.5 block">Website</label>
+              <Input defaultValue="https://acme.com" className="rounded-xl bg-[#F5F7FA] border-[#94A3B8]/25" />
             </div>
           </div>
         </div>
 
-        <div className="bg-white rounded-2xl border border-gray-100 p-6">
+        <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-6">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-gray-900" style={{ fontWeight: 600 }}>Your Plan</h2>
-            <span className="text-xs bg-amber-50 text-amber-700 px-3 py-1 rounded-full" style={{ fontWeight: 500 }}>Free</span>
+            <h2 className="text-[#1E2A4A]" style={{ fontWeight: 600 }}>Your Plan</h2>
+            <span className="text-xs bg-[#EEF2FF] text-[#4F6DF5] px-3 py-1 rounded-full" style={{ fontWeight: 500 }}>Free</span>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-4">
-            <div className="bg-gray-50 rounded-xl p-4">
-              <p className="text-xs text-gray-400 mb-1">Badges</p>
-              <p className="text-lg text-gray-900" style={{ fontWeight: 600 }}>3 / 5</p>
+            <div className="bg-[#F5F7FA] rounded-xl p-4">
+              <p className="text-xs text-[#94A3B8] mb-1">Badges</p>
+              <p className="text-lg text-[#1E2A4A]" style={{ fontWeight: 600 }}>3 / 5</p>
             </div>
-            <div className="bg-gray-50 rounded-xl p-4">
-              <p className="text-xs text-gray-400 mb-1">Issues / month</p>
-              <p className="text-lg text-gray-900" style={{ fontWeight: 600 }}>92 / 100</p>
+            <div className="bg-[#F5F7FA] rounded-xl p-4">
+              <p className="text-xs text-[#94A3B8] mb-1">Issues / month</p>
+              <p className="text-lg text-[#1E2A4A]" style={{ fontWeight: 600 }}>92 / 100</p>
             </div>
-            <div className="bg-gray-50 rounded-xl p-4">
-              <p className="text-xs text-gray-400 mb-1">Team Members</p>
-              <p className="text-lg text-gray-900" style={{ fontWeight: 600 }}>1 / 1</p>
+            <div className="bg-[#F5F7FA] rounded-xl p-4">
+              <p className="text-xs text-[#94A3B8] mb-1">Team Members</p>
+              <p className="text-lg text-[#1E2A4A]" style={{ fontWeight: 600 }}>1 / 1</p>
             </div>
           </div>
-          <div className="flex items-center gap-3 bg-amber-50/50 rounded-xl p-4 border border-amber-100/50">
-            <Sparkles className="h-5 w-5 text-amber-500 shrink-0" />
+          <div className="flex items-center gap-3 bg-[#EEF2FF] rounded-xl p-4 border border-[#94A3B8]/30">
+            <Sparkles className="h-5 w-5 text-[#4F6DF5] shrink-0" />
             <div className="flex-1">
-              <p className="text-sm text-gray-700" style={{ fontWeight: 500 }}>
+              <p className="text-sm text-[#1E2A4A]" style={{ fontWeight: 500 }}>
                 Unlock unlimited badges, bulk issuing, and custom branding
               </p>
-              <p className="text-xs text-gray-400 mt-0.5">Plans start at $29/month</p>
+              <p className="text-xs text-[#94A3B8] mt-0.5">Plans start at $29/month</p>
             </div>
-            <Button size="sm" className="rounded-lg bg-amber-400 hover:bg-amber-500 text-amber-950 whitespace-nowrap">
+            <Button size="sm" className="rounded-lg bg-[#4F6DF5] hover:bg-[#FF6B6B] text-white whitespace-nowrap">
               View Plans
             </Button>
           </div>

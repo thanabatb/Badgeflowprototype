@@ -90,16 +90,16 @@ export function Registration() {
         <div className="text-center mb-12">
           <button
             onClick={() => navigate("/")}
-            className="inline-flex items-center gap-2 mb-8 text-gray-400 hover:text-gray-600 transition-colors"
+            className="inline-flex items-center gap-2 mb-8 text-[#94A3B8] hover:text-[#1E2A4A] transition-colors"
           >
-            <div className="flex h-8 w-14 items-center justify-center rounded-full bg-amber-400">
+            <div className="flex h-8 w-14 items-center justify-center rounded-full bg-[#4F6DF5]">
               <div className="h-4 w-4 rounded-full bg-white ml-2"></div>
             </div>
           </button>
-          <h1 className="text-4xl font-bold text-gray-900 mb-3">
+          <h1 className="text-4xl font-bold text-[#1E2A4A] mb-3">
             Create your account
           </h1>
-          <p className="text-gray-500">
+          <p className="text-[#94A3B8]">
             Step {currentStep} of 3 - Let's get you started
           </p>
         </div>
@@ -111,24 +111,24 @@ export function Registration() {
               key={step}
               className={`h-2 rounded-full flex-1 transition-colors ${
                 step === currentStep
-                  ? "bg-amber-400"
+                  ? "bg-[#4F6DF5]"
                   : step < currentStep
-                  ? "bg-amber-200"
-                  : "bg-gray-200"
+                  ? "bg-[#DCE5FF]"
+                  : "bg-[#E2E8F0]"
               }`}
             />
           ))}
         </div>
 
         {/* Form Content */}
-        <div className="bg-gray-50 rounded-3xl p-8 md:p-12 mb-8">
+        <div className="bg-[#F5F7FA] rounded-3xl p-8 md:p-12 mb-8">
           {currentStep === 1 && (
             <div className="space-y-6">
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                <h2 className="text-2xl font-bold text-[#1E2A4A] mb-2">
                   Personal Information
                 </h2>
-                <p className="text-gray-500 text-sm">
+                <p className="text-[#94A3B8] text-sm">
                   Tell us a bit about yourself
                 </p>
               </div>
@@ -142,7 +142,7 @@ export function Registration() {
                     placeholder="Enter your full name"
                     value={formData.name}
                     onChange={(e) => updateFormData("name", e.target.value)}
-                    className="mt-2 bg-white border-gray-200 rounded-xl"
+                    className="mt-2 bg-white border-[#94A3B8]/35 rounded-xl"
                   />
                 </div>
 
@@ -154,7 +154,7 @@ export function Registration() {
                     placeholder="your.email@example.com"
                     value={formData.email}
                     onChange={(e) => updateFormData("email", e.target.value)}
-                    className="mt-2 bg-white border-gray-200 rounded-xl"
+                    className="mt-2 bg-white border-[#94A3B8]/35 rounded-xl"
                   />
                 </div>
               </div>
@@ -164,10 +164,10 @@ export function Registration() {
           {currentStep === 2 && (
             <div className="space-y-6">
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                <h2 className="text-2xl font-bold text-[#1E2A4A] mb-2">
                   Career Information
                 </h2>
-                <p className="text-gray-500 text-sm">
+                <p className="text-[#94A3B8] text-sm">
                   What do you do professionally?
                 </p>
               </div>
@@ -181,7 +181,7 @@ export function Registration() {
                     placeholder="e.g., Senior Product Designer"
                     value={formData.jobTitle}
                     onChange={(e) => updateFormData("jobTitle", e.target.value)}
-                    className="mt-2 bg-white border-gray-200 rounded-xl"
+                    className="mt-2 bg-white border-[#94A3B8]/35 rounded-xl"
                   />
                 </div>
 
@@ -193,7 +193,7 @@ export function Registration() {
                     placeholder="e.g., Acme Corporation"
                     value={formData.company}
                     onChange={(e) => updateFormData("company", e.target.value)}
-                    className="mt-2 bg-white border-gray-200 rounded-xl"
+                    className="mt-2 bg-white border-[#94A3B8]/35 rounded-xl"
                   />
                 </div>
               </div>
@@ -203,10 +203,10 @@ export function Registration() {
           {currentStep === 3 && (
             <div className="space-y-6">
               <div>
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                <h2 className="text-2xl font-bold text-[#1E2A4A] mb-2">
                   Your Skills
                 </h2>
-                <p className="text-gray-500 text-sm">
+                <p className="text-[#94A3B8] text-sm">
                   Select your areas of expertise (choose at least one)
                 </p>
               </div>
@@ -218,8 +218,8 @@ export function Registration() {
                     onClick={() => toggleSkill(skill)}
                     className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
                       formData.skills.includes(skill)
-                        ? "bg-amber-400 text-amber-950"
-                        : "bg-white text-gray-700 hover:bg-gray-100 border border-gray-200"
+                        ? "bg-[#4F6DF5] text-white"
+                        : "bg-white text-[#1E2A4A] hover:bg-[#EDF2F7] border border-[#94A3B8]/35"
                     }`}
                   >
                     {formData.skills.includes(skill) && (
@@ -231,7 +231,7 @@ export function Registration() {
               </div>
 
               <div className="pt-4">
-                <Label htmlFor="customSkill" className="text-gray-500 text-sm">
+                <Label htmlFor="customSkill" className="text-[#94A3B8] text-sm">
                   Don't see your skill? Type it below
                 </Label>
                 <Input
@@ -244,9 +244,9 @@ export function Registration() {
                       e.currentTarget.value = "";
                     }
                   }}
-                  className="mt-2 bg-white border-gray-200 rounded-xl"
+                  className="mt-2 bg-white border-[#94A3B8]/35 rounded-xl"
                 />
-                <p className="text-xs text-gray-400 mt-1">
+                <p className="text-xs text-[#94A3B8] mt-1">
                   Press Enter to add
                 </p>
               </div>
@@ -260,7 +260,7 @@ export function Registration() {
             onClick={handleBack}
             variant="outline"
             size="lg"
-            className="rounded-full px-6 border-gray-200"
+            className="rounded-full px-6 border-[#94A3B8]/35"
           >
             <ArrowLeft className="h-5 w-5 mr-2" />
             Back
@@ -270,7 +270,7 @@ export function Registration() {
             onClick={handleNext}
             disabled={!isStepValid()}
             size="lg"
-            className="flex-1 bg-amber-400 hover:bg-amber-500 text-amber-950 rounded-full disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex-1 bg-[#4F6DF5] hover:bg-[#FF6B6B] text-white rounded-full disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {currentStep === 3 ? "Complete" : "Continue"}
             {currentStep < 3 && <ArrowRight className="h-5 w-5 ml-2" />}
@@ -280,17 +280,17 @@ export function Registration() {
         {/* Step Labels */}
         <div className="flex justify-center gap-8 mt-8 text-sm">
           <span
-            className={currentStep === 1 ? "text-amber-700 font-medium" : "text-gray-400"}
+            className={currentStep === 1 ? "text-[#4F6DF5] font-medium" : "text-[#94A3B8]"}
           >
             Personal
           </span>
           <span
-            className={currentStep === 2 ? "text-amber-700 font-medium" : "text-gray-400"}
+            className={currentStep === 2 ? "text-[#4F6DF5] font-medium" : "text-[#94A3B8]"}
           >
             Career
           </span>
           <span
-            className={currentStep === 3 ? "text-amber-700 font-medium" : "text-gray-400"}
+            className={currentStep === 3 ? "text-[#4F6DF5] font-medium" : "text-[#94A3B8]"}
           >
             Skills
           </span>

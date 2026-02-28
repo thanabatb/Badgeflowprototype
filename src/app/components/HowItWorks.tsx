@@ -29,13 +29,13 @@ const steps = [
 
 export function HowItWorks() {
   return (
-    <section id="how-it-works" className="py-24 bg-gray-50">
+    <section id="how-it-works" className="py-24 bg-[#F5F7FA]">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <p className="text-sm text-amber-700 font-medium mb-3 tracking-wide">
+          <p className="text-sm text-[#4F6DF5] font-medium mb-3 tracking-wide">
             HOW IT WORKS
           </p>
-          <h2 className="text-4xl font-bold tracking-tight text-gray-900">
+          <h2 className="text-4xl font-bold tracking-tight text-[#1E2A4A]">
             From idea to impact in four steps
           </h2>
         </div>
@@ -46,17 +46,17 @@ export function HowItWorks() {
             return (
               <div key={index} className="relative text-center">
                 <div className="relative inline-flex mb-6">
-                  <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white border border-gray-200">
-                    <Icon className="h-8 w-8 text-amber-600" />
+                  <div className="flex h-20 w-20 items-center justify-center rounded-2xl bg-white border border-[#94A3B8]/35">
+                    <Icon className="h-8 w-8 text-[#4F6DF5]" />
                   </div>
-                  <div className="absolute -top-1 -right-1 flex h-7 w-7 items-center justify-center rounded-full bg-amber-400 text-amber-950 text-xs font-bold">
+                  <div className="absolute -top-1 -right-1 flex h-7 w-7 items-center justify-center rounded-full bg-[#4F6DF5] text-white text-xs font-bold">
                     {index + 1}
                   </div>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                <h3 className="text-lg font-semibold text-[#1E2A4A] mb-2">
                   {step.title}
                 </h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{step.description}</p>
+                <p className="text-[#94A3B8] text-sm leading-relaxed">{step.description}</p>
               </div>
             );
           })}

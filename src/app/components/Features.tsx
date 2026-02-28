@@ -44,10 +44,10 @@ export function Features() {
     <section id="features" className="py-24 bg-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-20">
-          <p className="text-sm text-amber-700 font-medium mb-3 tracking-wide">
+          <p className="text-sm text-[#4F6DF5] font-medium mb-3 tracking-wide">
             POWERFUL FEATURES
           </p>
-          <h2 className="text-4xl font-bold tracking-tight text-gray-900">
+          <h2 className="text-4xl font-bold tracking-tight text-[#1E2A4A]">
             Everything you need to recognize achievement
           </h2>
         </div>
@@ -57,13 +57,13 @@ export function Features() {
             const Icon = feature.icon;
             return (
               <div key={index} className="group">
-                <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-amber-50 mb-6 group-hover:bg-amber-100 transition-colors">
-                  <Icon className="h-6 w-6 text-amber-600" />
+                <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-[#EEF2FF] mb-6 group-hover:bg-[#E5ECFF] transition-colors">
+                  <Icon className="h-6 w-6 text-[#4F6DF5]" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
+                <h3 className="text-xl font-semibold text-[#1E2A4A] mb-3">
                   {feature.title}
                 </h3>
-                <p className="text-gray-500 leading-relaxed">{feature.description}</p>
+                <p className="text-[#94A3B8] leading-relaxed">{feature.description}</p>
               </div>
             );
           })}

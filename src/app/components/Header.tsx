@@ -12,20 +12,20 @@ export function Header() {
       <header className="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-sm">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 lg:px-8">
           <div className="flex items-center gap-2">
-            <div className="flex h-10 w-16 items-center justify-center rounded-full bg-amber-400">
+            <div className="flex h-10 w-16 items-center justify-center rounded-full bg-[#4F6DF5]">
               <div className="h-5 w-5 rounded-full bg-white ml-2"></div>
             </div>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex lg:gap-x-10">
-            <a href="#features" className="text-sm text-amber-700 font-medium hover:text-amber-800 transition-colors">
+            <a href="#features" className="text-sm text-[#4F6DF5] font-medium hover:text-[#FF6B6B] transition-colors">
               Solutions
             </a>
-            <a href="#how-it-works" className="text-sm text-gray-400 hover:text-gray-600 transition-colors">
+            <a href="#how-it-works" className="text-sm text-[#94A3B8] hover:text-[#1E2A4A] transition-colors">
               Lorem
             </a>
-            <a href="#about" className="text-sm text-gray-400 hover:text-gray-600 transition-colors">
+            <a href="#about" className="text-sm text-[#94A3B8] hover:text-[#1E2A4A] transition-colors">
               About
             </a>
           </div>
@@ -33,7 +33,7 @@ export function Header() {
           <div className="hidden lg:flex">
             <Button
               onClick={() => setLoginModalOpen(true)}
-              className="bg-amber-400 hover:bg-amber-500 text-amber-950 rounded-full px-6"
+              className="bg-[#4F6DF5] hover:bg-[#FF6B6B] text-white rounded-full px-6"
             >
               Login
             </Button>
@@ -45,9 +45,9 @@ export function Header() {
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             {mobileMenuOpen ? (
-              <X className="h-6 w-6 text-gray-700" />
+              <X className="h-6 w-6 text-[#1E2A4A]" />
             ) : (
-              <Menu className="h-6 w-6 text-gray-700" />
+              <Menu className="h-6 w-6 text-[#1E2A4A]" />
             )}
           </button>
         </nav>
@@ -58,19 +58,19 @@ export function Header() {
             <div className="space-y-1 px-6 py-4">
               <a
                 href="#features"
-                className="block rounded-lg px-3 py-2 text-base font-medium text-amber-700"
+                className="block rounded-lg px-3 py-2 text-base font-medium text-[#4F6DF5]"
               >
                 Solutions
               </a>
               <a
                 href="#how-it-works"
-                className="block rounded-lg px-3 py-2 text-base text-gray-400"
+                className="block rounded-lg px-3 py-2 text-base text-[#94A3B8]"
               >
                 Lorem
               </a>
               <a
                 href="#about"
-                className="block rounded-lg px-3 py-2 text-base text-gray-400"
+                className="block rounded-lg px-3 py-2 text-base text-[#94A3B8]"
               >
                 About
               </a>
@@ -81,7 +81,7 @@ export function Header() {
                   setMobileMenuOpen(false);
                   setLoginModalOpen(true);
                 }}
-                className="w-full bg-amber-400 hover:bg-amber-500 text-amber-950 rounded-full"
+                className="w-full bg-[#4F6DF5] hover:bg-[#FF6B6B] text-white rounded-full"
               >
                 Login
               </Button>
