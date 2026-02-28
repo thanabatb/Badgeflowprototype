@@ -74,7 +74,6 @@ type ActivePage =
 const sidebarMenuItems = [
   { id: "dashboard" as ActivePage, label: "Dashboard", icon: LayoutDashboard },
   { id: "my-badges" as ActivePage, label: "My Badges", icon: Award },
-  { id: "create-badge" as ActivePage, label: "Create Badge", icon: PlusCircle },
   { id: "issue-badge" as ActivePage, label: "Issue Badge", icon: Send },
   { id: "recipients" as ActivePage, label: "Recipients", icon: Users },
   { id: "analytics" as ActivePage, label: "Analytics", icon: BarChart3 },
@@ -117,41 +116,32 @@ export function Dashboard() {
 
       {/* Sidebar */}
       <aside
-        className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-white border-r border-gray-100 flex flex-col transition-transform duration-200 ${
+        className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-gray-50 border-r border-gray-200 flex flex-col transition-transform duration-200 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         }`}
       >
-        {/* Logo */}
-        <div className="flex items-center justify-between px-6 py-6 border-b border-gray-100">
-          <div className="flex items-center gap-2">
-            <div className="flex h-9 w-14 items-center justify-center rounded-full bg-amber-400">
-              <div className="h-4 w-4 rounded-full bg-white ml-2"></div>
-            </div>
-            <span className="text-gray-900" style={{ fontWeight: 600, fontSize: "1.1rem" }}>
-              BadgeFlow
-            </span>
+        {/* Quick Action */}
+        <div className="px-4 pt-6 pb-4 lg:pt-10">
+          <div className="mb-2 flex justify-end lg:hidden">
+            <button
+              className="text-gray-400 hover:text-gray-600"
+              onClick={() => setSidebarOpen(false)}
+            >
+              <X className="h-5 w-5" />
+            </button>
           </div>
-          <button
-            className="lg:hidden text-gray-400 hover:text-gray-600"
-            onClick={() => setSidebarOpen(false)}
-          >
-            <X className="h-5 w-5" />
-          </button>
-        </div>
-
-        {/* Quick Create */}
-        <div className="px-4 py-4">
           <Button
             onClick={() => setActivePage("create-badge")}
-            className="w-full bg-amber-400 hover:bg-amber-500 text-amber-950 rounded-xl h-11 gap-2"
+            className="h-14 w-full rounded-3xl bg-amber-400 text-base text-amber-950 hover:bg-amber-500"
+            style={{ fontWeight: 600 }}
           >
-            <PlusCircle className="h-4 w-4" />
-            Create Badge
+            <PlusCircle className="h-5 w-5" />
+            New Badge
           </Button>
         </div>
 
         {/* Nav Items */}
-        <nav className="flex-1 px-3 py-2 space-y-1 overflow-y-auto">
+        <nav className="flex-1 px-3 py-2 space-y-2 overflow-y-auto">
           {sidebarMenuItems.map((item) => {
             const isActive = activePage === item.id;
             return (
@@ -161,20 +151,15 @@ export function Dashboard() {
                   setActivePage(item.id);
                   setSidebarOpen(false);
                 }}
-                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm transition-colors ${
+                className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm transition-colors ${
                   isActive
-                    ? "bg-amber-50 text-amber-700"
-                    : "text-gray-500 hover:bg-gray-50 hover:text-gray-700"
+                    ? "bg-[#ebe8d9] text-[#9c3528]"
+                    : "text-gray-500 hover:bg-white/70 hover:text-gray-700"
                 }`}
-                style={{ fontWeight: isActive ? 600 : 400 }}
+                style={{ fontWeight: isActive ? 600 : 500 }}
               >
-                <item.icon className="h-[18px] w-[18px]" />
+                <item.icon className="h-6 w-6" />
                 {item.label}
-                {item.id === "my-badges" && !isNewUser && (
-                  <span className="ml-auto bg-gray-100 text-gray-500 text-xs px-2 py-0.5 rounded-full">
-                    4
-                  </span>
-                )}
               </button>
             );
           })}
@@ -185,11 +170,11 @@ export function Dashboard() {
           <div className="bg-amber-50/70 rounded-2xl p-4 border border-amber-100/50">
             <div className="flex items-center gap-2 mb-2">
               <Sparkles className="h-4 w-4 text-amber-500" />
-              <span className="text-sm text-amber-700" style={{ fontWeight: 500 }}>
+              <span className="text-base text-amber-700" style={{ fontWeight: 500 }}>
                 Free Plan
               </span>
             </div>
-            <p className="text-xs text-amber-600/70 mb-3">
+            <p className="mb-3 text-sm text-amber-600/70">
               {isNewUser ? "0 of 5 badges used" : "3 of 5 badges used this month"}
             </p>
             <div className="w-full bg-amber-100 rounded-full h-1.5 mb-3">
@@ -198,7 +183,7 @@ export function Dashboard() {
                 style={{ width: isNewUser ? "0%" : "60%" }}
               ></div>
             </div>
-            <button className="text-xs text-amber-600 hover:text-amber-700 flex items-center gap-1 transition-colors">
+            <button className="flex items-center gap-1 text-base text-amber-600 transition-colors hover:text-amber-700">
               View plans
               <ChevronRight className="h-3 w-3" />
             </button>
@@ -209,15 +194,15 @@ export function Dashboard() {
         <div className="px-4 pb-4 border-t border-gray-100 pt-4">
           <div className="flex items-center gap-3">
             <div className="h-9 w-9 rounded-full bg-amber-100 flex items-center justify-center overflow-hidden">
-              <span className="text-sm text-amber-700" style={{ fontWeight: 600 }}>
+              <span className="text-base text-amber-700" style={{ fontWeight: 600 }}>
                 JD
               </span>
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-sm text-gray-900 truncate" style={{ fontWeight: 500 }}>
+              <p className="text-base text-gray-900 truncate" style={{ fontWeight: 500 }}>
                 John Doe
               </p>
-              <p className="text-xs text-gray-400 truncate">john@example.com</p>
+              <p className="text-sm text-gray-400 truncate">john@example.com</p>
             </div>
             <button
               onClick={handleLogout}
@@ -738,6 +723,7 @@ const purposeOptions = [
 
 function CreateBadgePage() {
   const [currentStep, setCurrentStep] = useState(1);
+  const [completedSteps, setCompletedSteps] = useState<number[]>([]);
   const [badgeName, setBadgeName] = useState("");
   const [shortDesc, setShortDesc] = useState("");
   const [purpose, setPurpose] = useState("");
@@ -758,7 +744,12 @@ function CreateBadgePage() {
     setTags((prev) => prev.filter((t) => t !== tag));
   };
 
+  const isStepOneValid = badgeName.trim() !== "" && purpose.trim() !== "";
+  const canContinue = currentStep !== 1 || isStepOneValid;
+
   const handleNext = () => {
+    if (!canContinue) return;
+    setCompletedSteps((prev) => (prev.includes(currentStep) ? prev : [...prev, currentStep]));
     if (currentStep < 4) setCurrentStep((s) => s + 1);
     else {
       setShowPublishModal(true);
@@ -786,13 +777,19 @@ function CreateBadgePage() {
       <div className="bg-white rounded-2xl border border-gray-100 p-4 sm:p-6 mb-6">
         <div className="flex items-center justify-between">
           {wizardSteps.map((step, idx) => {
-            const isCompleted = currentStep > step.id;
+            const isCompleted = completedSteps.includes(step.id);
             const isCurrent = currentStep === step.id;
+            const isUnlocked = step.id === 1 || isCompleted || completedSteps.includes(step.id - 1);
             return (
               <div key={step.id} className="flex items-center flex-1 last:flex-none">
                 <button
-                  onClick={() => setCurrentStep(step.id)}
-                  className="flex items-center gap-2.5 group transition-all cursor-pointer"
+                  onClick={() => {
+                    if (isUnlocked) setCurrentStep(step.id);
+                  }}
+                  disabled={!isUnlocked}
+                  className={`flex items-center gap-2.5 group transition-all ${
+                    isUnlocked ? "cursor-pointer" : "cursor-not-allowed opacity-50"
+                  }`}
                 >
                   <div
                     className={`h-9 w-9 rounded-xl flex items-center justify-center shrink-0 transition-all ${
@@ -908,6 +905,7 @@ function CreateBadgePage() {
                 onClick={() => {
                   setShowPublishModal(false);
                   setCurrentStep(1);
+                  setCompletedSteps([]);
                   setBadgeName("");
                   setShortDesc("");
                   setPurpose("");
@@ -947,7 +945,10 @@ function CreateBadgePage() {
 
                 <Button
                   onClick={handleNext}
-                  className="rounded-xl px-6 h-11 gap-2 bg-amber-400 hover:bg-amber-500 text-amber-950"
+                  disabled={!canContinue}
+                  className={`rounded-xl px-6 h-11 gap-2 bg-amber-400 text-amber-950 ${
+                    canContinue ? "hover:bg-amber-500" : "opacity-50 cursor-not-allowed"
+                  }`}
                 >
                   {currentStep === 4 ? "Publish Badge" : "Continue"}
                   {currentStep < 4 && <ChevronRight className="h-4 w-4" />}
@@ -1094,7 +1095,7 @@ function StepIdentity({
           {/* Badge Purpose — Radio Cards */}
           <div>
             <label className="text-sm text-gray-700 mb-3 block" style={{ fontWeight: 500 }}>
-              Badge Purpose
+              Badge Purpose <span className="text-amber-500">*</span>
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               {purposeOptions.map((opt) => {

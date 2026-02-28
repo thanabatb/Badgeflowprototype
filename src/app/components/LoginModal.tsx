@@ -37,9 +37,12 @@ export function LoginModal({ open, onOpenChange }: LoginModalProps) {
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
-      <SheetContent side="right" className="w-full sm:max-w-md">
-        <SheetHeader className="mb-8">
-          <div className="flex items-center gap-2 mb-4">
+      <SheetContent
+        side="right"
+        className="w-full overflow-y-auto px-6 py-8 sm:max-w-md sm:px-8"
+      >
+        <SheetHeader className="mb-6 p-0 pr-10 text-left">
+          <div className="mb-3 flex items-center gap-2">
             <div className="flex h-10 w-16 items-center justify-center rounded-full bg-amber-400">
               <div className="h-5 w-5 rounded-full bg-white ml-2"></div>
             </div>
@@ -50,12 +53,12 @@ export function LoginModal({ open, onOpenChange }: LoginModalProps) {
           </SheetDescription>
         </SheetHeader>
 
-        <div className="space-y-6">
+        <div className="flex flex-1 flex-col">
           {/* Google Sign In Button */}
           <Button
             onClick={handleGoogleSignIn}
             variant="outline"
-            className="w-full rounded-xl border-gray-200 h-12 hover:bg-gray-50"
+            className="h-12 w-full rounded-xl border-gray-200 hover:bg-gray-50"
           >
             <svg className="w-5 h-5 mr-3" viewBox="0 0 24 24">
               <path
@@ -78,20 +81,20 @@ export function LoginModal({ open, onOpenChange }: LoginModalProps) {
             Sign in with Google
           </Button>
 
-          <div className="relative">
+          <div className="relative my-6">
             <div className="absolute inset-0 flex items-center">
               <Separator />
             </div>
             <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-white px-2 text-gray-500">
+              <span className="bg-white px-3 text-gray-500">
                 Or continue with email
               </span>
             </div>
           </div>
 
           {/* Login Form */}
-          <form onSubmit={handleLogin} className="space-y-4">
-            <div>
+          <form onSubmit={handleLogin} className="space-y-5">
+            <div className="grid gap-2">
               <Label htmlFor="login-email">Email</Label>
               <Input
                 id="login-email"
@@ -99,16 +102,17 @@ export function LoginModal({ open, onOpenChange }: LoginModalProps) {
                 placeholder="your.email@example.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="mt-2 bg-white border-gray-200 rounded-xl h-12"
+                autoComplete="email"
+                className="h-12 rounded-xl border-gray-200 bg-white"
               />
             </div>
 
-            <div>
+            <div className="grid gap-2">
               <div className="flex items-center justify-between mb-2">
                 <Label htmlFor="login-password">Password</Label>
                 <button
                   type="button"
-                  className="text-xs text-amber-700 hover:text-amber-800"
+                  className="text-xs font-medium text-amber-700 hover:text-amber-800"
                 >
                   Forgot password?
                 </button>
@@ -119,19 +123,20 @@ export function LoginModal({ open, onOpenChange }: LoginModalProps) {
                 placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="bg-white border-gray-200 rounded-xl h-12"
+                autoComplete="current-password"
+                className="h-12 rounded-xl border-gray-200 bg-white"
               />
             </div>
 
             <Button
               type="submit"
-              className="w-full bg-amber-400 hover:bg-amber-500 text-amber-950 rounded-xl h-12 mt-6"
+              className="mt-2 h-12 w-full rounded-xl bg-amber-400 text-amber-950 hover:bg-amber-500"
             >
               Sign in
             </Button>
           </form>
 
-          <div className="text-center text-sm text-gray-600">
+          <div className="mt-8 text-center text-sm text-gray-600">
             Don't have an account?{" "}
             <button
               onClick={() => {
