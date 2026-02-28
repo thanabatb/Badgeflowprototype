@@ -2,6 +2,7 @@
 
 :root {
   --font-size: 16px;
+  --font-family: 'Arimo', sans-serif;
   --flow-primary: #4f6df5;
   --flow-primary-dark: #1e2a4a;
   --flow-accent: #ff6b6b;
@@ -142,6 +143,7 @@
 
   html {
     font-size: var(--font-size);
+    font-family: var(--font-family);
   }
 
   h1 {

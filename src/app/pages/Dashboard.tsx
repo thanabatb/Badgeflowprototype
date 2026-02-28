@@ -183,7 +183,7 @@ export function Dashboard() {
                 style={{ width: isNewUser ? "0%" : "60%" }}
               ></div>
             </div>
-            <button className="flex items-center gap-1 text-base text-[#4F6DF5] transition-colors hover:text-[#FF6B6B]">
+            <button onClick={() => navigate("/pricing")} className="flex items-center gap-1 text-base text-[#4F6DF5] transition-colors hover:text-[#FF6B6B]">
               View plans
               <ChevronRight className="h-3 w-3" />
             </button>
