@@ -1,5 +1,6 @@
-import { Award, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router";
 import { Button } from "./ui/button";
 import { LoginModal } from "./LoginModal";
 
@@ -25,9 +26,9 @@ export function Header() {
             <a href="#how-it-works" className="text-sm text-[#94A3B8] hover:text-[#1E2A4A] transition-colors">
               Lorem
             </a>
-            <a href="#about" className="text-sm text-[#94A3B8] hover:text-[#1E2A4A] transition-colors">
+            <Link to="/about" className="text-sm text-[#94A3B8] hover:text-[#1E2A4A] transition-colors">
               About
-            </a>
+            </Link>
           </div>
 
           <div className="hidden lg:flex">
@@ -68,12 +69,13 @@ export function Header() {
               >
                 Lorem
               </a>
-              <a
-                href="#about"
+              <Link
+                to="/about"
                 className="block rounded-lg px-3 py-2 text-base text-[#94A3B8]"
+                onClick={() => setMobileMenuOpen(false)}
               >
                 About
-              </a>
+              </Link>
             </div>
             <div className="pt-4 space-y-2">
               <Button
