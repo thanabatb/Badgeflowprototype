@@ -56,7 +56,7 @@ export function Hero() {
           <div className="relative">
             <div className="rounded-3xl border border-[#94A3B8]/25 bg-white/70 p-3 shadow-sm">
               <img
-                src="/images/hero-badge-illustration.svg"
+                src="/images/hero-image.jpg"
                 alt="Digital badge illustration on laptop"
                 className="h-auto w-full rounded-2xl object-cover"
               />
