@@ -770,7 +770,7 @@ function CreateBadgePage() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="max-w-6xl mx-auto pb-40">
       {/* Header */}
       <div className="mb-8">
         <div className="flex items-center gap-3 mb-1">
@@ -926,37 +926,45 @@ function CreateBadgePage() {
       )}
 
       {/* Bottom Actions */}
-      <div className="mt-6 flex items-center justify-between">
-        <Button
-          variant="outline"
-          onClick={handleBack}
-          disabled={currentStep === 1}
-          className={`rounded-xl px-5 h-11 gap-2 border-gray-200 ${currentStep === 1 ? "opacity-40 cursor-not-allowed" : ""}`}
-        >
-          <ChevronLeft className="h-4 w-4" />
-          Back
-        </Button>
+      <div className="fixed bottom-0 left-0 right-0 lg:left-64 z-30 border-t border-gray-100 bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/85">
+        <div className="px-6 lg:px-8 py-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="flex items-center justify-between">
+              <Button
+                variant="outline"
+                onClick={handleBack}
+                disabled={currentStep === 1}
+                className={`rounded-xl px-5 h-11 gap-2 border-gray-200 ${currentStep === 1 ? "opacity-40 cursor-not-allowed" : ""}`}
+              >
+                <ChevronLeft className="h-4 w-4" />
+                Back
+              </Button>
 
-        <button className="text-sm text-gray-400 hover:text-gray-600 transition-colors hidden sm:block">
-          Save Draft
-        </button>
+              <div className="flex items-center gap-3">
+                <button className="text-sm text-gray-400 hover:text-gray-600 transition-colors hidden sm:block">
+                  Save Draft
+                </button>
 
-        <Button
-          onClick={handleNext}
-          className="rounded-xl px-6 h-11 gap-2 bg-amber-400 hover:bg-amber-500 text-amber-950"
-        >
-          {currentStep === 4 ? "Publish Badge" : "Continue"}
-          {currentStep < 4 && <ChevronRight className="h-4 w-4" />}
-          {currentStep === 4 && <Check className="h-4 w-4" />}
-        </Button>
-      </div>
+                <Button
+                  onClick={handleNext}
+                  className="rounded-xl px-6 h-11 gap-2 bg-amber-400 hover:bg-amber-500 text-amber-950"
+                >
+                  {currentStep === 4 ? "Publish Badge" : "Continue"}
+                  {currentStep < 4 && <ChevronRight className="h-4 w-4" />}
+                  {currentStep === 4 && <Check className="h-4 w-4" />}
+                </Button>
+              </div>
+            </div>
 
-      {/* Subtle plan note */}
-      <div className="mt-4 text-center">
-        <p className="text-xs text-gray-300">
-          Free plan allows up to 5 badge templates.{" "}
-          <button className="text-amber-500 hover:text-amber-600 transition-colors">Upgrade for unlimited →</button>
-        </p>
+            {/* Subtle plan note */}
+            <div className="mt-3 text-center">
+              <p className="text-xs text-gray-300">
+                Free plan allows up to 5 badge templates.{" "}
+                <button className="text-amber-500 hover:text-amber-600 transition-colors">Upgrade for unlimited →</button>
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
