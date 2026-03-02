@@ -61,6 +61,7 @@ import {
 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Input } from "../components/ui/input";
+import { PaletteModeToggle } from "../components/PaletteModeToggle";
 
 type ActivePage =
   | "dashboard"
@@ -116,7 +117,7 @@ export function Dashboard() {
 
       {/* Sidebar */}
       <aside
-        className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-[#F5F7FA] border-r border-[#94A3B8]/35 flex flex-col transition-transform duration-200 ${
+        className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-[var(--sidebar-surface)] border-r border-[#94A3B8]/35 flex flex-col transition-transform duration-200 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
         }`}
       >
@@ -151,15 +152,15 @@ export function Dashboard() {
                   setActivePage(item.id);
                   setSidebarOpen(false);
                 }}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm transition-colors ${
+                className={`group w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm transition-colors ${
                   isActive
-                    ? "bg-[#E5ECFF] text-[#4F6DF5] border-l-[3px] border-l-[#4F6DF5]"
-                    : "text-[#94A3B8] hover:bg-[#EEF2FF] hover:text-[#1E2A4A]"
+                    ? "bg-[#FFF5CC] border-l-[3px] border-l-[#FFB902]"
+                    : "hover:bg-[#FFFAE5]"
                 }`}
                 style={{ fontWeight: isActive ? 600 : 500 }}
               >
-                <item.icon className="h-6 w-6" />
-                {item.label}
+                <item.icon className={`h-6 w-6 ${isActive ? "text-[#B8960C]" : "text-[#6B7280] group-hover:text-[#1E2A4A]"}`} />
+                <span className={isActive ? "text-[#B8960C]" : "text-[#1E2A4A]"}>{item.label}</span>
               </button>
             );
           })}
@@ -169,21 +170,21 @@ export function Dashboard() {
         <div className="px-4 pb-4">
           <div className="bg-[#EEF2FF] rounded-2xl p-4 border border-[#94A3B8]/30">
             <div className="flex items-center gap-2 mb-2">
-              <Sparkles className="h-4 w-4 text-[#4F6DF5]" />
-              <span className="text-base text-[#4F6DF5]" style={{ fontWeight: 500 }}>
+              <Sparkles className="h-4 w-4 text-[#FFB902]" />
+              <span className="text-base text-[#B8960C]" style={{ fontWeight: 500 }}>
                 Free Plan
               </span>
             </div>
-            <p className="mb-3 text-sm text-[#4F6DF5]/70">
+            <p className="mb-3 text-sm text-[#94A3B8]">
               {isNewUser ? "0 of 5 badges used" : "3 of 5 badges used this month"}
             </p>
-            <div className="w-full bg-[#E5ECFF] rounded-full h-1.5 mb-3">
+            <div className="w-full bg-[rgba(148,163,184,0.2)] rounded-full h-1.5 mb-3">
               <div
-                className="bg-[#4F6DF5] h-1.5 rounded-full transition-all"
+                className="bg-[#FFB902] h-1.5 rounded-full transition-all"
                 style={{ width: isNewUser ? "0%" : "60%" }}
               ></div>
             </div>
-            <button onClick={() => navigate("/pricing")} className="flex items-center gap-1 text-base text-[#4F6DF5] transition-colors hover:text-[#FF6B6B]">
+            <button onClick={() => navigate("/pricing")} className="flex items-center gap-1 text-base text-support transition-colors hover:text-[#1E40AF]">
               View plans
               <ChevronRight className="h-3 w-3" />
             </button>
@@ -193,8 +194,8 @@ export function Dashboard() {
         {/* User Profile */}
         <div className="px-4 pb-4 border-t border-[#94A3B8]/25 pt-4">
           <div className="flex items-center gap-3">
-            <div className="h-9 w-9 rounded-full bg-[#E5ECFF] flex items-center justify-center overflow-hidden">
-              <span className="text-base text-[#4F6DF5]" style={{ fontWeight: 600 }}>
+            <div className="h-9 w-9 rounded-full bg-[#FFF5CC] flex items-center justify-center overflow-hidden">
+              <span className="text-base text-[#1E2A4A]" style={{ fontWeight: 600 }}>
                 JD
               </span>
             </div>
@@ -235,6 +236,7 @@ export function Dashboard() {
             </div>
           </div>
           <div className="flex items-center gap-3 ml-auto">
+            <PaletteModeToggle />
             {/* Demo toggle */}
             <button
               onClick={() => setIsNewUser(!isNewUser)}
@@ -244,7 +246,7 @@ export function Dashboard() {
               {isNewUser ? (
                 <ToggleLeft className="h-4 w-4" />
               ) : (
-                <ToggleRight className="h-4 w-4 text-[#4F6DF5]" />
+                <ToggleRight className="h-4 w-4 text-[#B8960C]" />
               )}
               {isNewUser ? "New user" : "Has data"}
             </button>
@@ -774,7 +776,7 @@ function CreateBadgePage() {
       </div>
 
       {/* Progress Indicator */}
-      <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-4 sm:p-6 mb-6">
+      <div className="bg-white rounded-2xl border border-[#94A3B8] p-4 sm:p-6 mb-6">
         <div className="flex items-center justify-between">
           {wizardSteps.map((step, idx) => {
             const isCompleted = completedSteps.includes(step.id);
@@ -796,8 +798,8 @@ function CreateBadgePage() {
                       isCompleted
                         ? "bg-[#34D399] text-white"
                         : isCurrent
-                        ? "bg-[#4F6DF5] text-[#1E2A4A] ring-2 ring-[#4F6DF5]/25"
-                        : "bg-[#F5F7FA] text-[#94A3B8]"
+                        ? "bg-[#FFB902] text-[#1E2A4A] ring-2 ring-[#FFB902]/35"
+                        : "bg-white border border-[#94A3B8] text-[#94A3B8]"
                     }`}
                   >
                     {isCompleted ? (
@@ -809,25 +811,20 @@ function CreateBadgePage() {
                   <div className="hidden sm:block text-left">
                     <p
                       className={`text-xs transition-colors ${
-                        isCurrent ? "text-[#4F6DF5]" : isCompleted ? "text-[#94A3B8]" : "text-[#94A3B8]"
+                        isCurrent ? "text-[#B8960C]" : "text-[#94A3B8]"
                       }`}
                       style={{ fontWeight: isCurrent ? 600 : 500 }}
                     >
                       {step.label}
                     </p>
-                    <p className={`text-[10px] ${isCurrent ? "text-[#4F6DF5]" : "text-[#94A3B8]"}`}>
+                    <p className={`text-[10px] ${isCurrent ? "text-[#B8960C]" : "text-[#94A3B8]"}`}>
                       Step {step.id}
                     </p>
                   </div>
                 </button>
                 {idx < wizardSteps.length - 1 && (
                   <div className="flex-1 mx-3 hidden sm:block">
-                    <div className="h-px bg-[#EDF2F7] relative">
-                      <div
-                        className="absolute inset-y-0 left-0 bg-[#34D399] transition-all duration-500"
-                        style={{ width: isCompleted ? "100%" : "0%" }}
-                      />
-                    </div>
+                    <div className="h-0.5 bg-[#6B7280]/60" />
                   </div>
                 )}
               </div>
@@ -932,14 +929,14 @@ function CreateBadgePage() {
                 variant="outline"
                 onClick={handleBack}
                 disabled={currentStep === 1}
-                className={`rounded-xl px-5 h-11 gap-2 border-[#94A3B8]/35 ${currentStep === 1 ? "opacity-40 cursor-not-allowed" : ""}`}
+                className={`rounded-xl px-5 h-11 gap-2 border-[#B8960C]/30 text-[#B8960C] hover:text-[#8A7209] hover:bg-[#FFFAE5] ${currentStep === 1 ? "opacity-40 cursor-not-allowed" : ""}`}
               >
                 <ChevronLeft className="h-4 w-4" />
                 Back
               </Button>
 
               <div className="flex items-center gap-3">
-                <button className="text-sm text-[#94A3B8] hover:text-[#1E2A4A] transition-colors hidden sm:block">
+                <button className="hidden sm:block text-sm text-[#B8960C] rounded-lg px-3 py-1.5 transition-colors hover:text-[#8A7209] hover:bg-[#FFFAE5]">
                   Save Draft
                 </button>
 
@@ -961,7 +958,7 @@ function CreateBadgePage() {
             <div className="mt-3 text-center">
               <p className="text-xs text-[#94A3B8]">
                 Free plan allows up to 5 badge templates.{" "}
-                <button className="text-[#4F6DF5] hover:text-[#FF6B6B] transition-colors">Upgrade for unlimited →</button>
+                <button className="text-support hover:text-[#1E40AF] transition-colors">Upgrade for unlimited →</button>
               </p>
             </div>
           </div>
@@ -989,7 +986,7 @@ function StepIdentity({
     <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
       {/* Left — Form (3/5 ≈ 60%) */}
       <div className="lg:col-span-3 space-y-5">
-        <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-6 lg:p-8 space-y-6">
+        <div className="bg-white rounded-2xl border border-[#94A3B8] p-6 lg:p-8 space-y-6 transition-colors hover:border-[#B8960C]">
           <div>
             <h2 className="text-[#1E2A4A] mb-1" style={{ fontWeight: 600 }}>Badge Identity</h2>
             <p className="text-sm text-[#94A3B8]">Start with the basics — name, purpose, and description.</p>
@@ -998,7 +995,7 @@ function StepIdentity({
           {/* Badge Name */}
           <div>
             <label className="text-sm text-[#1E2A4A] mb-1.5 block" style={{ fontWeight: 500 }}>
-              Badge Name <span className="text-[#4F6DF5]">*</span>
+              Badge Name <span className="text-[#EF4444]">*</span>
             </label>
             <Input
               placeholder="e.g., React Developer Certification"
@@ -1024,7 +1021,7 @@ function StepIdentity({
             />
             <div className="flex justify-between mt-1.5">
               <p className="text-xs text-[#94A3B8]">Appears in previews and shared links</p>
-              <p className={`text-xs ${shortDesc.length > 140 ? "text-[#4F6DF5]" : "text-[#94A3B8]"}`}>
+              <p className={`text-xs ${shortDesc.length > 140 ? "text-[#EF4444]" : "text-[#94A3B8]"}`}>
                 {shortDesc.length}/160
               </p>
             </div>
@@ -1068,9 +1065,9 @@ function StepIdentity({
                 </div>
               </div>
             ) : (
-              <label className="flex flex-col items-center justify-center h-40 w-full max-w-xs rounded-2xl border-2 border-dashed border-[#94A3B8]/35 bg-[#F5F7FA] hover:border-[#94A3B8]/40 hover:bg-[#EEF2FF] transition-all cursor-pointer group">
-                <div className="h-12 w-12 rounded-xl bg-[#E5ECFF] flex items-center justify-center mb-3 group-hover:bg-[#DCE5FF] transition-colors">
-                  <ImageIcon className="h-6 w-6 text-[#4F6DF5]" />
+              <label className="flex flex-col items-center justify-center h-40 w-full max-w-xs rounded-2xl border-2 border-dashed border-[#FFB902] bg-[#FFFDF5] hover:bg-[#FFFAE5] transition-all cursor-pointer group">
+                <div className="h-12 w-12 rounded-xl bg-[#FFF5CC] flex items-center justify-center mb-3 group-hover:bg-[#FFFAE5] transition-colors">
+                  <ImageIcon className="h-6 w-6 text-[#B8960C]" />
                 </div>
                 <p className="text-sm text-[#94A3B8]" style={{ fontWeight: 500 }}>Click to upload</p>
                 <p className="text-xs text-[#94A3B8] mt-1">PNG, JPG or SVG · Max 2MB</p>
@@ -1095,7 +1092,7 @@ function StepIdentity({
           {/* Badge Purpose — Radio Cards */}
           <div>
             <label className="text-sm text-[#1E2A4A] mb-3 block" style={{ fontWeight: 500 }}>
-              Badge Purpose <span className="text-[#4F6DF5]">*</span>
+              Badge Purpose <span className="text-[#EF4444]">*</span>
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
               {purposeOptions.map((opt) => {
@@ -1107,13 +1104,13 @@ function StepIdentity({
                     onClick={() => setPurpose(opt.value)}
                     className={`relative flex items-start gap-3 p-4 rounded-xl border-2 text-left transition-all ${
                       isSelected
-                        ? "border-[#94A3B8]/40 bg-[#EEF2FF]"
+                        ? "border-[#FFB902] bg-[#FFF5CC] shadow-[0_2px_12px_rgba(255,185,2,0.15)]"
                         : "border-[#94A3B8]/25 bg-white hover:border-[#94A3B8]/35 hover:bg-[#F5F7FA]"
                     }`}
                   >
                     <div
                       className={`h-9 w-9 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
-                        isSelected ? "bg-[#4F6DF5] text-white" : "bg-[#EDF2F7] text-[#94A3B8]"
+                        isSelected ? "bg-[#FFB902] text-[#1E2A4A]" : "bg-[#EDF2F7] text-[#94A3B8]"
                       }`}
                     >
                       <opt.icon className="h-4 w-4" />
@@ -1125,14 +1122,14 @@ function StepIdentity({
                       >
                         {opt.label}
                       </p>
-                      <p className={`text-xs mt-0.5 ${isSelected ? "text-[#4F6DF5]/70" : "text-[#94A3B8]"}`}>
+                      <p className={`text-xs mt-0.5 ${isSelected ? "text-[#1E2A4A]/70" : "text-[#94A3B8]"}`}>
                         {opt.desc}
                       </p>
                     </div>
                     {/* Selection indicator */}
                     <div
                       className={`absolute top-3 right-3 h-5 w-5 rounded-full border-2 flex items-center justify-center transition-all ${
-                        isSelected ? "border-[#4F6DF5] bg-[#4F6DF5]" : "border-[#94A3B8]/35"
+                        isSelected ? "border-[#FFB902] bg-[#FFB902]" : "border-[#94A3B8]/35"
                       }`}
                     >
                       {isSelected && <Check className="h-3 w-3 text-white" />}
@@ -1180,10 +1177,10 @@ function StepIdentity({
       {/* Right — Live Preview (2/5 ≈ 40%) */}
       <div className="lg:col-span-2 space-y-5">
         {/* Badge Preview Card */}
-        <div className="bg-white rounded-2xl border border-[#94A3B8]/25 p-6 sticky top-6" style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 6px 24px rgba(0,0,0,0.03)" }}>
+        <div className="bg-[#FFF5CC] rounded-2xl border-2 border-[#FFB902] p-6 sticky top-6" style={{ boxShadow: "0 1px 3px rgba(0,0,0,0.04), 0 6px 24px rgba(0,0,0,0.03)" }}>
           <div className="flex items-center justify-between mb-5">
             <p className="text-xs text-[#94A3B8]" style={{ fontWeight: 600, letterSpacing: "0.05em" }}>LIVE PREVIEW</p>
-            <div className="flex items-center gap-1 text-xs text-[#4F6DF5]">
+            <div className="flex items-center gap-1 text-xs text-[#34D399]">
               <Eye className="h-3 w-3" />
               <span style={{ fontWeight: 500 }}>Auto-updating</span>
             </div>
@@ -1194,9 +1191,9 @@ function StepIdentity({
             {badgeImage ? (
               <img src={badgeImage} alt="Badge" className="h-28 w-28 rounded-2xl object-cover border border-[#94A3B8]/25 mb-4" />
             ) : (
-              <div className="h-28 w-28 rounded-2xl bg-gradient-to-br from-[#EEF2FF] to-[#E5ECFF] border-2 border-dashed border-[#94A3B8]/35 flex flex-col items-center justify-center gap-2 mb-4">
-                <ImageIcon className="h-8 w-8 text-[#C9D7FF]" />
-                <span className="text-[10px] text-[#4F6DF5]" style={{ fontWeight: 500 }}>Badge Image</span>
+              <div className="h-28 w-28 rounded-2xl bg-gradient-to-br from-[#FFF5CC] to-[#FFFAE5] border-2 border-dashed border-[#FFB902] flex flex-col items-center justify-center gap-2 mb-4">
+                <ImageIcon className="h-8 w-8 text-[#B8960C]" />
+                <span className="text-[10px] text-[#B8960C]" style={{ fontWeight: 500 }}>Badge Image</span>
               </div>
             )}
             <h3
@@ -1213,8 +1210,8 @@ function StepIdentity({
           {/* Meta Info */}
           <div className="border-t border-[#94A3B8]/25 pt-4 space-y-3">
             <div className="flex items-center gap-2.5">
-              <div className="h-7 w-7 rounded-full bg-[#E5ECFF] flex items-center justify-center">
-                <span className="text-[10px] text-[#4F6DF5]" style={{ fontWeight: 600 }}>JD</span>
+              <div className="h-7 w-7 rounded-full bg-[#FFB902] flex items-center justify-center">
+                <span className="text-[10px] text-[#1E2A4A]" style={{ fontWeight: 600 }}>JD</span>
               </div>
               <div>
                 <p className="text-xs text-[#1E2A4A]" style={{ fontWeight: 500 }}>John Doe</p>
@@ -1223,11 +1220,11 @@ function StepIdentity({
             </div>
             {purpose && (
               <div className="flex items-center gap-2">
-                <div className="h-5 w-5 rounded bg-[#EEF2FF] flex items-center justify-center">
+                <div className="h-5 w-5 rounded bg-[#FFF5CC] flex items-center justify-center">
                   {purposeOptions.find((p) => p.value === purpose)?.icon &&
                     (() => {
                       const Icon = purposeOptions.find((p) => p.value === purpose)!.icon;
-                      return <Icon className="h-3 w-3 text-[#4F6DF5]" />;
+                      return <Icon className="h-3 w-3 text-[#B8960C]" />;
                     })()
                   }
                 </div>
@@ -1254,8 +1251,8 @@ function StepIdentity({
           {/* LinkedIn Share Preview */}
           <div className="mt-5 pt-5 border-t border-[#94A3B8]/25">
             <div className="flex items-center gap-1.5 mb-3">
-              <Share2 className="h-3 w-3 text-[#94A3B8]" />
-              <p className="text-[10px] text-[#94A3B8]" style={{ fontWeight: 600, letterSpacing: "0.05em" }}>SHARE PREVIEW</p>
+              <Share2 className="h-3 w-3 text-support" />
+              <p className="text-[10px] text-support" style={{ fontWeight: 600, letterSpacing: "0.05em" }}>SHARE PREVIEW</p>
             </div>
             <div className="rounded-xl border border-[#94A3B8]/25 overflow-hidden">
               <div className="bg-[#F5F7FA] h-16 flex items-center justify-center overflow-hidden">

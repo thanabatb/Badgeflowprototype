@@ -21,6 +21,7 @@
   --royal-blue: #2563eb;
   --royal-blue-pressed: #1e40af;
   --warm-cloud: #fffdf5;
+  --warm-gray: #6b7280;
 
   /* Palette A (default) semantic mapping */
   --brand-color: var(--trail-blue);
@@ -38,6 +39,9 @@
   --achievement-color: var(--campfire-gold);
   --interactive-surface-hover: #e7edff;
   --interactive-surface-active: #dce5ff;
+  --secondary-text-color: var(--slate);
+  --muted-text-color: var(--slate);
+  --sidebar-surface: var(--flow-neutral-light);
   --badge-hover-bg: var(--campfire-gold);
   --card-hover-shadow: rgba(79, 109, 245, 0.1);
   --card-selected-shadow: rgba(79, 109, 245, 0.15);
@@ -114,6 +118,9 @@
   --achievement-color: var(--amber-sun);
   --interactive-surface-hover: #fffae5;
   --interactive-surface-active: #fff5cc;
+  --secondary-text-color: var(--warm-gray);
+  --muted-text-color: var(--slate);
+  --sidebar-surface: #fffae5;
   --badge-hover-bg: var(--golden-sun);
   --card-hover-shadow: rgba(255, 185, 2, 0.1);
   --card-selected-shadow: rgba(255, 185, 2, 0.15);
@@ -431,6 +438,47 @@
 
   :root[data-palette='b'] .text-\[\#C9D7FF\] {
     color: color-mix(in srgb, var(--action-color) 45%, white) !important;
+  }
+
+  :root[data-palette='b'] .text-\[\#94A3B8\] {
+    color: var(--secondary-text-color) !important;
+  }
+
+  :root[data-palette='b'] .text-\[\#94A3B8\]\/70 {
+    color: color-mix(in srgb, var(--secondary-text-color) 70%, transparent) !important;
+  }
+
+  :root[data-palette='b'] .text-\[\#94A3B8\]\/80 {
+    color: color-mix(in srgb, var(--secondary-text-color) 80%, transparent) !important;
+  }
+
+  :root[data-palette='b'] .placeholder\:text-\[\#94A3B8\]::placeholder {
+    color: var(--muted-text-color) !important;
+    opacity: 1 !important;
+  }
+
+  :root[data-palette='b'] .border-\[\#94A3B8\] {
+    border-color: var(--secondary-text-color) !important;
+  }
+
+  :root[data-palette='b'] .border-\[\#94A3B8\]\/15 {
+    border-color: color-mix(in srgb, var(--secondary-text-color) 15%, transparent) !important;
+  }
+
+  :root[data-palette='b'] .border-\[\#94A3B8\]\/25 {
+    border-color: color-mix(in srgb, var(--secondary-text-color) 25%, transparent) !important;
+  }
+
+  :root[data-palette='b'] .border-\[\#94A3B8\]\/30 {
+    border-color: color-mix(in srgb, var(--secondary-text-color) 30%, transparent) !important;
+  }
+
+  :root[data-palette='b'] .border-\[\#94A3B8\]\/35 {
+    border-color: color-mix(in srgb, var(--secondary-text-color) 35%, transparent) !important;
+  }
+
+  :root[data-palette='b'] .border-\[\#94A3B8\]\/40 {
+    border-color: color-mix(in srgb, var(--secondary-text-color) 40%, transparent) !important;
   }
 
   :root[data-palette='b'] .text-\[\#CBD5E1\] {
