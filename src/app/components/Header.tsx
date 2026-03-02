@@ -1,12 +1,15 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { Button } from "./ui/button";
 import { LoginModal } from "./LoginModal";
+import { PaletteModeToggle } from "./PaletteModeToggle";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
+  const location = useLocation();
+  const isLandingPage = location.pathname === "/";
 
   return (
     <>
@@ -35,7 +38,8 @@ export function Header() {
             </Link>
           </div>
 
-          <div className="hidden lg:flex">
+          <div className="hidden lg:flex items-center gap-2">
+            {isLandingPage && <PaletteModeToggle />}
             <Button
               onClick={() => setLoginModalOpen(true)}
               className="bg-[#4F6DF5] hover:bg-[#FF6B6B] text-white rounded-full px-6"

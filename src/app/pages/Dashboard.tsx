@@ -153,8 +153,8 @@ export function Dashboard() {
                 }}
                 className={`w-full flex items-center gap-3 px-4 py-3 rounded-2xl text-sm transition-colors ${
                   isActive
-                    ? "bg-[#E5ECFF] text-[#1E2A4A]"
-                    : "text-[#94A3B8] hover:bg-white/70 hover:text-[#1E2A4A]"
+                    ? "bg-[#E5ECFF] text-[#4F6DF5] border-l-[3px] border-l-[#4F6DF5]"
+                    : "text-[#94A3B8] hover:bg-[#EEF2FF] hover:text-[#1E2A4A]"
                 }`}
                 style={{ fontWeight: isActive ? 600 : 500 }}
               >
@@ -794,9 +794,9 @@ function CreateBadgePage() {
                   <div
                     className={`h-9 w-9 rounded-xl flex items-center justify-center shrink-0 transition-all ${
                       isCompleted
-                        ? "bg-[#4F6DF5] text-white"
+                        ? "bg-[#34D399] text-white"
                         : isCurrent
-                        ? "bg-[#EEF2FF] text-[#4F6DF5] ring-2 ring-[#4F6DF5]/25"
+                        ? "bg-[#4F6DF5] text-[#1E2A4A] ring-2 ring-[#4F6DF5]/25"
                         : "bg-[#F5F7FA] text-[#94A3B8]"
                     }`}
                   >
@@ -809,7 +809,7 @@ function CreateBadgePage() {
                   <div className="hidden sm:block text-left">
                     <p
                       className={`text-xs transition-colors ${
-                        isCurrent ? "text-[#4F6DF5]" : isCompleted ? "text-[#1E2A4A]" : "text-[#94A3B8]"
+                        isCurrent ? "text-[#4F6DF5]" : isCompleted ? "text-[#94A3B8]" : "text-[#94A3B8]"
                       }`}
                       style={{ fontWeight: isCurrent ? 600 : 500 }}
                     >
@@ -824,7 +824,7 @@ function CreateBadgePage() {
                   <div className="flex-1 mx-3 hidden sm:block">
                     <div className="h-px bg-[#EDF2F7] relative">
                       <div
-                        className="absolute inset-y-0 left-0 bg-[#C9D7FF] transition-all duration-500"
+                        className="absolute inset-y-0 left-0 bg-[#34D399] transition-all duration-500"
                         style={{ width: isCompleted ? "100%" : "0%" }}
                       />
                     </div>
