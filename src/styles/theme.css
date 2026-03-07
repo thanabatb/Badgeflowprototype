@@ -2,13 +2,58 @@
 
 :root {
   --font-size: 16px;
-  --flow-primary: #4f6df5;
-  --flow-primary-dark: #1e2a4a;
-  --flow-accent: #ff6b6b;
-  --flow-secondary: #34d399;
-  --flow-neutral-light: #f5f7fa;
-  --flow-neutral-mid: #94a3b8;
-  --flow-pop: #fbbf24;
+  --font-family: 'Inter', sans-serif;
+  --font-family-body: 'Inter', sans-serif;
+  --font-family-heading: 'Plus Jakarta Sans', sans-serif;
+  --font-family-accent: 'DM Mono', monospace;
+  --trail-blue: #4f6df5;
+  --deep-ink: #1e2a4a;
+  --spark-coral: #ff6b6b;
+  --mint-fresh: #34d399;
+  --cloud: #f5f7fa;
+  --slate: #94a3b8;
+  --campfire-gold: #fbbf24;
+  --amber-sun: #ffb902;
+  --golden-sun: var(--amber-sun);
+  --amber-deep: #b8960c;
+  --dark-amber: #8a7209;
+  --amber-deep-hover: var(--dark-amber);
+  --royal-blue: #2563eb;
+  --royal-blue-pressed: #1e40af;
+  --warm-cloud: #fffdf5;
+  --warm-gray: #6b7280;
+
+  /* Palette A (default) semantic mapping */
+  --brand-color: var(--trail-blue);
+  --brand-readable: var(--trail-blue);
+  --action-color: var(--trail-blue);
+  --action-hover-color: var(--spark-coral);
+  --action-pressed-color: var(--spark-coral);
+  --support-color: var(--trail-blue);
+  --link-hover-color: var(--spark-coral);
+  --action-dark: var(--deep-ink);
+  --accent-color: var(--action-hover-color);
+  --success-color: var(--mint-fresh);
+  --neutral-light: var(--cloud);
+  --neutral-mid: var(--slate);
+  --achievement-color: var(--campfire-gold);
+  --interactive-surface-hover: #e7edff;
+  --interactive-surface-active: #dce5ff;
+  --secondary-text-color: var(--slate);
+  --muted-text-color: var(--slate);
+  --sidebar-surface: var(--flow-neutral-light);
+  --badge-hover-bg: var(--campfire-gold);
+  --card-hover-shadow: rgba(79, 109, 245, 0.1);
+  --card-selected-shadow: rgba(79, 109, 245, 0.15);
+
+  --flow-primary: var(--action-color);
+  --flow-primary-dark: var(--action-dark);
+  --flow-accent: var(--accent-color);
+  --flow-secondary: var(--success-color);
+  --flow-neutral-light: var(--neutral-light);
+  --flow-neutral-mid: var(--neutral-mid);
+  --flow-achievement: var(--achievement-color);
+  --flow-pop: var(--flow-achievement);
   --background: var(--flow-neutral-light);
   --foreground: var(--flow-primary-dark);
   --card: var(--flow-neutral-light);
@@ -17,12 +62,20 @@
   --popover-foreground: var(--flow-primary-dark);
   --primary: var(--flow-primary);
   --primary-foreground: #ffffff;
-  --secondary: #e7f7f1;
+  --secondary: var(--flow-secondary);
   --secondary-foreground: var(--flow-primary-dark);
-  --muted: #edf2f7;
+  --muted: var(--flow-neutral-light);
   --muted-foreground: var(--flow-neutral-mid);
   --accent: var(--flow-accent);
   --accent-foreground: #ffffff;
+  --action: var(--flow-primary);
+  --action-foreground: #ffffff;
+  --support: var(--support-color);
+  --support-foreground: #ffffff;
+  --achievement: var(--flow-achievement);
+  --achievement-foreground: var(--flow-primary-dark);
+  --reward: var(--flow-achievement);
+  --reward-foreground: var(--flow-primary-dark);
   --destructive: #d4183d;
   --destructive-foreground: #ffffff;
   --border: rgba(148, 163, 184, 0.35);
@@ -48,6 +101,34 @@
   --sidebar-ring: var(--flow-primary);
 }
 
+:root[data-palette='b'] {
+  /* Palette B - Golden Trail Edition */
+  --brand-color: var(--amber-sun);
+  --brand-readable: var(--amber-deep);
+  --action-color: var(--amber-deep);
+  --action-hover-color: var(--amber-deep);
+  --action-pressed-color: var(--dark-amber);
+  --support-color: var(--royal-blue);
+  --link-hover-color: var(--amber-deep);
+  --action-dark: var(--deep-ink);
+  --accent-color: var(--action-hover-color);
+  --success-color: var(--mint-fresh);
+  --neutral-light: var(--warm-cloud);
+  --neutral-mid: var(--slate);
+  --achievement-color: var(--amber-sun);
+  --interactive-surface-hover: #fffae5;
+  --interactive-surface-active: #fff5cc;
+  --secondary-text-color: var(--warm-gray);
+  --muted-text-color: var(--slate);
+  --sidebar-surface: #fffae5;
+  --badge-hover-bg: var(--golden-sun);
+  --card-hover-shadow: rgba(255, 185, 2, 0.1);
+  --card-selected-shadow: rgba(255, 185, 2, 0.15);
+  --flow-primary: var(--brand-color);
+  --flow-accent: var(--action-hover-color);
+  --flow-achievement: var(--brand-color);
+}
+
 .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
@@ -55,14 +136,22 @@
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.145 0 0);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.985 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
+  --primary: var(--flow-primary);
+  --primary-foreground: #ffffff;
+  --secondary: var(--flow-secondary);
+  --secondary-foreground: var(--flow-primary-dark);
   --muted: oklch(0.269 0 0);
   --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
+  --accent: var(--flow-accent);
+  --accent-foreground: #ffffff;
+  --action: var(--flow-primary);
+  --action-foreground: #ffffff;
+  --support: var(--support-color);
+  --support-foreground: #ffffff;
+  --achievement: var(--flow-achievement);
+  --achievement-foreground: var(--flow-primary-dark);
+  --reward: var(--flow-achievement);
+  --reward-foreground: var(--flow-primary-dark);
   --destructive: oklch(0.396 0.141 25.723);
   --destructive-foreground: oklch(0.637 0.237 25.331);
   --border: oklch(0.269 0 0);
@@ -100,6 +189,19 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
+  --color-action: var(--action);
+  --color-action-foreground: var(--action-foreground);
+  --color-action-hover: var(--action-hover-color);
+  --color-action-pressed: var(--action-pressed-color);
+  --color-support: var(--support);
+  --color-support-foreground: var(--support-foreground);
+  --color-link-hover: var(--link-hover-color);
+  --color-achievement: var(--achievement);
+  --color-achievement-foreground: var(--achievement-foreground);
+  --color-reward: var(--reward);
+  --color-reward-foreground: var(--reward-foreground);
+  --color-interactive-surface-hover: var(--interactive-surface-hover);
+  --color-interactive-surface-active: var(--interactive-surface-active);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
@@ -124,6 +226,8 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --font-sans: var(--font-family-body);
+  --font-mono: var(--font-family-accent);
 }
 
 @layer base {
@@ -142,29 +246,34 @@
 
   html {
     font-size: var(--font-size);
+    font-family: var(--font-family-body);
   }
 
   h1 {
+    font-family: var(--font-family-heading);
     font-size: var(--text-2xl);
-    font-weight: var(--font-weight-medium);
+    font-weight: 700;
     line-height: 1.5;
   }
 
   h2 {
+    font-family: var(--font-family-heading);
     font-size: var(--text-xl);
-    font-weight: var(--font-weight-medium);
+    font-weight: 700;
     line-height: 1.5;
   }
 
   h3 {
+    font-family: var(--font-family-heading);
     font-size: var(--text-lg);
-    font-weight: var(--font-weight-medium);
+    font-weight: 700;
     line-height: 1.5;
   }
 
   h4 {
+    font-family: var(--font-family-heading);
     font-size: var(--text-base);
-    font-weight: var(--font-weight-medium);
+    font-weight: 700;
     line-height: 1.5;
   }
 
@@ -184,5 +293,305 @@
     font-size: var(--text-base);
     font-weight: var(--font-weight-normal);
     line-height: 1.5;
+  }
+
+  code,
+  pre {
+    font-family: var(--font-family-accent);
+    font-weight: var(--font-weight-medium);
+  }
+}
+
+@layer utilities {
+  .font-body {
+    font-family: var(--font-family-body);
+  }
+
+  .font-headline {
+    font-family: var(--font-family-heading);
+  }
+
+  .font-accent {
+    font-family: var(--font-family-accent);
+    font-weight: var(--font-weight-medium);
+  }
+
+  /* Palette-aware overrides for existing hardcoded utility colors used across the app */
+  .text-\[\#4F6DF5\] {
+    color: var(--action-color) !important;
+  }
+
+  .bg-\[\#4F6DF5\] {
+    background-color: var(--flow-primary) !important;
+  }
+
+  .border-\[\#4F6DF5\] {
+    border-color: var(--action-color) !important;
+  }
+
+  :root[data-palette='b'] .border-l-\[\#4F6DF5\] {
+    border-left-color: var(--brand-color) !important;
+  }
+
+  .fill-\[\#4F6DF5\] {
+    fill: var(--action-color) !important;
+  }
+
+  .stroke-\[\#4F6DF5\] {
+    stroke: var(--action-color) !important;
+  }
+
+  .hover\:text-\[\#4F6DF5\]:hover {
+    color: var(--link-hover-color) !important;
+  }
+
+  .hover\:bg-\[\#4F6DF5\]:hover {
+    background-color: var(--flow-primary) !important;
+  }
+
+  .group:hover .group-hover\:text-\[\#4F6DF5\] {
+    color: var(--link-hover-color) !important;
+  }
+
+  /* In Palette B, icon accents should follow Amber Deep action color (not support blue). */
+  :root[data-palette='b'] svg.text-\[\#4F6DF5\] {
+    color: var(--action-color) !important;
+  }
+
+  /* Optional support color utility (Royal Blue in Palette B). Use intentionally on small/high-contrast text only. */
+  .text-support {
+    color: var(--support-color) !important;
+  }
+
+  .hover\:text-support:hover {
+    color: var(--support-color) !important;
+  }
+
+  /* Palette B removes residual blue tints used by old Trail Blue surfaces */
+  :root[data-palette='b'] .bg-\[\#EEF2FF\] {
+    background-color: var(--interactive-surface-hover) !important;
+  }
+
+  :root[data-palette='b'] .bg-\[\#E5ECFF\] {
+    background-color: var(--interactive-surface-active) !important;
+  }
+
+  :root[data-palette='b'] .bg-\[\#DCE5FF\] {
+    background-color: var(--interactive-surface-active) !important;
+  }
+
+  :root[data-palette='b'] .bg-\[\#C9D7FF\] {
+    background-color: var(--interactive-surface-active) !important;
+  }
+
+  :root[data-palette='b'] .hover\:bg-\[\#EEF2FF\]:hover {
+    background-color: var(--interactive-surface-hover) !important;
+  }
+
+  :root[data-palette='b'] .hover\:bg-\[\#E5ECFF\]:hover {
+    background-color: var(--interactive-surface-hover) !important;
+  }
+
+  :root[data-palette='b'] .hover\:bg-\[\#DCE5FF\]:hover {
+    background-color: var(--interactive-surface-hover) !important;
+  }
+
+  :root[data-palette='b'] .group:hover .group-hover\:bg-\[\#EEF2FF\] {
+    background-color: var(--interactive-surface-hover) !important;
+  }
+
+  :root[data-palette='b'] .group:hover .group-hover\:bg-\[\#E5ECFF\] {
+    background-color: var(--interactive-surface-hover) !important;
+  }
+
+  :root[data-palette='b'] .group:hover .group-hover\:bg-\[\#DCE5FF\] {
+    background-color: var(--interactive-surface-hover) !important;
+  }
+
+  :root[data-palette='b'] .from-\[\#EEF2FF\] {
+    --tw-gradient-from: var(--interactive-surface-hover) var(--tw-gradient-from-position) !important;
+    --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position) !important;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+  }
+
+  :root[data-palette='b'] .to-\[\#E5ECFF\] {
+    --tw-gradient-to: var(--interactive-surface-active) var(--tw-gradient-to-position) !important;
+  }
+
+  :root[data-palette='b'] .from-\[\#E5ECFF\] {
+    --tw-gradient-from: var(--interactive-surface-active) var(--tw-gradient-from-position) !important;
+    --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position) !important;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+  }
+
+  :root[data-palette='b'] .to-\[\#DCE5FF\] {
+    --tw-gradient-to: var(--interactive-surface-active) var(--tw-gradient-to-position) !important;
+  }
+
+  :root[data-palette='b'] .text-\[\#4F6DF5\]\/70 {
+    color: color-mix(in srgb, var(--action-color) 70%, transparent) !important;
+  }
+
+  :root[data-palette='b'] .text-\[\#4F6DF5\]\/80 {
+    color: color-mix(in srgb, var(--action-color) 80%, transparent) !important;
+  }
+
+  :root[data-palette='b'] .text-\[\#C9D7FF\] {
+    color: color-mix(in srgb, var(--action-color) 45%, white) !important;
+  }
+
+  :root[data-palette='b'] .text-\[\#94A3B8\] {
+    color: var(--secondary-text-color) !important;
+  }
+
+  :root[data-palette='b'] .text-\[\#94A3B8\]\/70 {
+    color: color-mix(in srgb, var(--secondary-text-color) 70%, transparent) !important;
+  }
+
+  :root[data-palette='b'] .text-\[\#94A3B8\]\/80 {
+    color: color-mix(in srgb, var(--secondary-text-color) 80%, transparent) !important;
+  }
+
+  :root[data-palette='b'] .placeholder\:text-\[\#94A3B8\]::placeholder {
+    color: var(--muted-text-color) !important;
+    opacity: 1 !important;
+  }
+
+  :root[data-palette='b'] .border-\[\#94A3B8\] {
+    border-color: var(--secondary-text-color) !important;
+  }
+
+  :root[data-palette='b'] .border-\[\#94A3B8\]\/15 {
+    border-color: color-mix(in srgb, var(--secondary-text-color) 15%, transparent) !important;
+  }
+
+  :root[data-palette='b'] .border-\[\#94A3B8\]\/25 {
+    border-color: color-mix(in srgb, var(--secondary-text-color) 25%, transparent) !important;
+  }
+
+  :root[data-palette='b'] .border-\[\#94A3B8\]\/30 {
+    border-color: color-mix(in srgb, var(--secondary-text-color) 30%, transparent) !important;
+  }
+
+  :root[data-palette='b'] .border-\[\#94A3B8\]\/35 {
+    border-color: color-mix(in srgb, var(--secondary-text-color) 35%, transparent) !important;
+  }
+
+  :root[data-palette='b'] .border-\[\#94A3B8\]\/40 {
+    border-color: color-mix(in srgb, var(--secondary-text-color) 40%, transparent) !important;
+  }
+
+  :root[data-palette='b'] .text-\[\#CBD5E1\] {
+    color: color-mix(in srgb, var(--action-color) 38%, white) !important;
+  }
+
+  :root[data-palette='b'] .ring-\[\#4F6DF5\]\/25 {
+    --tw-ring-color: color-mix(in srgb, var(--flow-primary) 25%, transparent) !important;
+  }
+
+  :root[data-palette='b'] .focus-visible\:ring-\[\#4F6DF5\]\/25:focus-visible {
+    --tw-ring-color: color-mix(in srgb, var(--flow-primary) 25%, transparent) !important;
+  }
+
+  :root[data-palette='b'] .focus\:ring-\[\#4F6DF5\]\/25:focus {
+    --tw-ring-color: color-mix(in srgb, var(--flow-primary) 25%, transparent) !important;
+  }
+
+  :root[data-palette='b'] .focus-within\:ring-\[\#4F6DF5\]\/25:focus-within {
+    --tw-ring-color: color-mix(in srgb, var(--flow-primary) 25%, transparent) !important;
+  }
+
+  :root[data-palette='b'] .shadow-\[\#E5ECFF\] {
+    --tw-shadow-color: var(--card-hover-shadow) !important;
+  }
+
+  /* CTA state mapping in Palette B: Amber Sun -> Amber Deep -> Dark Amber */
+  :root[data-palette='b'] .bg-\[\#4F6DF5\].text-white {
+    color: var(--flow-primary-dark) !important;
+  }
+
+  :root[data-palette='b'] .bg-\[\#4F6DF5\].text-white.hover\:bg-\[\#FF6B6B\]:hover {
+    color: #ffffff !important;
+  }
+
+  :root[data-palette='b'] .bg-\[\#4F6DF5\].text-white.hover\:bg-\[\#FF6B6B\]:active {
+    background-color: var(--action-pressed-color) !important;
+    color: #ffffff !important;
+  }
+
+  :root[data-palette='b'] .hover\:bg-\[\#FF6B6B\]:active {
+    background-color: var(--action-pressed-color) !important;
+  }
+
+  .text-\[\#FF6B6B\] {
+    color: var(--flow-accent) !important;
+  }
+
+  .bg-\[\#FF6B6B\] {
+    background-color: var(--flow-accent) !important;
+  }
+
+  .border-\[\#FF6B6B\] {
+    border-color: var(--flow-accent) !important;
+  }
+
+  .fill-\[\#FF6B6B\] {
+    fill: var(--flow-accent) !important;
+  }
+
+  .stroke-\[\#FF6B6B\] {
+    stroke: var(--flow-accent) !important;
+  }
+
+  .hover\:text-\[\#FF6B6B\]:hover {
+    color: var(--flow-accent) !important;
+  }
+
+  .hover\:bg-\[\#FF6B6B\]:hover {
+    background-color: var(--flow-accent) !important;
+  }
+
+  .group:hover .group-hover\:text-\[\#FF6B6B\] {
+    color: var(--flow-accent) !important;
+  }
+
+  .border-\[\#FF6B6B\]\/30 {
+    border-color: color-mix(in srgb, var(--flow-accent) 30%, transparent) !important;
+  }
+
+  .border-\[\#FF6B6B\]\/40 {
+    border-color: color-mix(in srgb, var(--flow-accent) 40%, transparent) !important;
+  }
+
+  .bg-\[\#FFF1F1\] {
+    background-color: color-mix(in srgb, var(--flow-accent) 12%, white) !important;
+  }
+
+  .hover\:bg-\[\#FFF1F1\]:hover {
+    background-color: color-mix(in srgb, var(--flow-accent) 12%, white) !important;
+  }
+
+  .bg-\[\#FFE4E4\] {
+    background-color: color-mix(in srgb, var(--flow-accent) 16%, white) !important;
+  }
+
+  .text-\[\#FBBF24\] {
+    color: var(--flow-achievement) !important;
+  }
+
+  .bg-\[\#FBBF24\] {
+    background-color: var(--flow-achievement) !important;
+  }
+
+  .border-\[\#FBBF24\] {
+    border-color: var(--flow-achievement) !important;
+  }
+
+  .bg-\[\#F5F7FA\] {
+    background-color: var(--flow-neutral-light) !important;
+  }
+
+  .text-\[\#F5F7FA\] {
+    color: var(--flow-neutral-light) !important;
   }
 }

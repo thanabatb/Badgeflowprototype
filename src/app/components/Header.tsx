@@ -1,22 +1,29 @@
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import { Button } from "./ui/button";
 import { LoginModal } from "./LoginModal";
+import { PaletteModeToggle } from "./PaletteModeToggle";
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [loginModalOpen, setLoginModalOpen] = useState(false);
+  const location = useLocation();
+  const isLandingPage = location.pathname === "/";
 
   return (
     <>
       <header className="sticky top-0 z-50 w-full bg-white/90 backdrop-blur-sm">
         <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 lg:px-8">
-          <div className="flex items-center gap-2">
-            <div className="flex h-10 w-16 items-center justify-center rounded-full bg-[#4F6DF5]">
-              <div className="h-5 w-5 rounded-full bg-white ml-2"></div>
-            </div>
-          </div>
+          <Link
+            to="/"
+            className="flex items-center gap-2"
+            aria-label="BadgeFlow home"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            <img src="/images/logo.svg" alt="BadgeFlow logo" className="h-10 w-auto" />
+            <span className="font-headline text-xl text-[#1E2A4A]">BadgeFlow</span>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex lg:gap-x-10">
@@ -31,7 +38,8 @@ export function Header() {
             </Link>
           </div>
 
-          <div className="hidden lg:flex">
+          <div className="hidden lg:flex items-center gap-2">
+            {isLandingPage && <PaletteModeToggle />}
             <Button
               onClick={() => setLoginModalOpen(true)}
               className="bg-[#4F6DF5] hover:bg-[#FF6B6B] text-white rounded-full px-6"

@@ -5,7 +5,7 @@ import { Button } from "../components/ui/button";
 
 const palette = [
   {
-    name: "Flow Blue",
+    name: "Trail Blue",
     role: "Primary",
     hex: "#4F6DF5",
     usage: "CTAs, logo, headings, links",
@@ -22,7 +22,7 @@ const palette = [
     name: "Spark Coral",
     role: "Accent",
     hex: "#FF6B6B",
-    usage: "Badges, notifications, highlights, hovers",
+    usage: "Hover states, notifications, CTA highlights",
     textClass: "text-white",
   },
   {
@@ -47,22 +47,35 @@ const palette = [
     textClass: "text-white",
   },
   {
-    name: "Sunny Gold",
-    role: "Pop",
+    name: "Campfire Gold",
+    role: "Achievement",
     hex: "#FBBF24",
-    usage: "Stars, premium badges, occasional accents",
+    usage: "Badge earned, stars, premium tier, active tabs on dark bg, Campfire dashboard accents",
     textClass: "text-[#1E2A4A]",
   },
 ];
 
 const usageRules = [
-  "Flow Blue is the hero. Use it for 60% of brand-colored elements.",
-  "Spark Coral is your attention-grabber. Never more than 15% of any composition.",
-  "Use Deep Ink for all body text. Never use pure black #000.",
-  "Cloud is the default background. Prefer it over pure white.",
-  "Sunny Gold is seasoning, not a main course. Use for stars and badges only.",
-  "Always pair Flow Blue + Cloud for the safest on-brand combo.",
+  "Trail Blue is the hero. Use it for 60% of brand-colored elements.",
+  "Deep Ink for all body text (never pure black #000).",
+  "Cloud is the default background, not white, slightly warm.",
+  "Always pair Trail Blue + Cloud for the safest, most on-brand combo.",
   "Never place Coral text on blue backgrounds (accessibility fail).",
+];
+
+const sparkCoralUse = [
+  "Hover states and interactive feedback (buttons, links)",
+  "Notification dots and unread indicators",
+  "CTA button highlights and urgent callouts",
+  "Any element on light backgrounds that must be instantly visible",
+];
+
+const campfireGoldUse = [
+  "Badge earned moments and achievement unlocks",
+  "Star ratings and premium tier indicators",
+  "Active and selected tab on Deep Ink backgrounds",
+  "Campfire dashboard accent elements",
+  "Quest completion and Challenge passed states",
 ];
 
 const brandStoryArc = [
@@ -188,6 +201,54 @@ export function About() {
                 ))}
               </ol>
             </div>
+          </section>
+
+          <section className="mb-12 rounded-2xl border border-[#94A3B8]/25 bg-white p-6">
+            <h2 className="text-2xl text-[#1E2A4A] mb-3" style={{ fontWeight: 700 }}>
+              Spark Coral vs Campfire Gold
+            </h2>
+            <p className="text-[#94A3B8] mb-6">
+              These two accent colors work as a pair. Coral grabs attention. Gold celebrates achievement.
+            </p>
+            <div className="grid gap-4 lg:grid-cols-2 mb-5">
+              <article className="rounded-xl border border-[#94A3B8]/25 bg-[#F5F7FA] p-5">
+                <p className="text-sm text-[#FF6B6B] mb-2" style={{ fontWeight: 700 }}>
+                  Spark Coral - Action Color
+                </p>
+                <ul className="space-y-2 text-[#1E2A4A]">
+                  {sparkCoralUse.map((item) => (
+                    <li key={item} className="flex gap-2">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#FF6B6B]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-sm text-[#94A3B8] mt-4">Contrast on Cloud: ~3.2:1 (passes AA for UI elements)</p>
+              </article>
+
+              <article className="rounded-xl border border-[#94A3B8]/25 bg-[#1E2A4A] p-5">
+                <p className="text-sm text-[#FBBF24] mb-2" style={{ fontWeight: 700 }}>
+                  Campfire Gold - Reward Color
+                </p>
+                <ul className="space-y-2 text-[#F5F7FA]">
+                  {campfireGoldUse.map((item) => (
+                    <li key={item} className="flex gap-2">
+                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-[#FBBF24]" />
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="text-sm text-[#F5F7FA]/80 mt-4">
+                  Contrast on Cloud: ~1.6:1 (do NOT use for text or UI on light backgrounds)
+                </p>
+                <p className="text-sm text-[#F5F7FA]/80 mt-1">
+                  Contrast on Deep Ink: ~8.5:1 (excellent, use freely on dark backgrounds)
+                </p>
+              </article>
+            </div>
+            <p className="text-[#1E2A4A]" style={{ fontWeight: 600 }}>
+              Rule of thumb: If it says "do something", use Coral. If it says "you did it", use Gold.
+            </p>
           </section>
 
           <section className="rounded-2xl border border-[#94A3B8]/25 bg-white p-6">
